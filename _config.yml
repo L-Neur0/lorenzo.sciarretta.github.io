@@ -5,6 +5,20 @@ description: "MSc in Computer Science, Graduate Researcher"
 
 show_downloads: ["true"]
 
+
+header_pages:
+  - index.md
+  - peter.md
+  - about.md
+  - contact.md
+
+style: hacker
+
+footer: 'follow us on <a href="https://twitter.com/">twitter</a>'
+
+# Build settings
+markdown: kramdown
+
 darkmode: false
 hide_first_title: false # Useful if README.md is used on both github and pages
 logo_url: ./logo.png # Either absolute or relative url
