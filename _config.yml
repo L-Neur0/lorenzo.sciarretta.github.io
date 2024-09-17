@@ -1,25 +1,32 @@
 remote_theme: tuur29/pages-themes-cayman
 
-title: [Lorenzo Sciarretta]
-description: [Msc in Computer Science, Graduate Researcher]
+title: "Lorenzo Sciarretta"
+description: "MSc in Computer Science, Graduate Researcher"
 
-show_downloads: false
+show_downloads: ["true"]
+
 darkmode: true
-hide_first_title: false
-logo_url: ./logo.png
-syntax_theme: ./syntax.css
+hide_first_title: false # Useful if README.md is used on both github and pages
+logo_url: ./logo.png # Either absolute or relative url
+syntax_theme: ./syntax.css # Leave empty for default, otherwise link to a pygments stylesheet
 
 colors:
-  gradient_left: "#1E40AF"  # Deep blue
-  gradient_right: "#3B82F6"  # Lighter blue
-  header: "#FFFFFF"
-  android_theme: "#1E40AF"
-  link: "#3B82F6"
-  section_title: "#1E40AF"
+    gradient_left: "#1f2937"       # Grigio scuro
+    gradient_right: "#3b82f6"      # Azzurro chiaro
+    header: "#ffffff"              # Bianco
+    android_theme: "#1f2937"       # Grigio scuro
+    link: "#10b981"                # Verde menta
+    section_title: "#3b82f6"       # Azzurro chiaro
 
 buttons:
-  github_hide: false
-
+      zip_url: http://example.com/
+      zip_title: Title
+      zip_hide: true
+      tar_url: http://example.com/
+      tar_title: Title
+      tar_hide: true
+      github_hide: true # hides "View on Github"
+      
 navbar:
   - name: "Home"
     link: "/"
@@ -30,14 +37,6 @@ navbar:
   - name: "Contact"
     link: "/contact"
   - name: "GitHub"
-    link: "https://github.com/your-username"
+    link: "https://github.com/tuo-username"
   - name: "LinkedIn"
-    link: "https://www.linkedin.com/in/your-username/"
-
-footer:
-  - name: "GitHub"
-    link: "https://github.com/your-username"
-    icon: "fab fa-github"
-  - name: "LinkedIn"
-    link: "https://www.linkedin.com/in/your-username/"
-    icon: "fab fa-linkedin"
+    link: "https://www.linkedin.com/in/tuo-username/"
