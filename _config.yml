@@ -19,16 +19,16 @@ colors:
     section_title: "#3b82f6"       # Azzurro chiaro
 
 buttons:
-      zip_url: http://example.com/
-      zip_title: Title
-      zip_hide: true
+      zip_url: https://github.com/L-Neur0
+      zip_title: ["GitHub"]
+      zip_hide: false
       tar_url: http://example.com/
       tar_title: Title
       tar_hide: true
       github_hide: true # hides "View on Github"
       
 navbar:
-  - name: "Home"
+  - name: ["Home"]
     link: "/"
   - name: "About"
     link: "/about"
@@ -39,4 +39,4 @@ navbar:
   - name: "GitHub"
     link: "https://github.com/tuo-username"
   - name: "LinkedIn"
-    link: "https://www.linkedin.com/in/tuo-username/"
+    link: "https://www.linkedin.com/in/LorenzoSciarretta/"
