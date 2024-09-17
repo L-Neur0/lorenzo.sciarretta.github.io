@@ -4,11 +4,8 @@ layout: home
 permalink: /
 ---
 
-# Other Demo Pages
+### Lorenzo Sciarretta
 
-[Dark](https://b2a3e8.github.io/jekyll-theme-console-demo-dark/)
-[Light](https://b2a3e8.github.io/jekyll-theme-console-demo-light/)
+# frase d effetto
 
-# Welcome
-
-Bla bla bla bla. Bla bla bla bla bla bla bla bla.
+I am Lorenzo Sciarretta a Msc. student in Computer Science and a Graduate Researcher at University of St.Gallen(HSG).
