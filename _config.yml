@@ -5,7 +5,7 @@ description: "MSc in Computer Science, Graduate Researcher"
 
 show_downloads: ["true"]
 
-darkmode: true
+darkmode: false
 hide_first_title: false # Useful if README.md is used on both github and pages
 logo_url: ./logo.png # Either absolute or relative url
 syntax_theme: ./syntax.css # Leave empty for default, otherwise link to a pygments stylesheet
