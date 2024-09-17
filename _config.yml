@@ -27,5 +27,19 @@ buttons:
       tar_title: Title
       tar_hide: true
       github_hide: true # hides "View on Github"
+      
+navbar:
+  - name: "Home"
+    link: "/"
+  - name: "About"
+    link: "/about"
+  - name: "Projects"
+    link: "/projects"
+  - name: "Contact"
+    link: "/contact"
+  - name: "GitHub"
+    link: "https://github.com/tuo-username"
+  - name: "LinkedIn"
+    link: "https://www.linkedin.com/in/tuo-username/"
 
 
