@@ -8,7 +8,7 @@ show_downloads: ["true"]
 
 header_pages:
   - index.md
-  - peter.md
+  - lorenzo.md
   - about.md
   - contact.md
 
