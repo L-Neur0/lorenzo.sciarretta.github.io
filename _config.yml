@@ -2,6 +2,7 @@ remote_theme: b2a3e8/jekyll-theme-console
 
 show_downloads: ["true"]
 style: dark
+custom_css: /assets/style.css
 
 header_pages:
   - index.md
@@ -22,6 +23,3 @@ syntax_theme: ./syntax.css # Leave empty for default, otherwise link to a pygmen
 # Includere il CSS personalizzato
 plugins:
   - jekyll-remote-theme
-
-# Specifica il percorso del CSS personalizzato
-custom_css: /assets/style.css
