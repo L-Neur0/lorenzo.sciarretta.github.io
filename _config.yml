@@ -1,15 +1,13 @@
 remote_theme: b2a3e8/jekyll-theme-console
 
 show_downloads: ["true"]
-
+style: dark
 
 header_pages:
   - index.md
   - lorenzo.md
   - about.md
   - contact.md
-
-style: hacker
 
 footer: 'follow us on <a href="https://twitter.com/">twitter</a>'
 
