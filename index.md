@@ -3,6 +3,7 @@ title: /
 layout: home
 permalink: /
 ---
+<link rel="stylesheet" href="/assets/style.css">
 
 # Lorenzo Sciarretta
 
