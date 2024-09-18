@@ -1,0 +1,12 @@
+/* Cambia la grandezza del font generale */
+body {
+  font-size: 18px; /* Modifica la dimensione come preferisci */
+}
+
+h1 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+}
