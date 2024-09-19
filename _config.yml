@@ -1,6 +1,6 @@
 
 #remote_theme: b2a3e8/jekyll-theme-console
-theme: notion-jekyll-theme
+remote_theme: notion-jekyll-theme
 show_downloads: ["true"]
 style: dark
 custom_css: /assets/style.css
