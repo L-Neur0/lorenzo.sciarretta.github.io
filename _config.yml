@@ -12,17 +12,6 @@ header_pages:
   - contact.md
 
 footer: 'follow us on <a href="https://twitter.com/">twitter</a>'
-<style>
-  img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-  }
-</style>
-
-![Lorenzo](./foto.jpg)
-
 # Build settings
 markdown: kramdown
 
