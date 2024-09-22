@@ -5,6 +5,16 @@ permalink: /about/
 ---
 
 # jekyll-theme-console
+<style>
+  img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+</style>
+
+![Lorenzo](./foto.jpg)
 
 A jekyll theme with inspiration from linux consoles for hackers, developers and script kiddies.
 You can find the source code for this theme at [github.com/b2a3e8/jekyll-theme-console](https://github.com/b2a3e8/jekyll-theme-console).
