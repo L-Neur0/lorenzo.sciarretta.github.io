@@ -7,6 +7,7 @@ permalink: /
 
 # Hi, I'm Lorenzo Sciarretta
 
+<img src="./assets/74.lorenzo.sciarretta@gmail.com.jpg" alt="Lorenzo" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
 
 
 
