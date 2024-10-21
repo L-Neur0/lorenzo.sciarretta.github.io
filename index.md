@@ -11,7 +11,7 @@ permalink: /
 
 <link rel="stylesheet" href="/assets/style.css">
 
-![profile pic](/assets/pic.png)  
+![profile pic](/assets/pic.jpg)  
 
 
 
