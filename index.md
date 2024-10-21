@@ -14,7 +14,7 @@ permalink: /
       I did my bachelor in Computer Science Engineering at Politecnico di Milano, Italy.
     </p>
   </div>
-  <div style="flex: 0;">
-    <img src="/assets/74.lorenzo.sciarretta@gmail.com.jpg" alt="profile pic" style="width:200px; margin-left: 20px;">
+  <div style="flex: 0; margin-left: 20px;">
+    <img src="/assets/74.lorenzo.sciarretta@gmail.com.jpg" alt="profile pic" style="width:200px;">
   </div>
 </div>
