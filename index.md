@@ -3,10 +3,15 @@ title: /home
 layout: home
 permalink: /
 ---
+
 <link rel="stylesheet" href="/assets/style.css">
 
 # Hi, I'm Lorenzo Sciarretta
 
+
+<link rel="stylesheet" href="/assets/style.css">
+
+![profile pic](/assets/pic.png)  
 
 
 
