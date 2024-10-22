@@ -15,6 +15,7 @@ permalink: /
     </p>
   </div>
   <div style="flex: 0; margin-left: 20px;">
-    <img src="/assets/74.lorenzo.sciarretta@gmail.com.jpg" alt="profile pic" style="width:200px;">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/style.css">
+    <img src="{{ site.baseurl }}/assets/74.lorenzo.sciarretta@gmail.com.jpg" alt="profile pic" style="width:200px;">
   </div>
 </div>
