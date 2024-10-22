@@ -4,8 +4,6 @@ layout: home
 permalink: /
 ---
 
-<link rel="stylesheet" href="/assets/style.css">
-
 <div style="display: flex; align-items: center;">
   <div style="flex: 1;">
     <h1>Hi, I'm Lorenzo Sciarretta</h1>
