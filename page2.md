@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /open-source
+permalink: /page2
 ---
 **[Home](/) >> Open Source**
 
