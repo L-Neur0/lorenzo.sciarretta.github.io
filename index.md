@@ -7,4 +7,4 @@ I'm a Master's student in Computer Science, specializing in Data Science, at the
 
 I have a strong technical foundation, with expertise in machine learning, deep learning, and software engineering. Currently, I work as a Research Assistant in quantitative finance at HSG, where I apply advanced methods such as neural networks and time-series forecasting to solve complex problems in financial econometrics. 
 
-Complementing my technical abilities, my education at HSG has equipped me with a deep understanding of business and strategic management. This combination of technical expertise and business acumen allows me to design solutions that are both innovative and aligned with organizational goals.
+Complementing my technical abilities, my education at HSG has equipped me with a deep understanding of business and strategic management, enabling me to bridge the gap between technical innovation and organizational objectives. 
