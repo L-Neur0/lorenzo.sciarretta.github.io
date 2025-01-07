@@ -36,7 +36,7 @@ navigation:
       - name: Image
         link: ./index.html#small-image
   - name: Another Page
-    link: ./another-page.html
+    link: ./page2.html
 ## remote_theme: b2a3e8/jekyll-theme-console
 # G-EH5XS5D6LQ
 # Includere il CSS personalizzato
