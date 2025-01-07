@@ -18,7 +18,7 @@ permalink: /page2
     <li> Confounding Variables </li>
     <li> Polynomial Regression </li>
   </ul>
-  <a href="https://github.com/L-Neur0/lorenzo.sciarretta.github.io/blob/main/pages/statML_Blog/LR1.html"><span class="card-link-spanner"></span></a>
+  <a href="./blog1""><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
