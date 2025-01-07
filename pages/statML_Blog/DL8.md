@@ -81,7 +81,7 @@ When adding a new hidden layer, the output of the preceding layer will
 become the input.
 
 ![Multilayer Neural
-Network](../image/Screenshot 2024-12-25 at 09.18.37.png){width="50%"}
+Network](https://github.com/L-Neur0/lorenzo.sciarretta.github.io/blob/main/pages/image/Screenshot%202024-12-25%20at%2009.18.37.png){width="50%"}
 
 Now, for example, if we want to train a multilayer neural network to a
 qualitative response, so using the *softmax* function to convert the
