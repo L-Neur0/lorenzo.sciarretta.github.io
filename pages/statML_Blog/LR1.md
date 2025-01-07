@@ -2,6 +2,8 @@
 layout: default
 permalink: /blog1
 ---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 # Linear Regression
 
 ## Linear Regression {#sec:linear_regression}
