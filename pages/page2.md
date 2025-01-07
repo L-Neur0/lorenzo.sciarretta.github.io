@@ -50,24 +50,33 @@ permalink: /page2
 </div>
 
 <div class="card">
+  <h3>Dimension Reduction</h3>
+  <ul>
+    <li> PCR  </li>
+    <li> PLS  </li>
+  </ul>
+  <a href="./blog5"><span class="card-link-spanner"></span></a>
+</div>
+
+<div class="card">
   <h3>SVM</h3>
   <ul>
     <li> SVC  </li>
     <li> SVM  </li>
   </ul>
-  <a href="./blog5"><span class="card-link-spanner"></span></a>
+  <a href="./blog6"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
   <h3>Unsupervised Learning</h3>
   <ul>
   </ul>
-  <a href="./blog6"><span class="card-link-spanner"></span></a>
+  <a href="./blog7"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
   <h3>Deep Learning</h3>
   <ul>    
   </ul>
-  <a href="./blog7"><span class="card-link-spanner"></span></a>
+  <a href="./blog8"><span class="card-link-spanner"></span></a>
 </div>
