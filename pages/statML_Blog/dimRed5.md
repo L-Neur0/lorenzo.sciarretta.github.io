@@ -2,6 +2,8 @@
 layout: default
 permalink: /blog5
 ---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 ## Dimension Reduction Method
 
 We work constantly with high dimensional data, and those often has some
