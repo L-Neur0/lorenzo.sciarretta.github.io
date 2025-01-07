@@ -1,7 +1,6 @@
 ---
 title: /home
-layout: home
-permalink: /
+layout: default
 ---
 
  ## Hi, I'm Lorenzo Sciarretta
