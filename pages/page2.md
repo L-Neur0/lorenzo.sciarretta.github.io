@@ -2,7 +2,7 @@
 layout: default
 permalink: /page2
 ---
-**[Home](/) >> StatML**
+**[Home](./index.html) >> StatML**
 
 ## Statistical Learning and Machine Learning:
 
