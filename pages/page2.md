@@ -19,7 +19,7 @@ permalink: /page2
     <li> Confounding Variables </li>
     <li> Polynomial Regression </li>
   </ul>
-  <a href="./blog1"><span class="card-link-spanner"></span></a>
+  <a href="./LR1.html"><span class="card-link-spanner"></span></a>
 </div>
 
 
