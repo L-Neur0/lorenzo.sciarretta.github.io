@@ -2,7 +2,7 @@ remote_theme: vaibhavvikas/jekyll-theme-minimalistic
 
 
 title: Minimalistic
-logo: /assets/img/logo.jpg
+logo: /assets/logo.jpg
 email: person@address.com
 description: Minimalistic is a theme powered by Jekyll.
 favicon: true
