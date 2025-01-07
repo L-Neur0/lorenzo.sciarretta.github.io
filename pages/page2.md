@@ -28,7 +28,7 @@ permalink: /page2
     <li> Generative models for Classification  </li>
     <li>  Evaluation of Classification Mo </li>
   </ul>
-  <a href="./blog1"><span class="card-link-spanner"></span></a>
+  <a href="./blog2"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
@@ -36,7 +36,7 @@ permalink: /page2
   <ul>
     <li>Resampling Methods and CV</li>
   </ul>
-  <a href="./blog1"><span class="card-link-spanner"></span></a>
+  <a href="./blog3"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
@@ -46,7 +46,7 @@ permalink: /page2
      <li> Ridge Regression  </li>
     <li> Lasso  </li>
   </ul>
-  <a href="./blog1"><span class="card-link-spanner"></span></a>
+  <a href="./blog4"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
@@ -55,19 +55,19 @@ permalink: /page2
     <li> SVC  </li>
     <li> SVM  </li>
   </ul>
-  <a href="./blog1"><span class="card-link-spanner"></span></a>
+  <a href="./blog5"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
   <h3>Unsupervised Learning</h3>
   <ul>
   </ul>
-  <a href="./blog1"><span class="card-link-spanner"></span></a>
+  <a href="./blog6"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
   <h3>Deep Learning</h3>
   <ul>    
   </ul>
-  <a href="./blog1"><span class="card-link-spanner"></span></a>
+  <a href="./blog7"><span class="card-link-spanner"></span></a>
 </div>
