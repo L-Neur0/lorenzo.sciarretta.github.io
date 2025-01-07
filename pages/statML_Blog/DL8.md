@@ -7,7 +7,7 @@ permalink: /blog8
 ## Single Layer Neural Networks
 
 ![Single Layer Neural
-Network](image/Screenshot 2024-12-24 at 17.49.17.png){width="50%"}
+Network](../image/Screenshot 2024-12-24 at 17.49.17.png){width="50%"}
 
 A single layer Neural Network is composed by at least 3 layers: an Input
 layer, vector of $p$ variables $X_1, X_2, \dots, X_p$, a Hidden layer,
@@ -80,7 +80,7 @@ When adding a new hidden layer, the output of the preceding layer will
 become the input.
 
 ![Multilayer Neural
-Network](image/Screenshot 2024-12-25 at 09.18.37.png){width="50%"}
+Network](../image/Screenshot 2024-12-25 at 09.18.37.png){width="50%"}
 
 Now, for example, if we want to train a multilayer neural network to a
 qualitative response, so using the *softmax* function to convert the
@@ -182,7 +182,7 @@ We remember than the importnat relation of the MSE with the Bias and the
 variance, which is the explanation for the *Bias-Variance Tradeoff*:
 $$MSE(\hat{\theta}) = Var(\hat{\theta}) + Bias(\hat{\theta})^2$$
 
-![image](image/MSE.png){width="50%"}
+![image](../image/MSE.png){width="50%"}
 
 [^1]: $\epsilon = Y - \hat{Y}$ is the error associated with each
     resposne measurement. represents the random deviation or \"noise\"
