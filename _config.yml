@@ -30,7 +30,7 @@ platforms:
 google_analytics: G-EH5XS5D6LQ
 
 navigation:
-  - name: Readme
+  - name: AboutMe
     link: ./index.html
   - name: StatML posts
     link: ./page2.html
