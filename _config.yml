@@ -4,8 +4,9 @@ remote_theme: vaibhavvikas/jekyll-theme-minimalistic
 title: Lorenzo Sciarretta
 logo: /assets/image-720x720.jpg
 
-email: "lorenzo.sciarretta@gmail.com"
-description: "Msc in Computer Science, specialization in Data Science, @ HSG and @ ETH, Switzerland.                  Bsc in Computer Science Engineering @ Politecnico di Milano, Italy."favicon: true
+email: lorenzo.sciarretta@gmail.com
+description: Msc in Computer Science, specialization in Data Science, @ HSG and @ ETH, Switzerland.                  Bsc in Computer Science Engineering @ Politecnico di Milano, Italy.
+favicon: true
 color-scheme: auto
 
 plugins:
