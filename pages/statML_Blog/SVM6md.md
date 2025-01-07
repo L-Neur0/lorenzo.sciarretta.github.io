@@ -1,3 +1,7 @@
+---
+layout: default
+permalink: /blog6
+---
 # Support Vector Machine
 
 An other approach to classification is the **Support Vector Machine**

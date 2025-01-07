@@ -1,4 +1,7 @@
-
+---
+layout: default
+permalink: /blog1
+---
 # Linear Regression
 
 ## Linear Regression {#sec:linear_regression}

@@ -1,4 +1,7 @@
-
+---
+layout: default
+permalink: /blog5
+---
 ## Dimension Reduction Method
 
 We work constantly with high dimensional data, and those often has some

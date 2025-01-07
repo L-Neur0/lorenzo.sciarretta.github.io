@@ -1,4 +1,7 @@
-
+---
+layout: default
+permalink: /blog8
+---
 # Deep Learning
 
 ## Single Layer Neural Networks

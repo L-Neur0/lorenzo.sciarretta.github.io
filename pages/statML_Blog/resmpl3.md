@@ -1,4 +1,7 @@
-
+---
+layout: default
+permalink: /blog3
+---
 ### Cross-Validation {#sec:cross_validation}
 
 #### Validation Set approach

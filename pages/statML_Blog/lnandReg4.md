@@ -1,4 +1,7 @@
-
+---
+layout: default
+permalink: /blog4
+---
 # Linear Model Selection and Regularization
 
 ## Linear Model Selection and Regularization

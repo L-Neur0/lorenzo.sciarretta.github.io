@@ -1,4 +1,7 @@
-
+---
+layout: default
+permalink: /blog2
+---
 # Classification
 
 ## Classification

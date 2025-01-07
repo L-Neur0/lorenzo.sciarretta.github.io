@@ -1,4 +1,7 @@
-
+---
+layout: default
+permalink: /blog7
+---
 # Unsupervised Learning
 
 Until now, we have explored supervised learning methods, such as linear
