@@ -9,16 +9,16 @@ permalink: /page2
 <div class="card">
   <h3>Linear Regression</h3>
   <ul>
-    <li>1Linear Regression
+    <li>1Linear Regression </li>
     <li> Multiple Linear Regression </li>
     <li> Assesing the model </li>
     <li> Prediction Intervals vs Confidence Intervals </li>
     <li> Categorical variables </li>
-    <li> Correlated Predictors</li>
+    <li> Correlated Predictors </li>
     <li> Confounding Variables </li>
     <li> Polynomial Regression </li>
   </ul>
-  <a href="./blog1""><span class="card-link-spanner"></span></a>
+  <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
