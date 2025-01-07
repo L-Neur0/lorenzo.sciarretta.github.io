@@ -8,7 +8,7 @@ permalink: /blog8
 ## Single Layer Neural Networks
 
 ![Single Layer Neural
-Network](https://github.com/L-Neur0/lorenzo.sciarretta.github.io/blob/main/pages/image/Screenshot%202024-12-24%20at%2017.49.17.png){width="50%"}
+Network](../image/17.png){width="50%"}
 
 A single layer Neural Network is composed by at least 3 layers: an Input
 layer, vector of $p$ variables $X_1, X_2, \dots, X_p$, a Hidden layer,
@@ -81,7 +81,7 @@ When adding a new hidden layer, the output of the preceding layer will
 become the input.
 
 ![Multilayer Neural
-Network](https://github.com/L-Neur0/lorenzo.sciarretta.github.io/blob/main/pages/image/Screenshot%202024-12-25%20at%2009.18.37.png){width="50%"}
+Network](../image/37.png){width="50%"}
 
 Now, for example, if we want to train a multilayer neural network to a
 qualitative response, so using the *softmax* function to convert the
