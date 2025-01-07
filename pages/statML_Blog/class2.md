@@ -2,6 +2,10 @@
 layout: default
 permalink: /blog2
 ---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script>
+
 # Classification
 
 ## Classification
