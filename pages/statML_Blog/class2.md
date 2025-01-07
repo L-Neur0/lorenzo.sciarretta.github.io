@@ -264,7 +264,7 @@ a measure of the model's overall accuracy. The AUC is a value between 0
 and 1, where 1 means that the model is perfect, and 0.5 means that the
 model is random.\
 
-![ROC Curve](image/roc.png){#fig:roc_curve width="60%"}
+![ROC Curve](./image/roc.png){#fig:roc_curve width="60%"}
 
 #### Summary
 
