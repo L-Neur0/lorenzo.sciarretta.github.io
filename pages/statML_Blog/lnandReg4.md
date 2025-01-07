@@ -2,6 +2,8 @@
 layout: default
 permalink: /blog4
 ---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 # Linear Model Selection and Regularization
 
 ## Linear Model Selection and Regularization
