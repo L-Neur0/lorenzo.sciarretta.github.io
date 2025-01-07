@@ -2,7 +2,7 @@
 layout: default
 permalink: /page2
 ---
-**[Home](/) >> Open Source**
+**[Home](/) >> StatML**
 
 ## Statistical Learning and Machine Learning:
 
