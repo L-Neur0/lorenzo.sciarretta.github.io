@@ -70,7 +70,7 @@ to compression.
 ![ Graphical illustration of PCA. The compressed data can be
 reconstructed into $\tilde x$, which lives in the original data space,
 but has an intrinsic lower-dimensional representation than $x$
-](image/Screenshot 2024-12-03 at 09.33.11.png){width="40%"}
+](../image/11.png){width="40%"}
 
 #### Maximum Variance Perspective
 
