@@ -3,5 +3,5 @@ layout: default
 ---
 
  ## Hi, I'm Lorenzo Sciarretta
-I am a MSc. student in Computer Science and a Graduate Researcher at University of St.Gallen (HSG), Switzerland.  
-I did my Bsc in Computer Science Engineering at Politecnico di Milano, Italy.
+I am a Computer Science student at University of St.Gallen and at ETH zurich. 
+I am currently a Research Assistant in quantititave finance at HSG.
