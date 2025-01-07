@@ -2,10 +2,11 @@ remote_theme: vaibhavvikas/jekyll-theme-minimalistic
 
 
 title: Lorenzo Sciarretta
-logo: /assets/74.lorenzo.sciarretta@gmail.com Medium.jpeg
-email: lorenzo.sciarretta@unisg.ch, lsciarretta@ethz.ch
+logo: /assets/image-720x720.jpg
+email: - lorenzo.sciarretta@unisg.ch 
+       - lsciarretta@ethz.ch
 description: - Msc in Computer Science, specialization in Data Science, @ HSG and @ ETH, Switzerland. 
-             -Bsc in Computer Science Engineering @ Politecnico di Milano, Italy.
+             - Bsc in Computer Science Engineering @ Politecnico di Milano, Italy.
 favicon: true
 color-scheme: auto
 
