@@ -2,6 +2,8 @@
 layout: default
 permalink: /blog7
 ---
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 # Unsupervised Learning
 
 Until now, we have explored supervised learning methods, such as linear
@@ -166,7 +168,7 @@ The algorithm for K-means clustering is as follows:
         (where closest is defined using Euclidean distance).
 
 ![K-means clustering algorithm example. Final result after 10
-iterations.](./image/Screenshot 2024-12-07 at 10.52.12.png){width="55%"}
+iterations.](https://github.com/L-Neur0/lorenzo.sciarretta.github.io/blob/main/pages/image/Screenshot%202024-12-07%20at%2010.52.12.png){width="55%"}
 
 This algorithm is guaranteed to decrease the value of the objective 1.5
 at each step, because:
