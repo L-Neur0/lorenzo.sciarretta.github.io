@@ -21,3 +21,73 @@ permalink: /page2
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
+
+
+<div class="card">
+  <h3>Classification</h3>
+  <p><b>Go</b></p>
+  <ul>
+    <li>1Linear Regression
+    
+  </ul>
+  <a href="./blog1"><span class="card-link-spanner"></span></a>
+</div>
+
+
+<div class="card">
+  <h3>Resampling</h3>
+  <p><b>Go</b></p>
+  <ul>
+    <li>1Linear Regression
+    
+  </ul>
+  <a href="./blog1"><span class="card-link-spanner"></span></a>
+</div>
+
+
+<div class="card">
+  <h3>Linear Model selection and Regularization</h3>
+  <p><b>Go</b></p>
+  <ul>
+    <li>1Linear Regression
+    
+  </ul>
+  <a href="./blog1"><span class="card-link-spanner"></span></a>
+</div>
+
+
+
+
+<div class="card">
+  <h3>SVM</h3>
+  <p><b>Go</b></p>
+  <ul>
+    <li>1Linear Regression
+    
+  </ul>
+  <a href="./blog1"><span class="card-link-spanner"></span></a>
+</div>
+
+
+
+<div class="card">
+  <h3>Unsupervised Learning</h3>
+  <p><b>Go</b></p>
+  <ul>
+    <li>1Linear Regression
+    
+  </ul>
+  <a href="./blog1"><span class="card-link-spanner"></span></a>
+</div>
+
+
+
+<div class="card">
+  <h3>Deep Learning</h3>
+  <p><b>Go</b></p>
+  <ul>
+    <li>1Linear Regression
+    
+  </ul>
+  <a href="./blog1"><span class="card-link-spanner"></span></a>
+</div>
