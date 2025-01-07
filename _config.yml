@@ -1,10 +1,11 @@
 remote_theme: vaibhavvikas/jekyll-theme-minimalistic
 
 
-title: Minimalistic
+title: Lorenzo Sciarretta
 logo: /assets/logo.jpg
-email: person@address.com
-description: Minimalistic is a theme powered by Jekyll.
+email: lorenzo.sciarretta@unisg.ch
+email: lsciarretta@ethz.ch
+description: Msc Computer Science student, specialized in Data Science, @ HSG and @ ETH, Switzerland. Bsc in Computer Science Engineering @ Politecnico di Milano, Italy.
 favicon: true
 color-scheme: auto
 
@@ -16,10 +17,11 @@ plugins:
 platforms:
   - name: GitHub
     icon: <i class="fa-brands fa-github"></i>
-    link: https://github.com/vaibhavvikas
+    link: https://github.com/L-Neur0
   - name: LinkedIn
     icon: <i class="fa-brands fa-linkedin"></i>
-    link: https://www.linkedin.com/in/vaibhavvikas
+    link: https://www.linkedin.com/in/lorenzo-sciarretta-026623218
+
     
 google_analytics: G-EH5XS5D6LQ
 
