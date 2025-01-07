@@ -166,7 +166,7 @@ The algorithm for K-means clustering is as follows:
         (where closest is defined using Euclidean distance).
 
 ![K-means clustering algorithm example. Final result after 10
-iterations.](image/Screenshot 2024-12-07 at 10.52.12.png){width="55%"}
+iterations.](./image/Screenshot 2024-12-07 at 10.52.12.png){width="55%"}
 
 This algorithm is guaranteed to decrease the value of the objective 1.5
 at each step, because:
