@@ -9,7 +9,7 @@ permalink: /page2
 <div class="card">
   <h3>Linear Regression</h3>
   <ul>
-    <li>1Linear Regression </li>
+    <li>Linear Regression </li>
     <li> Multiple Linear Regression </li>
     <li> Assesing the model </li>
     <li> Prediction Intervals vs Confidence Intervals </li>
@@ -70,13 +70,16 @@ permalink: /page2
 <div class="card">
   <h3>Unsupervised Learning</h3>
   <ul>
+     <li>PCA </li>
+    <li> Clustering </li>
   </ul>
   <a href="./blog7"><span class="card-link-spanner"></span></a>
 </div>
 
 <div class="card">
   <h3>Deep Learning</h3>
-  <ul>    
+  <ul>
+     <li>Neural Networks </li>
   </ul>
   <a href="./blog8"><span class="card-link-spanner"></span></a>
 </div>
