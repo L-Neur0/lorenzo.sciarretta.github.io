@@ -316,7 +316,7 @@ so that all the predictors have the same scale. Note that the
 denominator is the estimated standard deviation of the $j$th predictor
 $\implies$ the standardized predictors standard deviation one.
 
-![image](image/Screenshot 2024-12-26 at 11.55.06.png){width="80%"}
+![image](./image/Screenshot 2024-12-26 at 11.55.06.png){width="80%"}
 []{#fig:ridge_regression label="fig:ridge_regression"}
 
 #### Ridge regression advantages over OLS
@@ -350,5 +350,5 @@ interpret than those produced by ridge regression. We say that the lasso
 yields *sparse* models---that is, sparse models that involve only a
 subset of the variables.
 
-![image](image/Screenshot 2024-12-26 at 12.35.28.png){width="80%"}
+![image](./image/Screenshot 2024-12-26 at 12.35.28.png){width="80%"}
 []{#fig:lasso_regression label="fig:lasso_regression"}
