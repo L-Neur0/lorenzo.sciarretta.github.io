@@ -2,6 +2,8 @@
 layout: default
 permalink: /blog6
 ---
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 # Support Vector Machine
 
 An other approach to classification is the **Support Vector Machine**
