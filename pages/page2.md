@@ -8,7 +8,6 @@ permalink: /page2
 
 <div class="card">
   <h3>Linear Regression</h3>
-  <p><b>Go</b></p>
   <ul>
     <li>1Linear Regression
     <li> Multiple Linear Regression </li>
@@ -19,13 +18,11 @@ permalink: /page2
     <li> Confounding Variables </li>
     <li> Polynomial Regression </li>
   </ul>
-  <a href="./LR1.html"><span class="card-link-spanner"></span></a>
+  <a href="https://github.com/L-Neur0/lorenzo.sciarretta.github.io/blob/main/pages/statML_Blog/LR1.html"><span class="card-link-spanner"></span></a>
 </div>
-
 
 <div class="card">
   <h3>Classification</h3>
-  <p><b>Go</b></p>
   <ul>
    <li>Logistic regression</li>
     <li> Generative models for Classification  </li>
@@ -34,20 +31,16 @@ permalink: /page2
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
 
-
 <div class="card">
   <h3>Resampling</h3>
-  <p><b>Go</b></p>
   <ul>
     <li>Resampling Methods and CV</li>
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
 
-
 <div class="card">
   <h3>Linear Model selection and Regularization</h3>
-  <p><b>Go</b></p>
   <ul>
     <li>Selection model criteria</li>
      <li> Ridge Regression  </li>
@@ -56,12 +49,8 @@ permalink: /page2
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
 
-
-
-
 <div class="card">
   <h3>SVM</h3>
-  <p><b>Go</b></p>
   <ul>
     <li> SVC  </li>
     <li> SVM  </li>
@@ -69,21 +58,15 @@ permalink: /page2
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
 
-
-
 <div class="card">
   <h3>Unsupervised Learning</h3>
-  <p><b>Go</b></p>
   <ul>
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
 
-
-
 <div class="card">
   <h3>Deep Learning</h3>
-  <p><b>Go</b></p>
   <ul>    
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
