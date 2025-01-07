@@ -20,6 +20,8 @@ platforms:
   - name: LinkedIn
     icon: <i class="fa-brands fa-linkedin"></i>
     link: https://www.linkedin.com/in/vaibhavvikas
+    
+google_analytics: G-EH5XS5D6LQ
 
 navigation:
   - name: Readme
