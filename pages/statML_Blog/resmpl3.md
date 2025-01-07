@@ -4,6 +4,22 @@ permalink: /blog3
 ---
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
+
+# Resampling
+
+## Resampling Methods
+
+In this section we will discuss the most common resampling methods and
+their comparisons. For practical application see notebooks.\
+Resampling methods are used to try the training and the evaluation of
+the model given a certain dataset. It involves fitting the model
+multiple times on different subsets of the data, and then evaluating the
+model on other data.\
+**Remark:** Difference between **Training Error** and **Test Error**:
+the test error is the error that we get on average when we apply the
+model to new data, whereas the training error is the error that we get
+on the same data that we used to train the model.
+
 ### Cross-Validation {#sec:cross_validation}
 
 #### Validation Set approach
