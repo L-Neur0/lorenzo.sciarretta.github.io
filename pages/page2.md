@@ -27,8 +27,9 @@ permalink: /page2
   <h3>Classification</h3>
   <p><b>Go</b></p>
   <ul>
-    <li>1Linear Regression
-    
+   <li>Logistic regression</li>
+    <li> Generative models for Classification  </li>
+    <li>  Evaluation of Classification Mo </li>
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
@@ -38,8 +39,7 @@ permalink: /page2
   <h3>Resampling</h3>
   <p><b>Go</b></p>
   <ul>
-    <li>1Linear Regression
-    
+    <li>Resampling Methods and CV</li>
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
@@ -49,8 +49,9 @@ permalink: /page2
   <h3>Linear Model selection and Regularization</h3>
   <p><b>Go</b></p>
   <ul>
-    <li>1Linear Regression
-    
+    <li>Selection model criteria</li>
+     <li> Ridge Regression  </li>
+    <li> Lasso  </li>
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
@@ -62,8 +63,8 @@ permalink: /page2
   <h3>SVM</h3>
   <p><b>Go</b></p>
   <ul>
-    <li>1Linear Regression
-    
+    <li> SVC  </li>
+    <li> SVM  </li>
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
@@ -74,8 +75,6 @@ permalink: /page2
   <h3>Unsupervised Learning</h3>
   <p><b>Go</b></p>
   <ul>
-    <li>1Linear Regression
-    
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
@@ -85,9 +84,7 @@ permalink: /page2
 <div class="card">
   <h3>Deep Learning</h3>
   <p><b>Go</b></p>
-  <ul>
-    <li>1Linear Regression
-    
+  <ul>    
   </ul>
   <a href="./blog1"><span class="card-link-spanner"></span></a>
 </div>
