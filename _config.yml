@@ -1,25 +1,35 @@
-remote_theme: BDHU/minimalist
+remote_theme: vaibhavvikas/jekyll-theme-minimalistic
 
+
+title: Minimalistic
+logo: /assets/img/logo.jpg
+email: person@address.com
+description: Minimalistic is a theme powered by Jekyll.
+favicon: true
+color-scheme: auto
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jemoji
+
+platforms:
+  - name: GitHub
+    icon: <i class="fa-brands fa-github"></i>
+    link: https://github.com/vaibhavvikas
+  - name: LinkedIn
+    icon: <i class="fa-brands fa-linkedin"></i>
+    link: https://www.linkedin.com/in/vaibhavvikas
+
+navigation:
+  - name: Readme
+    link: ./index.html
+    sublist:
+      - name: Image
+        link: ./index.html#small-image
+  - name: Another Page
+    link: ./another-page.html
 ## remote_theme: b2a3e8/jekyll-theme-console
-
-show_downloads: ["true"]
-style: dark
-custom_css: /assets/style.css
-
-header_pages:
-  - index.md
-  - lorenzo.md
-  - about.md
-  - contact.md
-
-footer: 'follow us on <a href="https://twitter.com/">twitter</a>'
-# Build settings
-markdown: kramdown
-
-darkmode: false
-hide_first_title: false # Useful if README.md is used on both github and pages
-logo_url: ./logo.png # Either absolute or relative url
-syntax_theme: ./syntax.css # Leave empty for default, otherwise link to a pygments stylesheet
 
 # Includere il CSS personalizzato
 plugins:
