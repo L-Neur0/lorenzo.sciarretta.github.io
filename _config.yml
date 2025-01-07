@@ -33,9 +33,8 @@ navigation:
   - name: Readme
     link: ./index.html
     sublist:
-      - name: Image
-        link: ./index.html#small-image
-  - name: Another Page
+     
+  - name: StatML posts
     link: ./page2.html
 ## remote_theme: b2a3e8/jekyll-theme-console
 # G-EH5XS5D6LQ
