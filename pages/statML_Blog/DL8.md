@@ -7,8 +7,7 @@ permalink: /blog8
 
 ## Single Layer Neural Networks
 
-![Single Layer Neural
-Network](../image/17.png){width="50%"}
+![Single Layer Neural Network](../image/17.png)
 
 A single layer Neural Network is composed by at least 3 layers: an Input
 layer, vector of $p$ variables $X_1, X_2, \dots, X_p$, a Hidden layer,
