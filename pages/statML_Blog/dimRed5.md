@@ -67,10 +67,9 @@ equivalently the codes $z_n$ and the basis vectors $b_1,...,b_M$)so that
 they are as similar to the original data $x_n$ and minimize the loss due
 to compression.
 
-![ Graphical illustration of PCA. The compressed data can be
+![image](../image/11.png) Graphical illustration of PCA. The compressed data can be
 reconstructed into $\tilde x$, which lives in the original data space,
 but has an intrinsic lower-dimensional representation than $x$
-](../image/11.png){width="40%"}
 
 #### Maximum Variance Perspective
 
