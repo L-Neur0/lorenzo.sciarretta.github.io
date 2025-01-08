@@ -16,25 +16,25 @@ Complementing my technical abilities, my education at HSG has equipped me with a
 <div class="projects-container">
   <div class="project-card">
     <h3>SWE Project: Job Broker System</h3>
+    <a href="https://github.com/L-neuro" target="_blank">View Project</a>
     <p>An auction-based job assignment system using hexagonal architecture. Features job scheduling, worker credit systems, and fault tolerance.</p>
     <p>Microservices, distributed systems, Hypermedia ecosystem</p>
-    <a href="https://github.com/L-neuro" target="_blank">View Project</a>
   </div>
 
   <div class="project-card">
     <h3>Computer Vision: Kidney and Kidney Tumor segmentation with CNN</h3>
-    <p>Biomedical Computer Vision research project at NECSTLab. I developed a Kidney and Kidney Tumor segmentation software using Deep Learning techniques. The structure of the project is: creation of a custom dataset (from NIFTI images), preprocessing, tuning and training the model</p>
     <a href="https://github.com/L-Neur0/Kits19_BCV_Lorenzo_Sciarretta/tree/main" target="_blank">View Project</a>
+    <p>Biomedical Computer Vision research project at NECSTLab. I developed a Kidney and Kidney Tumor segmentation software using Deep Learning techniques. The structure of the project is: creation of a custom dataset (from NIFTI images), preprocessing, tuning and training the model</p>
   </div>
 
  <div class="project-card">
   <h3>Computer Vision: Unsupervised Deep Learning Registration Framework for Histology Samples with Varied Staining</h3>
+    <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples" target="_blank">View Project</a>
   <p>Implementation of an Unsupervised Deep Learning Registration Framework for Histology Samples with Varied Staining</p>
   <p>
     Paper: 
     <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples/blob/main/Paper.pdf" target="_blank">Read Paper</a>
   </p>
-  <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples" target="_blank">View Project</a>
 </div>
 </div>
 
