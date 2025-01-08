@@ -7,7 +7,7 @@ permalink: /blog8
 
 ## Single Layer Neural Networks
 
-![Single Layer Neural Network](../image/17.png)
+![image](../image/17.png)
 
 A single layer Neural Network is composed by at least 3 layers: an Input
 layer, vector of $p$ variables $X_1, X_2, \dots, X_p$, a Hidden layer,
@@ -79,8 +79,7 @@ model is a linear regression model with the new features as predictors.
 When adding a new hidden layer, the output of the preceding layer will
 become the input.
 
-![Multilayer Neural
-Network](../image/37.png){width="50%"}
+![image](../image/37.png){width="50%"}
 
 Now, for example, if we want to train a multilayer neural network to a
 qualitative response, so using the *softmax* function to convert the
