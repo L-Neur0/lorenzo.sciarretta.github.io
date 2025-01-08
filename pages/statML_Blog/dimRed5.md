@@ -67,9 +67,7 @@ equivalently the codes $z_n$ and the basis vectors $b_1,...,b_M$)so that
 they are as similar to the original data $x_n$ and minimize the loss due
 to compression.
 
-![image](../image/11.png) Graphical illustration of PCA. The compressed data can be
-reconstructed into $\tilde x$, which lives in the original data space,
-but has an intrinsic lower-dimensional representation than $x$
+![image](../image/11.png){width="40%"}
 
 #### Maximum Variance Perspective
 
@@ -93,10 +91,7 @@ With this assumption the mean of the low-dimensional code is also 0
 since $\mathbb E[z] = \mathbb E[B^Tx] = B^T\mathbb E[x] = 0$. 0◻\
 \
 
-![ PCA finds a lower-dimensional subspace (line) that maintains as much
-variance (spread of the data) as possible when the data (blue) is
-projected onto this subspace
-(orange).](image/Screenshot 2024-12-03 at 10.23.48.png){width="40%"}
+![image](image/Screenshot 2024-12-03 at 10.23.48.png){width="40%"}
 
 #### Direction with Maximal Variance
 
