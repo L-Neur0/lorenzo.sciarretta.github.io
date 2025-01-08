@@ -167,8 +167,8 @@ The algorithm for K-means clustering is as follows:
     2.  Assign each observation to the cluster whose centroid is closest
         (where closest is defined using Euclidean distance).
 
-![K-means clustering algorithm example. Final result after 10
-iterations.](../image/12.png){width="55%"}
+![image](../image/12.png){K-means clustering algorithm example. Final result after 10
+iterations.}
 
 This algorithm is guaranteed to decrease the value of the objective 1.5
 at each step, because:
