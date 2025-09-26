@@ -3,7 +3,7 @@ layout: default
 ---
 
 ### Hi, I'm Lorenzo Sciarretta 👋  
-I'm a Master's student in Computer Science, specializing in Data Science, at the University of St. Gallen and at ETH Zurich.  
+I'm a Master's student in Computer Science, at the University of St. Gallen and at ETH Zurich.  
 
 I have a strong technical foundation, with expertise in machine learning, deep learning, and software engineering. Currently, I work as a Research Assistant in quantitative finance at HSG, where I apply advanced methods such as neural networks and machine learning algorithms to solve complex problems in financial econometrics. 
 
@@ -16,9 +16,15 @@ Complementing my technical abilities, my education at HSG has equipped me with a
 <div class="projects-container">
   <div class="project-card">
     <h3>SWE Project: Job Broker System</h3>
-    <a href="https://github.com/L-neuro" target="_blank">View Project</a>
+    <a href="[https://github.com/L-neuro](https://github.com/L-Neur0/Pitas---Job-Broker-Application)" target="_blank">View Project</a>
     <p>An auction-based job assignment system using hexagonal architecture. Features job scheduling, worker credit systems, and fault tolerance.</p>
     <p>Microservices, distributed systems, Hypermedia ecosystem</p>
+  </div>
+  
+<div class="project-card">
+    <h3>CODEX Naturalis App</h3>
+    <a href="https://github.com/L-Neur0/Software-Engineering-Final-Project" target="_blank">View Project</a>
+    <p>Full-stack Java application simulating a board game, covering the full software architecture. Built the network layer (RMI and Socket), designed and implemented game logic, and created TUI and GUI.</p>
   </div>
 
   <div class="project-card">
