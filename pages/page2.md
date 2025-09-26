@@ -4,6 +4,13 @@ permalink: /page2
 ---
 **[Home](./index.html) >> StatML**
 
+## LLMs
+<div class="card">
+  <h3>Local RAG implementation</h3>
+  <a href="https://github.com/L-Neur0/Simple-Local-RAG"><span class="card-link-spanner"></span></a>
+</div>
+
+
 ## Statistical Learning and Machine Learning:
 
 <div class="card">
