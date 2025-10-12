@@ -16,7 +16,7 @@ Complementing my technical abilities, my education at HSG has equipped me with a
 <div class="projects-container">
   <div class="project-card">
     <h3>SWE Project: Job Broker System</h3>
-    <a href="[https://github.com/L-neuro](https://github.com/L-Neur0/Pitas---Job-Broker-Application)" target="_blank">View Project</a>
+    <a href="https://github.com/L-Neur0/Pitas---Job-Broker-Application" target="_blank">View Project</a>
     <p>An auction-based job assignment system using hexagonal architecture. Features job scheduling, worker credit systems, and fault tolerance.</p>
     <p>Microservices, distributed systems, Hypermedia ecosystem</p>
   </div>
