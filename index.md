@@ -16,6 +16,16 @@ Complementing my technical background, my education at HSG has provided me with 
 
 ## Projects
 
+
+  <div class="project-card">
+    <h3>Simple Local RAG</h3>
+    <a href="https://github.com/L-Neur0/Simple-Local-RAG" target="_blank">View Project</a>
+    <p>A very simple Retrieval-Augmented Generation (RAG) system running locally, integrating vector search and prompt chaining for document-based question answering.</p>
+    <p>LangChain, Python, LLM, tokenizers </p>
+  </div>
+
+
+
 <div class="projects-container">
   <div class="project-card">
     <h3>SWE Project: Job Broker System</h3>
