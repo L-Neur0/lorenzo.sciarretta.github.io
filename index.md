@@ -63,6 +63,7 @@ Complementing my technical background, my education at HSG has provided me with 
 
 <div class="skills-container">
   <ul>
+    <li>LLMs: prompting, fine-tuning, security & reliability, architecture optimization, efficient attention mechanisms</li>
     <li>Machine Learning: DFM, SVM, ... (Python, R) Scikit-learn, pandas, Numpy)</li>
     <li>Time-Series Forecasting (Python, R, Julia)</li>
     <li>Deep Learning: LSTM, RNN, NN, Computer Vision, PCA (TensorFlow, PyTorch, Nibabel)</li>
