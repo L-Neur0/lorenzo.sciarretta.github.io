@@ -3,11 +3,14 @@ layout: default
 ---
 
 ### Hi, I'm Lorenzo Sciarretta 👋  
-I'm a Master's student in Computer Science, at the University of St. Gallen and at ETH Zurich.  
+I'm a Master's student in Computer Science at the **University of St. Gallen** and **ETH Zurich**.  
 
-I have a strong technical foundation, with expertise in machine learning, deep learning, and software engineering. Currently, I work as a Research Assistant in quantitative finance at HSG, where I apply advanced methods such as neural networks and machine learning algorithms to solve complex problems in financial econometrics. 
+I have a strong technical foundation with expertise in **machine learning**, **deep learning**, and **software engineering**. Currently, I am conducting research on [**Weight Space Learning**](https://weight-space-learning.github.io/) at the **AI/ML Lab** at HSG with [**Prof. Damian Borth**](https://de.wikipedia.org/wiki/Damian_Borth).  
 
-Complementing my technical abilities, my education at HSG has equipped me with a deep understanding of business and strategic management, enabling me to bridge the gap between technical innovation and organizational objectives. 
+Previously, I worked as a **Research Assistant** at the **ETH AI Center**, under the supervision of [**Prof. Shih-Chii Liu**](https://en.wikipedia.org/wiki/Shih-Chii_Liu), and as a **Quantitative Researcher** at the **Financial Econometrics Chair** (Math & Statistics Department), under the supervision of [**Prof. M.R. Fengler**](https://sites.google.com/site/mrfengler02/).  
+
+Complementing my technical background, my education at HSG has provided me with a solid understanding of **business and strategic management**, enabling me to bridge the gap between **technical innovation** and **organizational objectives**.
+
 
 ---
 
