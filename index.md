@@ -25,6 +25,16 @@ Complementing my technical background, my education at HSG has provided me with 
   </div>
 
 
+ <div class="project-card">
+    <h3>EUROSAT-Satellite Image Classification</h3>
+    <a href="https://github.com/L-Neur0/EUROSAT-satellite_image-classification" target="_blank">View Project</a>
+    <p>This project is about 'land use' classification using the EuroSAT multispectral dataset. It combines advanced data augmentations, spectral index extraction, attention-based deep     learning, semi-supervised learning, and ensemble methods to achieve robust classification.
+.</p>
+    <p>Computer Vision, Deep Learning, Python, Attention Mechanism, Multispectral Dataset </p>
+  </div>
+
+
+
 
 <div class="projects-container">
   <div class="project-card">
