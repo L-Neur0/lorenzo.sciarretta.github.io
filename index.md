@@ -13,60 +13,110 @@ Complementing my technical background, my education at HSG has provided me with 
 
 
 ---
+## 🚀 Projects
 
-## Projects
+<div class="projects-grid">
 
 
   <div class="project-card">
-    <h3>Simple Local RAG</h3>
-    <a href="https://github.com/L-Neur0/Simple-Local-RAG" target="_blank">View Project</a>
-    <p>A very simple Retrieval-Augmented Generation (RAG) system running locally, integrating vector search and prompt chaining for document-based question answering.</p>
-    <p>LangChain, Python, LLM, tokenizers </p>
+    <div class="card-content">
+        <h3>NeuNetCNN - lightweight CNN for semantic segmentation</h3>
+        <!-- <img src="assets/images/RAG_plot.png" alt="Simple Local RAG" class="project-image">
+        <p>A very simple Retrieval-Augmented Generation (RAG) system running locally, integrating vector search and prompt chaining for document-based question answering.</p>
+        <div class="tech-tags">
+            <span class="tag">LangChain,</span>
+            <span class="tag">Python,</span>
+            <span class="tag">LLM, gemma</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Simple-Local-RAG" class="project-link" target="_blank">View Code</a> -->
+    </div>
   </div>
 
 
- <div class="project-card">
-    <h3>EUROSAT-Satellite Image Classification</h3>
-    <a href="https://github.com/L-Neur0/EUROSAT-satellite_image-classification" target="_blank">View Project</a>
-    <p>This project is about 'land use' classification using the EuroSAT multispectral dataset. It combines advanced data augmentations, spectral index extraction, attention-based deep     learning, semi-supervised learning, and ensemble methods to achieve robust classification.
-.</p>
-    <p>Computer Vision, Deep Learning, Python, Attention Mechanism, Multispectral Dataset </p>
-  </div>
-
-
-
-
-<div class="projects-container">
   <div class="project-card">
-    <h3>SWE Project: Job Broker System</h3>
-    <a href="https://github.com/L-Neur0/Pitas---Job-Broker-Application" target="_blank">View Project</a>
-    <p>An auction-based job assignment system using hexagonal architecture. Features job scheduling, worker credit systems, and fault tolerance.</p>
-    <p>Microservices, distributed systems, Hypermedia ecosystem</p>
+    <div class="card-content">
+        <h3>Simple Local RAG</h3>
+        <img src="assets/images/RAG_plot.png" alt="Simple Local RAG" class="project-image">
+        <p>A very simple Retrieval-Augmented Generation (RAG) system running locally, integrating vector search and prompt chaining for document-based question answering.</p>
+        <div class="tech-tags">
+            <span class="tag">LangChain,</span>
+            <span class="tag">Python,</span>
+            <span class="tag">LLM, gemma</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Simple-Local-RAG" class="project-link" target="_blank">View Code</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="card-content">
+        <h3>EUROSAT Image Classification</h3>
+        <img src="assets/images/EUROSAT_classification.png" alt="Simple Local RAG" class="project-image">
+        <p>Land use classification using multispectral data. Combines advanced data augmentations, attention-based deep learning, and ensemble methods for robust accuracy.</p>
+        <div class="tech-tags">
+            <span class="tag">Deep Learning,</span>
+            <span class="tag">CV,</span>
+            <span class="tag">Attention mechanism</span>
+        </div>
+        <a href="https://github.com/L-Neur0/EUROSAT-satellite_image-classification" class="project-link" target="_blank">View Code</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="card-content">
+        <h3>Job Broker System</h3>
+        <p>An auction-based job assignment system using hexagonal architecture. Features job scheduling, worker credit systems, and fault tolerance.</p>
+        <div class="tech-tags">
+            <span class="tag">Microservices</span>
+            <span class="tag">Distributed Systems</span>
+            <span class="tag">Java</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Pitas---Job-Broker-Application" class="project-link" target="_blank">View Code</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="card-content">
+        <h3>CODEX Naturalis App</h3>
+        <img src="assets/images/codex1.jpg" alt="Simple Local RAG" class="project-image">
+        <p>Full-stack Java application simulating a board game. Built the network layer (RMI and Socket), game logic, and created TUI and GUI interfaces.</p>
+        <div class="tech-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Networking</span>
+            <span class="tag">GUI/TUI</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Software-Engineering-Final-Project" class="project-link" target="_blank">View Code</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="card-content">
+        <h3>Kidney Tumor Segmentation</h3>
+        <img src="assets/images/bcv_kits.jpeg" alt="Kidney Tumor Segmentation" class="project-image">
+        <p>Biomedical CV research at NECSTLab. Developed software for Kidney and Tumor segmentation using Deep Learning (CNNs) on NIFTI images.</p>
+        <div class="tech-tags">
+            <span class="tag">Biomedical CV</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Segmentation</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Kits19_BCV_Lorenzo_Sciarretta/tree/main" class="project-link" target="_blank">View Code</a>
+    </div>
   </div>
   
-<div class="project-card">
-    <h3>CODEX Naturalis App</h3>
-    <a href="https://github.com/L-Neur0/Software-Engineering-Final-Project" target="_blank">View Project</a>
-    <p>Full-stack Java application simulating a board game, covering the full software architecture. Built the network layer (RMI and Socket), designed and implemented game logic, and created TUI and GUI.</p>
-  </div>
-
   <div class="project-card">
-    <h3>Computer Vision: Kidney and Kidney Tumor segmentation with CNN</h3>
-    <a href="https://github.com/L-Neur0/Kits19_BCV_Lorenzo_Sciarretta/tree/main" target="_blank">View Project</a>
-    <p>Biomedical Computer Vision research project at NECSTLab. I developed a Kidney and Kidney Tumor segmentation software using Deep Learning techniques. The structure of the project is: creation of a custom dataset (from NIFTI images), preprocessing, tuning and training the model</p>
+    <div class="card-content">
+        <h3>Histology Registration</h3>
+        <img src="assets/images/hist_paper_screen.png" alt="Histology Registration" class="project-image">
+        <p>Implementation of an Unsupervised Deep Learning Registration Framework for Histology Samples with Varied Staining.</p>
+        <div class="tech-tags">
+            <span class="tag">Research Paper</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Unsupervised</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples/blob/main/Paper.pdf" class="project-link" target="_blank">Read Paper</a>
+    </div>
   </div>
 
- <div class="project-card">
-  <h3>Computer Vision: Unsupervised Deep Learning Registration Framework for Histology Samples with Varied Staining</h3>
-    <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples" target="_blank">View Project</a>
-  <p>Implementation of an Unsupervised Deep Learning Registration Framework for Histology Samples with Varied Staining</p>
-  <p>
-    Paper: 
-    <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples/blob/main/Paper.pdf" target="_blank">Read Paper</a>
-  </p>
 </div>
-</div>
-
 ---
 
 ## Skills
