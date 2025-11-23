@@ -14,54 +14,55 @@ Complementing my technical background, my education at HSG has provided me with 
 
 ---
 ## 🚀 Projects
+## 🚀 Projects
 
 <div class="projects-grid">
 
-
   <div class="project-card">
+    <img src="https://via.placeholder.com/600x400?text=NeuNetCNN+Model" alt="NeuNetCNN" class="project-image">
     <div class="card-content">
-        <h3>NeuNetCNN - lightweight CNN for semantic segmentation</h3>
-        <!-- <img src="assets/images/RAG_plot.png" alt="Simple Local RAG" class="project-image">
-        <p>A very simple Retrieval-Augmented Generation (RAG) system running locally, integrating vector search and prompt chaining for document-based question answering.</p>
+        <h3>NeuNetCNN - Lightweight CNN</h3>
+        <p>A lightweight CNN for semantic segmentation designed for efficiency. Optimized for low-resource environments.</p>
         <div class="tech-tags">
-            <span class="tag">LangChain,</span>
-            <span class="tag">Python,</span>
-            <span class="tag">LLM, gemma</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Python</span>
+            <span class="tag">CNN</span>
         </div>
-        <a href="https://github.com/L-Neur0/Simple-Local-RAG" class="project-link" target="_blank">View Code</a> -->
+        <a href="#" class="project-link">View Code</a>
     </div>
   </div>
 
-
   <div class="project-card">
+    <img src="assets/images/RAG_plot.png" alt="Simple Local RAG" class="project-image">
     <div class="card-content">
         <h3>Simple Local RAG</h3>
-        <img src="assets/images/RAG_plot.png" alt="Simple Local RAG" class="project-image">
         <p>A very simple Retrieval-Augmented Generation (RAG) system running locally, integrating vector search and prompt chaining for document-based question answering.</p>
         <div class="tech-tags">
-            <span class="tag">LangChain,</span>
-            <span class="tag">Python,</span>
-            <span class="tag">LLM, gemma</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">Python</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Gemma</span>
         </div>
         <a href="https://github.com/L-Neur0/Simple-Local-RAG" class="project-link" target="_blank">View Code</a>
     </div>
   </div>
 
   <div class="project-card">
+    <img src="assets/images/EUROSAT_classification.png" alt="EuroSAT Classification" class="project-image">
     <div class="card-content">
         <h3>EUROSAT Image Classification</h3>
-        <img src="assets/images/EUROSAT_classification.png" alt="Simple Local RAG" class="project-image">
         <p>Land use classification using multispectral data. Combines advanced data augmentations, attention-based deep learning, and ensemble methods for robust accuracy.</p>
         <div class="tech-tags">
-            <span class="tag">Deep Learning,</span>
-            <span class="tag">CV,</span>
-            <span class="tag">Attention mechanism</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">CV</span>
+            <span class="tag">Attention</span>
         </div>
         <a href="https://github.com/L-Neur0/EUROSAT-satellite_image-classification" class="project-link" target="_blank">View Code</a>
     </div>
   </div>
 
   <div class="project-card">
+    <img src="https://via.placeholder.com/600x400?text=Job+Broker+System" alt="Job Broker System" class="project-image">
     <div class="card-content">
         <h3>Job Broker System</h3>
         <p>An auction-based job assignment system using hexagonal architecture. Features job scheduling, worker credit systems, and fault tolerance.</p>
@@ -75,9 +76,9 @@ Complementing my technical background, my education at HSG has provided me with 
   </div>
 
   <div class="project-card">
+    <img src="assets/images/codex1.jpg" alt="Codex Naturalis" class="project-image">
     <div class="card-content">
         <h3>CODEX Naturalis App</h3>
-        <img src="assets/images/codex1.jpg" alt="Simple Local RAG" class="project-image">
         <p>Full-stack Java application simulating a board game. Built the network layer (RMI and Socket), game logic, and created TUI and GUI interfaces.</p>
         <div class="tech-tags">
             <span class="tag">Java</span>
@@ -89,9 +90,9 @@ Complementing my technical background, my education at HSG has provided me with 
   </div>
 
   <div class="project-card">
+    <img src="assets/images/bcv_kits.jpeg" alt="Kidney Segmentation" class="project-image">
     <div class="card-content">
         <h3>Kidney Tumor Segmentation</h3>
-        <img src="assets/images/bcv_kits.jpeg" alt="Kidney Tumor Segmentation" class="project-image">
         <p>Biomedical CV research at NECSTLab. Developed software for Kidney and Tumor segmentation using Deep Learning (CNNs) on NIFTI images.</p>
         <div class="tech-tags">
             <span class="tag">Biomedical CV</span>
@@ -103,9 +104,9 @@ Complementing my technical background, my education at HSG has provided me with 
   </div>
   
   <div class="project-card">
+    <img src="assets/images/hist_paper_screen.png" alt="Histology Registration" class="project-image">
     <div class="card-content">
         <h3>Histology Registration</h3>
-        <img src="assets/images/hist_paper_screen.png" alt="Histology Registration" class="project-image">
         <p>Implementation of an Unsupervised Deep Learning Registration Framework for Histology Samples with Varied Staining.</p>
         <div class="tech-tags">
             <span class="tag">Research Paper</span>
@@ -116,8 +117,7 @@ Complementing my technical background, my education at HSG has provided me with 
     </div>
   </div>
 
-</div>
----
+</div>---
 
 ## Skills
 
