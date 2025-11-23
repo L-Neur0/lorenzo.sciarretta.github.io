@@ -18,7 +18,7 @@ Complementing my technical background, my education at HSG has provided me with 
 <div class="projects-grid">
 
   <div class="project-card">
-    <img src="https://via.placeholder.com/600x400?text=NeuNetCNN+Model" alt="NeuNetCNN" class="project-image">
+    <img src="assets/images" alt="NeuNetCNN" class="project-image">
     <div class="card-content">
         <h3>NeuNetCNN - Lightweight CNN</h3>
         <p>A lightweight CNN for semantic segmentation designed for efficiency. Optimized for low-resource environments.</p>
