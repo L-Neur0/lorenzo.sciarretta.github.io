@@ -1,16 +1,14 @@
 ---
 ---
 
-@import "{{ site.theme }}";
+/* 1. IMPORT THE THEME'S ORIGINAL STYLES */
+@import "minimalistic"; 
 
-/* =========================================
-   1. PROJECT GRID STYLES (NEW & FIXED)
-   ========================================= */
+/* 2. PASTE YOUR CUSTOM GRID CSS BELOW HERE */
 
 /* The Grid Container */
 .projects-grid {
     display: grid;
-    /* Responsive grid that fits columns automatically */
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 30px;
     margin: 40px 0;
@@ -104,10 +102,7 @@
     text-decoration: none;
 }
 
-/* =========================================
-   2. SKILLS STYLES (KEPT FROM YOUR OLD FILE)
-   ========================================= */
-
+/* YOUR OLD SKILLS STYLES */
 .skills-container ul {
   list-style-type: none;
   padding: 0;
