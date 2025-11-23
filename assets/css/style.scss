@@ -4,7 +4,7 @@
 /* 1. IMPORT THE THEME'S ORIGINAL STYLES */
 @import "minimalistic"; 
 
-/* 2. PASTE YOUR CUSTOM GRID CSS BELOW HERE */
+/* 2. CUSTOM DARK MODE GRID CSS */
 
 /* The Grid Container */
 .projects-grid {
@@ -14,30 +14,32 @@
     margin: 40px 0;
 }
 
-/* The Card Frame */
+/* The Card Frame - DARK MODE */
 .project-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    background-color: #161b22; /* Dark GitHub-like grey */
+    border: 1px solid #30363d; /* Subtle dark border */
     border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    border-color: #8b949e; 
 }
 
-/* Image Styling - Forces exact size */
+/* Image Styling - FIXED ZOOM ISSUE */
 .project-image {
     width: 100%;
-    height: 200px;         /* Fixed height */
-    object-fit: cover;     /* Intelligent cropping */
+    height: 200px;         /* Keeps the height consistent */
+    object-fit: contain;   /* <--- SHOWS FULL IMAGE (NO CROP) */
     object-position: center; 
-    border-bottom: 1px solid #f0f0f0;
+    background-color: #0d1117; /* Very dark background to blend with card */
+    border-bottom: 1px solid #30363d;
     display: block;
 }
 
@@ -49,17 +51,19 @@
     flex-grow: 1; 
 }
 
+/* Title */
 .project-card h3 {
     margin-top: 0;
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 12px;
-    color: #333;
+    color: #c9d1d9; /* Light grey text */
 }
 
+/* Description */
 .project-card p {
     font-size: 0.95rem;
-    color: #666;
+    color: #8b949e; /* Dimmed grey text */
     line-height: 1.6;
     margin-bottom: 20px;
     flex-grow: 1;
@@ -74,20 +78,20 @@
 }
 
 .tag {
-    background: #f3f4f6;
-    color: #4b5563;
+    background: #21262d; 
+    color: #58a6ff;      
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #30363d;
 }
 
 /* Button/Link Styling */
 .project-link {
     display: inline-block;
     text-align: center;
-    background-color: #24292e;
+    background-color: #238636; /* GitHub Green */
     color: white !important;
     padding: 10px 0;
     border-radius: 6px;
@@ -95,23 +99,25 @@
     font-weight: bold;
     font-size: 0.9rem;
     transition: background 0.2s;
+    border: 1px solid rgba(240,246,252,0.1);
 }
 
 .project-link:hover {
-    background-color: #444;
+    background-color: #2ea043;
     text-decoration: none;
 }
 
-/* YOUR OLD SKILLS STYLES */
+/* Skills Styles */
 .skills-container ul {
   list-style-type: none;
   padding: 0;
 }
 
 .skills-container li {
-  background: #f9f9f9;
+  background: #161b22;
+  color: #c9d1d9;
   margin: 5px 0;
   padding: 8px 12px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #30363d;
 }
