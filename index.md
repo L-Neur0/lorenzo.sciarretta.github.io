@@ -14,7 +14,6 @@ Complementing my technical background, my education at HSG has provided me with 
 
 ---
 ## 🚀 Projects
-## 🚀 Projects
 
 <div class="projects-grid">
 
