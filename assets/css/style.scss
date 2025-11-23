@@ -91,22 +91,20 @@
 .project-link {
     display: inline-block;
     text-align: center;
-    background-color: #238636; /* GitHub Green */
-    color: white !important;
+    background-color: transparent; /* GitHub Green */
+    color: #c9d1d9 !important;
     padding: 10px 0;
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
     font-size: 0.9rem;
     transition: background 0.2s;
-    border: 1px solid rgba(240,246,252,0.1);
+    border: 1px solid  #8b949e;
 }
-
 .project-link:hover {
-    background-color: #2ea043;
-    text-decoration: none;
+    background-color: #30363d; /* Fills button slightly on hover */
+    border-color: #c9d1d9;
 }
-
 /* Skills Styles */
 .skills-container ul {
   list-style-type: none;
