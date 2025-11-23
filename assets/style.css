@@ -50,98 +50,100 @@
 
 
 <style>
-/* Grid Container */
+/* 1. The Grid Layout */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    /* This creates a responsive grid that fits as many columns as possible */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px; /* Space between the cards */
+    margin: 40px 0;
 }
 
-/* Project Card Styling */
+/* 2. The Card Frame */
 .project-card {
-    background: #ffffff;
-    border: 1px solid #e1e4e8;
-    border-radius: 8px;
-    padding: 0; 
-    overflow: hidden; 
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; /* Light grey border */
+    border-radius: 12px;       /* Nice rounded corners */
+    overflow: hidden;          /* Keeps image inside the rounded corners */
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    /* Stacks image on top of text */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-5px); /* Moves up slightly on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Stronger shadow */
 }
 
-/* Image Styling */
+/* 3. The Image Enforcer (CRITICAL PART) */
 .project-image {
-    width: 100%;           /* Forces image to fit the card width */
-    height: 180px;         /* FORCE every image to be exactly this tall */
-    object-fit: cover;     /* Crops the image so it doesn't look squished */
-    border-bottom: 1px solid #eee;
+    width: 100%;        /* Span full width of card */
+    height: 200px;      /* FORCE every image to be exactly 200px tall */
+    object-fit: cover;  /* CROPS the image intelligently so it doesn't stretch */
+    object-position: center; 
+    border-bottom: 1px solid #f0f0f0;
+    display: block;
 }
-/* Content inside the card */
+
+/* 4. The Content Inside */
 .card-content {
-    padding: 20px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex-grow: 1; /* Makes sure cards line up evenly */
 }
 
 .project-card h3 {
     margin-top: 0;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    color: #24292e;
+    font-size: 1.25rem;
     font-weight: 700;
+    margin-bottom: 12px;
+    color: #333;
 }
 
 .project-card p {
-    font-size: 0.9em;
-    color: #586069;
-    line-height: 1.5;
-    flex-grow: 1; 
-    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
 }
 
-/* Tech Tags */
+/* 5. The Tags */
 .tech-tags {
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 15px;
+    gap: 8px;
 }
 
 .tag {
-    background-color: #f1f8ff;
-    color: #0366d6;
-    font-size: 0.75em;
-    padding: 3px 8px;
-    border-radius: 12px;
+    background: #f3f4f6;
+    color: #4b5563;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: 600;
-    border: 1px solid #c8e1ff;
+    border: 1px solid #e5e7eb;
 }
 
-/* Button Link */
+/* 6. The Button */
 .project-link {
-    display: block;
-    text-decoration: none;
-    background-color: #24292e;
-    color: #fff !important; 
-    padding: 8px 16px;
-    border-radius: 6px;
+    display: inline-block;
     text-align: center;
-    font-size: 0.9em;
+    background-color: #24292e;
+    color: white !important;
+    padding: 10px 0;
+    border-radius: 6px;
+    text-decoration: none;
     font-weight: bold;
+    font-size: 0.9rem;
     transition: background 0.2s;
 }
 
 .project-link:hover {
-    background-color: #444d56;
+    background-color: #444;
     text-decoration: none;
 }
 </style>
