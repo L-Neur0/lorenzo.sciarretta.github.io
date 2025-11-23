@@ -56,6 +56,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 /* Project Card Styling */
@@ -63,8 +64,8 @@
     background: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 8px;
-    padding: 0; /* Reset padding for image flushness */
-    overflow: hidden; /* Keeps image corners rounded */
+    padding: 0; 
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -79,9 +80,10 @@
 /* Image Styling */
 .project-image {
     width: 100%;
-    height: 180px; /* Fixed height for consistency */
+    height: 160px; 
     object-fit: cover;
     border-bottom: 1px solid #eee;
+    background-color: #f6f8fa; /* Grey background if image is missing */
 }
 
 /* Content inside the card */
@@ -94,16 +96,17 @@
 
 .project-card h3 {
     margin-top: 0;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 10px;
     color: #24292e;
+    font-weight: 700;
 }
 
 .project-card p {
-    font-size: 0.95em;
+    font-size: 0.9em;
     color: #586069;
     line-height: 1.5;
-    flex-grow: 1; /* Pushes tags/button to bottom */
+    flex-grow: 1; 
     margin-bottom: 15px;
 }
 
@@ -111,7 +114,7 @@
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 15px;
 }
 
@@ -119,7 +122,7 @@
     background-color: #f1f8ff;
     color: #0366d6;
     font-size: 0.75em;
-    padding: 4px 8px;
+    padding: 3px 8px;
     border-radius: 12px;
     font-weight: 600;
     border: 1px solid #c8e1ff;
@@ -127,9 +130,10 @@
 
 /* Button Link */
 .project-link {
+    display: block;
     text-decoration: none;
     background-color: #24292e;
-    color: #fff !important; /* Force white text */
+    color: #fff !important; 
     padding: 8px 16px;
     border-radius: 6px;
     text-align: center;
