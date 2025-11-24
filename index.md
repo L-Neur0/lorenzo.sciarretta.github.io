@@ -20,8 +20,8 @@ Complementing my technical background, my education at HSG has provided me with 
   <div class="project-card">
     <img src="assets/images/NeuNetCNN.png" alt="NeuNetCNN" class="project-image">
     <div class="card-content">
-        <h3>NeuNetCNN - Lightweight CNN</h3>
-        <p>A lightweight CNN for semantic segmentation designed for efficiency. Optimized for edge device deployment. @ETH AI Center, @INI.</p>
+        <h3>NeuNetCNN - Lightweight CNN for Brain Machine Interface</h3>
+        <p>A Brain-Machine Interfaces: lightweight CNN for semantic segmentation designed for efficiency. Optimized for edge device deployment. @ETH AI Center, @INI.</p>
         <div class="tech-tags">
             <span class="tag">Deep Learning</span>
             <span class="tag">Python</span>
