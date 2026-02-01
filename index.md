@@ -15,7 +15,7 @@ Complementing my technical background, my education at HSG has provided me with 
 ---
 ## 🚀 Projects
 
-<div class="project-card">
+<!-- <div class="project-card">
   <video 
     controls 
     preload="metadata" 
@@ -28,7 +28,7 @@ Complementing my technical background, my education at HSG has provided me with 
   <div class="card-content">
       <h3>Weight Space Learning</h3>
   </div>
-</div>
+</div> -->
 
 <div class="projects-grid">
 
