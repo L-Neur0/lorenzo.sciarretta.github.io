@@ -15,6 +15,21 @@ Complementing my technical background, my education at HSG has provided me with 
 ---
 ## 🚀 Projects
 
+<div class="project-card">
+  <video 
+    controls 
+    preload="metadata" 
+    poster="assets/images/weight-space-poster.png" 
+    class="project-image">
+    <source src="[PASTE_YOUR_LINK_HERE](https://github-production-user-asset-6210df.s3.amazonaws.com/135653540/543461234-b0d9e566-f39b-4fca-bd9b-60db06fd4e4c.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260201T163855Z&X-Amz-Expires=300&X-Amz-Signature=baed8e430c5340d98e2f7e2dcd3a8f522343611597408bb95cfc38d2cd753546&X-Amz-SignedHeaders=host)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <div class="card-content">
+      <h3>Weight Space Learning</h3>
+  </div>
+</div>
+
 <div class="projects-grid">
 
   <div class="project-card">
