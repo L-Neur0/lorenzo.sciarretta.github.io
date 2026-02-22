@@ -33,6 +33,28 @@ Complementing my technical background, my education at HSG has provided me with 
 <div class="projects-grid">
 
   <div class="project-card">
+    <video 
+      controls 
+      preload="metadata" 
+      poster="assets/images/sane_moe.png" 
+      class="project-image">
+      <source src="assets/IMP_final_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-content">
+        <h3>SANE-MoE: Weight-Space Learning</h3>
+        <p>Introduced a Mixture-of-Experts (MoE) extension for Transformer-based weight space learning autoencoder. This approach enables robust and transferable hyper-representations across heterogeneous collections of neural networks, overcoming interference in diverse collections of neural networks models.</p>
+        <div class="tech-tags">
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Weight-Space</span>
+            <span class="tag">Mixture-of-Experts</span>
+            <span class="tag">Transformer</span>
+        </div>
+        <a href="assets/IMP_final_version.pdf" class="project-link" target="_blank">Read Paper</a>
+    </div>
+  </div>
+
+  <div class="project-card">
     <img src="assets/images/NeuNetCNN.png" alt="NeuNetCNN" class="project-image">
     <div class="card-content">
         <h3>NeuNetCNN - Lightweight CNN for Brain Machine Interface</h3>
