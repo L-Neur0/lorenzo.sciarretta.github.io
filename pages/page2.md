@@ -2,7 +2,35 @@
 layout: default
 permalink: /page2
 ---
-**[Home](./index.html) >> StatML**
+**[Home](./index.html) >> ML/DL/RL Notes**
+
+## Reinforcement Learning:
+---
+**Disclaimer**: These are my personal reinforcement learning notes, condensed from personal study and PAI course at ETH, mainly inspired by [Probabilistic AI by Andreas Krause](https://arxiv.org/abs/2502.05244) and the [Sutton & Barto book on Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html).
+---
+
+
+
+<div class="card">
+  <h3>Introduction</h3>
+  <ul>
+    <li>Markovian Decision Processes (MDP)</li>
+    <li>Partially Observed Markovian Decision Process (POMDP)</li>
+    <li>Hidden Markov Models</li>
+  </ul>
+  <a href="./rl_mdp"><span class="card-link-spanner"></span></a>
+</div>
+
+<div class="card">
+  <h3>Reinforcement Learning</h3>
+  <ul>
+    <li>Tabular RL</li>
+    <li>Approximated RL</li>
+    <li>Advanced RL</li>
+  </ul>
+  <a href="./rl_1"><span class="card-link-spanner"></span></a>
+</div>
+
 
 ## LLMs
 <div class="card">
@@ -91,25 +119,4 @@ permalink: /page2
   <a href="./blog8"><span class="card-link-spanner"></span></a>
 </div>
 
-## Reinforcement Learning:
-
-<div class="card">
-  <h3>Introduction</h3>
-  <ul>
-    <li>Markovian Decision Processes (MDP)</li>
-    <li>Partially Observed Markovian Decision Process (POMDP)</li>
-    <li>Hidden Markov Models</li>
-  </ul>
-  <a href="./rl_mdp"><span class="card-link-spanner"></span></a>
-</div>
-
-<div class="card">
-  <h3>Reinforcement Learning</h3>
-  <ul>
-    <li>Tabular RL</li>
-    <li>Approximated RL</li>
-    <li>Advanced RL</li>
-  </ul>
-  <a href="./rl_1"><span class="card-link-spanner"></span></a>
-</div>
 

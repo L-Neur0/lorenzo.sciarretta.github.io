@@ -12,9 +12,6 @@ Previously, I worked as a **Research Assistant** at the **ETH AI Center**, under
 Complementing my technical background, my education at HSG has provided me with a solid understanding of **business and strategic management**, enabling me to bridge the gap between **technical innovation** and **organizational objectives**.
 
 ---
-**Disclaimer on RL Notes**: The Reinforcement Learning notes on this site are my personal notes from the PAI course at ETH, mainly inspired by [Foundations of Reinforcement Learning and Control by Andreas Krause](https://arxiv.org/abs/2502.05244) and the [Sutton & Barto book on Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html).
----
-
 ## 🚀 Projects
 
 <!-- <div class="project-card">
