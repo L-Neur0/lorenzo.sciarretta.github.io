@@ -90,3 +90,26 @@ permalink: /page2
   </ul>
   <a href="./blog8"><span class="card-link-spanner"></span></a>
 </div>
+
+## Reinforcement Learning:
+
+<div class="card">
+  <h3>Introduction</h3>
+  <ul>
+    <li>Markovian Decision Processes (MDP)</li>
+    <li>Partially Observed Markovian Decision Process (POMDP)</li>
+    <li>Hidden Markov Models</li>
+  </ul>
+  <a href="./rl_mdp"><span class="card-link-spanner"></span></a>
+</div>
+
+<div class="card">
+  <h3>Reinforcement Learning</h3>
+  <ul>
+    <li>Tabular RL</li>
+    <li>Approximated RL</li>
+    <li>Advanced RL</li>
+  </ul>
+  <a href="./rl_1"><span class="card-link-spanner"></span></a>
+</div>
+
