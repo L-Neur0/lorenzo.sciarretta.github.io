@@ -2,10 +2,11 @@
 layout: default
 permalink: /rl_3
 ---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
+* TOC
+{:toc}
 [Reinforcement Learning 2 - Approximated](/rl_approx)
-```toc
-```
 
 
 # Model based Approx. RL

@@ -2,10 +2,12 @@
 layout: default
 permalink: /rl_approx
 ---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+* TOC
+{:toc}
 [Reinforcement Learning - Tabular](/rl_tabular)
 
-```toc
-```
 
 We have seen on policy and off policy RL algorithms, but there is a problem, MDP and RL are polynomial in the number of actions |A| and in the number of states |X|. The goal is now to pass from simple tabular RL to large setting of |A| and |X|. To do so, we need to extend *model-free methods* such as TD learning and Q learning to large state and action spaces. 
 

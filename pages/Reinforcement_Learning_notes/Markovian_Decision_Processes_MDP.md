@@ -2,9 +2,10 @@
 layout: default
 permalink: /rl_mdp
 ---
-```toc
-```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
+* TOC
+{:toc}
 A Markovian Decision Process, MDP, is a mathematical model for sequential decision making under uncertainty. 
 
 The fromal definition of a **finite MDP** is:

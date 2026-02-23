@@ -2,8 +2,10 @@
 layout: default
 permalink: /rl_pomdp
 ---
-```toc
-```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+* TOC
+{:toc}
 ### Partially Observed Markovian Decision Process (POMDP)
 So in the previous chapter we focused on MDP in a known environment, i.e. a full observable setting. We have seen that we can efficiently find the optimal policy (as long as the Markov decision process is finite).
 

@@ -2,11 +2,10 @@
 layout: default
 permalink: /rl_tabular
 ---
-```toc
-```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-
-
+* TOC
+{:toc}
 "An agent navigating through MDPs". The difference from the previous chapters is that in RL the policy is randomized. Reinforcement learning is concerned with probabilistic planning in
 unknown environments. 
 
