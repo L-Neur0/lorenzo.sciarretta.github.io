@@ -5,7 +5,7 @@ title: Lorenzo Sciarretta
 logo: /assets/image-720x720.jpg
 
 email: lorenzo.sciarretta [at] gmail [dot] com
-description: Msc in Computer Science, specialization in Data Science, @ HSG and @ ETH, 🇨🇭. Bsc in Computer Science Engineering @ Politecnico di Milano, 🇮🇹.
+description: AI/ML Researcher · Weight Space Learning · ETH Zurich & HSG · Deep Learning · LLMs
 favicon: true
 color-scheme: auto
 
@@ -13,6 +13,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jemoji
+  - jekyll-remote-theme
 
 platforms:
   - name: GitHub
@@ -34,8 +35,3 @@ navigation:
     link: ./index.html
   - name: StatML posts
     link: ./page2.html
-## remote_theme: b2a3e8/jekyll-theme-console
-# G-EH5XS5D6LQ
-# Includere il CSS personalizzato
-plugins:
-  - jekyll-remote-theme

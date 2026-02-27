@@ -4,9 +4,10 @@ layout: page
 permalink: /contact
 ---
 
-# Get in touch?
-<br>
-email: lorenzo.sciarretta [at] gmail [dot] com
-[linkedin](https://swww.linkedin.com/in/lorenzo-sciarretta-026623218)
+# Get in touch
 
-<br /><br />(This is a demo site, the form doesn't work - If you want to implement a form on your site, you need an external service)
+**Email:** lorenzo.sciarretta [at] gmail [dot] com
+
+**LinkedIn:** [lorenzo-sciarretta](https://www.linkedin.com/in/lorenzo-sciarretta-026623218)
+
+**GitHub:** [L-Neur0](https://github.com/L-Neur0)

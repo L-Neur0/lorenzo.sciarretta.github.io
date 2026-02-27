@@ -2,47 +2,54 @@
 layout: default
 ---
 
-### Hi, I'm Lorenzo Sciarretta 👋  
-I'm a Master's student in Computer Science at the **University of St. Gallen** and **ETH Zurich**.  
+<div class="status-badge">
+  <span class="status-dot"></span>
+  Actively researching · Weight Space Learning @ HSG AI/ML Lab
+</div>
 
-I have a strong technical foundation with expertise in **machine learning**, **deep learning**, and **software engineering**. Currently, I am conducting research on [**Weight Space Learning**](https://weight-space-learning.github.io/) at the **AI/ML Lab** at HSG with [**Prof. Damian Borth**](https://de.wikipedia.org/wiki/Damian_Borth).  
+### Hi, I'm Lorenzo Sciarretta
 
-Previously, I worked as a **Research Assistant** at the **ETH AI Center**, under the supervision of [**Prof. Shih-Chii Liu**](https://en.wikipedia.org/wiki/Shih-Chii_Liu), and as a **Quantitative Researcher** at the **Financial Econometrics Chair** (Math & Statistics Department), under the supervision of [**Prof. M.R. Fengler**](https://sites.google.com/site/mrfengler02/).  
+AI/ML researcher and engineer, currently completing my Master's in Computer Science at **ETH Zurich** and the **University of St. Gallen**.
 
-Complementing my technical background, my education at HSG has provided me with a solid understanding of **business and strategic management**, enabling me to bridge the gap between **technical innovation** and **organizational objectives**.
+My research focuses on [**Weight Space Learning**](https://weight-space-learning.github.io/) — learning directly in the space of neural network weights to build hyper-representations that generalise across heterogeneous model collections. I work at the **AI/ML Lab at HSG** with [Prof. Damian Borth](https://de.wikipedia.org/wiki/Damian_Borth).
+
+Previously: **Research Assistant** at the **ETH AI Center** with [Prof. Shih-Chii Liu](https://en.wikipedia.org/wiki/Shih-Chii_Liu) (neuromorphic/edge ML), and **Quantitative Researcher** at the **Financial Econometrics Chair** with [Prof. M.R. Fengler](https://sites.google.com/site/mrfengler02/).
 
 ---
-## 🚀 Projects
 
-<!-- <div class="project-card">
-  <video 
-    controls 
-    preload="metadata" 
-    poster="assets/images/weight-space-poster.png" 
-    class="project-image">
-    <source src="[PASTE_YOUR_LINK_HERE](https://github-production-user-asset-6210df.s3.amazonaws.com/135653540/543461234-b0d9e566-f39b-4fca-bd9b-60db06fd4e4c.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260201T163855Z&X-Amz-Expires=300&X-Amz-Signature=baed8e430c5340d98e2f7e2dcd3a8f522343611597408bb95cfc38d2cd753546&X-Amz-SignedHeaders=host)" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  
-  <div class="card-content">
-      <h3>Weight Space Learning</h3>
+<div class="research-section">
+  <p class="research-section-label">Current Research</p>
+  <h3>Weight Space Learning & Hyper-Representations</h3>
+  <p>Designing Mixture-of-Experts extensions for Transformer-based weight space autoencoders (SANE-MoE) that learn transferable representations across diverse neural network collections — enabling model editing, zero-shot property prediction, and generalisation without retraining.</p>
+  <div class="research-tags">
+    <span class="research-tag">Weight Space Learning</span>
+    <span class="research-tag">Mixture-of-Experts</span>
+    <span class="research-tag">Hyper-Representations</span>
+    <span class="research-tag">Meta-Learning</span>
+    <span class="research-tag">Transformers</span>
+    <span class="research-tag">Model Editing</span>
   </div>
-</div> -->
+</div>
+
+<div class="section-header">
+  <h2>Projects</h2>
+  <div class="section-divider"></div>
+</div>
 
 <div class="projects-grid">
 
   <div class="project-card">
-    <video 
-      controls 
-      preload="metadata" 
-      poster="assets/images/sane_moe.png" 
+    <video
+      controls
+      preload="metadata"
+      poster="assets/images/sane_moe.png"
       class="project-image">
       <source src="assets/IMP_final_video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div class="card-content">
         <h3>SANE-MoE: Weight-Space Learning</h3>
-        <p>Introduced a Mixture-of-Experts (MoE) extension for Transformer-based weight space learning autoencoder. This approach enables robust and transferable hyper-representations across heterogeneous collections of neural networks, overcoming interference in diverse collections of neural networks models.</p>
+        <p>Mixture-of-Experts extension for Transformer-based weight space autoencoders. Enables robust hyper-representations across heterogeneous neural network collections, overcoming interference in diverse model sets.</p>
         <div class="tech-tags">
             <span class="tag">Deep Learning</span>
             <span class="tag">Weight-Space</span>
@@ -56,12 +63,12 @@ Complementing my technical background, my education at HSG has provided me with 
   <div class="project-card">
     <img src="assets/images/NeuNetCNN.png" alt="NeuNetCNN" class="project-image">
     <div class="card-content">
-        <h3>NeuNetCNN - Lightweight CNN for Brain Machine Interface</h3>
-        <p>A Brain-Machine Interfaces: lightweight CNN for semantic segmentation designed for efficiency. Optimized for edge device deployment. @ETH AI Center, @INI.</p>
+        <h3>NeuNetCNN — Lightweight CNN for BMI</h3>
+        <p>Brain-Machine Interface research at ETH AI Center / INI. Lightweight CNN for semantic segmentation optimised for edge deployment on neuromorphic hardware.</p>
         <div class="tech-tags">
             <span class="tag">Deep Learning</span>
-            <span class="tag">Python</span>
             <span class="tag">CNN</span>
+            <span class="tag">Edge ML</span>
         </div>
         <a href="#" class="project-link">View Code</a>
     </div>
@@ -71,11 +78,11 @@ Complementing my technical background, my education at HSG has provided me with 
     <img src="assets/images/RAG_plot.png" alt="Simple Local RAG" class="project-image">
     <div class="card-content">
         <h3>Simple Local RAG</h3>
-        <p>A very simple Retrieval-Augmented Generation (RAG) system running locally, integrating vector search and prompt chaining for document-based question answering.</p>
+        <p>Retrieval-Augmented Generation system running fully locally — vector search, prompt chaining, and document-based QA with open-weight LLMs.</p>
         <div class="tech-tags">
             <span class="tag">LangChain</span>
-            <span class="tag">Python</span>
             <span class="tag">LLM</span>
+            <span class="tag">RAG</span>
             <span class="tag">Gemma</span>
         </div>
         <a href="https://github.com/L-Neur0/Simple-Local-RAG" class="project-link" target="_blank">View Code</a>
@@ -86,11 +93,11 @@ Complementing my technical background, my education at HSG has provided me with 
     <img src="assets/images/EUROSAT_classification.png" alt="EuroSAT Classification" class="project-image">
     <div class="card-content">
         <h3>EUROSAT Image Classification</h3>
-        <p>Land use classification using multispectral data. Combines advanced data augmentations, attention-based deep learning, and ensemble methods for robust accuracy.</p>
+        <p>Land-use classification from multispectral satellite imagery using attention-based deep learning, advanced augmentations, and ensemble methods.</p>
         <div class="tech-tags">
-            <span class="tag">Deep Learning</span>
-            <span class="tag">CV</span>
+            <span class="tag">Computer Vision</span>
             <span class="tag">Attention</span>
+            <span class="tag">Ensemble</span>
         </div>
         <a href="https://github.com/L-Neur0/EUROSAT-satellite_image-classification" class="project-link" target="_blank">View Code</a>
     </div>
@@ -100,7 +107,7 @@ Complementing my technical background, my education at HSG has provided me with 
     <img src="assets/images/pitas.png" alt="Job Broker System" class="project-image">
     <div class="card-content">
         <h3>Job Broker System</h3>
-        <p>An auction-based job assignment system using hexagonal architecture. Features job scheduling, worker credit systems, and fault tolerance.</p>
+        <p>Auction-based distributed job assignment system using hexagonal architecture with worker credit systems and fault tolerance.</p>
         <div class="tech-tags">
             <span class="tag">Microservices</span>
             <span class="tag">Distributed Systems</span>
@@ -111,10 +118,38 @@ Complementing my technical background, my education at HSG has provided me with 
   </div>
 
   <div class="project-card">
+    <img src="assets/images/bcv_kits.jpeg" alt="Kidney Segmentation" class="project-image">
+    <div class="card-content">
+        <h3>Kidney Tumor Segmentation</h3>
+        <p>Biomedical CV research at NECSTLab. Deep learning pipelines (CNNs) for kidney and tumor segmentation on volumetric NIFTI images.</p>
+        <div class="tech-tags">
+            <span class="tag">Biomedical CV</span>
+            <span class="tag">Segmentation</span>
+            <span class="tag">PyTorch</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Kits19_BCV_Lorenzo_Sciarretta/tree/main" class="project-link" target="_blank">View Code</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <img src="assets/images/hist_paper_screen.png" alt="Histology Registration" class="project-image">
+    <div class="card-content">
+        <h3>Histology Registration</h3>
+        <p>Unsupervised deep learning registration framework for histology samples with varied staining — deformable registration without labelled pairs.</p>
+        <div class="tech-tags">
+            <span class="tag">Research Paper</span>
+            <span class="tag">Unsupervised</span>
+            <span class="tag">Medical Imaging</span>
+        </div>
+        <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples/blob/main/Paper.pdf" class="project-link" target="_blank">Read Paper</a>
+    </div>
+  </div>
+
+  <div class="project-card">
     <img src="assets/images/codex1.jpg" alt="Codex Naturalis" class="project-image">
     <div class="card-content">
         <h3>CODEX Naturalis App</h3>
-        <p>Full-stack Java application simulating a board game. Built the network layer (RMI and Socket), game logic, and created TUI and GUI interfaces.</p>
+        <p>Full-stack Java board game simulation. Built the network layer (RMI and Socket), game logic engine, and TUI/GUI interfaces.</p>
         <div class="tech-tags">
             <span class="tag">Java</span>
             <span class="tag">Networking</span>
@@ -124,47 +159,74 @@ Complementing my technical background, my education at HSG has provided me with 
     </div>
   </div>
 
-  <div class="project-card">
-    <img src="assets/images/bcv_kits.jpeg" alt="Kidney Segmentation" class="project-image">
-    <div class="card-content">
-        <h3>Kidney Tumor Segmentation</h3>
-        <p>Biomedical CV research at NECSTLab. Developed software for Kidney and Tumor segmentation using Deep Learning (CNNs) on NIFTI images.</p>
-        <div class="tech-tags">
-            <span class="tag">Biomedical CV</span>
-            <span class="tag">Deep Learning</span>
-            <span class="tag">Segmentation</span>
-        </div>
-        <a href="https://github.com/L-Neur0/Kits19_BCV_Lorenzo_Sciarretta/tree/main" class="project-link" target="_blank">View Code</a>
+</div>
+
+<div class="section-header">
+  <h2>Skills</h2>
+  <div class="section-divider"></div>
+</div>
+
+<div class="skills-grid">
+  <div class="skill-category">
+    <h4>Deep Learning</h4>
+    <div class="skill-chips">
+      <span class="skill-chip">PyTorch</span>
+      <span class="skill-chip">TensorFlow</span>
+      <span class="skill-chip">Transformers</span>
+      <span class="skill-chip">CNNs</span>
+      <span class="skill-chip">RNNs / LSTMs</span>
+      <span class="skill-chip">MoE</span>
     </div>
   </div>
-  
-  <div class="project-card">
-    <img src="assets/images/hist_paper_screen.png" alt="Histology Registration" class="project-image">
-    <div class="card-content">
-        <h3>Histology Registration</h3>
-        <p>Implementation of an Unsupervised Deep Learning Registration Framework for Histology Samples with Varied Staining.</p>
-        <div class="tech-tags">
-            <span class="tag">Research Paper</span>
-            <span class="tag">Deep Learning</span>
-            <span class="tag">Unsupervised</span>
-        </div>
-        <a href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples/blob/main/Paper.pdf" class="project-link" target="_blank">Read Paper</a>
+  <div class="skill-category">
+    <h4>LLMs & GenAI</h4>
+    <div class="skill-chips">
+      <span class="skill-chip">Fine-tuning</span>
+      <span class="skill-chip">RAG</span>
+      <span class="skill-chip">Prompt Engineering</span>
+      <span class="skill-chip">LangChain</span>
+      <span class="skill-chip">Efficient Attention</span>
     </div>
   </div>
-
-</div>---
-
-## Skills
-
-<div class="skills-container">
-  <ul>
-    <li>LLMs: prompting, fine-tuning, security & reliability, architecture optimization, efficient attention mechanisms</li>
-    <li>Machine Learning: DFM, SVM, ... (Python, R) Scikit-learn, pandas, Numpy)</li>
-    <li>Time-Series Forecasting (Python, R, Julia)</li>
-    <li>Deep Learning: LSTM, RNN, NN, Computer Vision, PCA (TensorFlow, PyTorch, Nibabel)</li>
-    <li>Strategic Management and Business Integration</li>
-    <li>Software Engineering (Java, C)</li>
-    <li>Data Visualization (Matplotlib, Plotly, ggplot2, latex, Tableau)</li>
-    <li>Databases (SQL, snowlflake)</li>
-  </ul>
+  <div class="skill-category">
+    <h4>Machine Learning</h4>
+    <div class="skill-chips">
+      <span class="skill-chip">scikit-learn</span>
+      <span class="skill-chip">SVM</span>
+      <span class="skill-chip">Ensemble Methods</span>
+      <span class="skill-chip">Time-Series</span>
+      <span class="skill-chip">Bayesian Methods</span>
+    </div>
+  </div>
+  <div class="skill-category">
+    <h4>Computer Vision</h4>
+    <div class="skill-chips">
+      <span class="skill-chip">Segmentation</span>
+      <span class="skill-chip">Classification</span>
+      <span class="skill-chip">Medical Imaging</span>
+      <span class="skill-chip">Nibabel</span>
+    </div>
+  </div>
+  <div class="skill-category">
+    <h4>Languages</h4>
+    <div class="skill-chips">
+      <span class="skill-chip">Python</span>
+      <span class="skill-chip">Java</span>
+      <span class="skill-chip">R</span>
+      <span class="skill-chip">Julia</span>
+      <span class="skill-chip">C</span>
+      <span class="skill-chip">SQL</span>
+    </div>
+  </div>
+  <div class="skill-category">
+    <h4>Tools & Infra</h4>
+    <div class="skill-chips">
+      <span class="skill-chip">Git</span>
+      <span class="skill-chip">Pandas / NumPy</span>
+      <span class="skill-chip">Plotly</span>
+      <span class="skill-chip">LaTeX</span>
+      <span class="skill-chip">Snowflake</span>
+      <span class="skill-chip">Tableau</span>
+    </div>
+  </div>
 </div>

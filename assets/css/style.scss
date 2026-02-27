@@ -105,7 +105,172 @@
     background-color: #30363d; /* Fills button slightly on hover */
     border-color: #c9d1d9;
 }
-/* Skills Styles */
+/* =====================
+   STATUS BADGE
+   ===================== */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(86, 211, 100, 0.08);
+  border: 1px solid rgba(86, 211, 100, 0.3);
+  color: #56d364;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #56d364;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* =====================
+   RESEARCH FOCUS SECTION
+   ===================== */
+.research-section {
+  background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin: 28px 0 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.research-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #58a6ff, #bc8cff, #58a6ff);
+  background-size: 200% 100%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.research-section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #8b949e;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.research-section h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: #e6edf3;
+}
+
+.research-section p {
+  color: #8b949e;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.research-tag {
+  background: rgba(88, 166, 255, 0.1);
+  color: #58a6ff;
+  border: 1px solid rgba(88, 166, 255, 0.25);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* =====================
+   SECTION HEADERS
+   ===================== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 44px 0 22px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  white-space: nowrap;
+}
+
+.section-divider {
+  flex: 1;
+  height: 1px;
+  background: #30363d;
+}
+
+/* =====================
+   SKILLS GRID
+   ===================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 8px 0 16px;
+}
+
+.skill-category {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.skill-category h4 {
+  margin: 0 0 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  color: #58a6ff;
+  font-weight: 700;
+}
+
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-chip {
+  background: #21262d;
+  color: #c9d1d9;
+  padding: 3px 10px;
+  border-radius: 14px;
+  font-size: 0.76rem;
+  border: 1px solid #30363d;
+}
+
+/* =====================
+   LEGACY SKILLS (keep for compatibility)
+   ===================== */
 .skills-container ul {
   list-style-type: none;
   padding: 0;
