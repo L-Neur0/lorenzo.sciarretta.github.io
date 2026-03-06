@@ -105,6 +105,11 @@
     background-color: #30363d; /* Fills button slightly on hover */
     border-color: #c9d1d9;
 }
+.nda-badge {
+    cursor: default;
+    opacity: 0.55;
+    pointer-events: none;
+}
 /* =====================
    STATUS BADGE
    ===================== */
