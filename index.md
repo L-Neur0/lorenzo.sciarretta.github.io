@@ -70,7 +70,7 @@ Previously: **Research Assistant** at the **ETH AI Center** with [Prof. Shih-Chi
             <span class="tag">CNN</span>
             <span class="tag">Edge ML</span>
         </div>
-        <a href="#" class="project-link">View Code</a>
+        <span class="project-link nda-badge">Under NDA</span>
     </div>
   </div>
 
