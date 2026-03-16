@@ -4,30 +4,29 @@ layout: default
 
 <div class="status-badge">
   <span class="status-dot"></span>
-  Actively researching · Weight Space Learning @ HSG AI/ML Lab
+  Actively researching · Multi-LLM Agent Systems @ DISCO Lab
 </div>
 
 ### Hi, I'm Lorenzo Sciarretta
 
 AI/ML researcher and engineer, currently completing my Master's in Computer Science at **ETH Zurich** and the **University of St. Gallen**.
 
-My research focuses on [**Weight Space Learning**](https://weight-space-learning.github.io/) — learning directly in the space of neural network weights to build hyper-representations that generalise across heterogeneous model collections. I work at the **AI/ML Lab at HSG** with [Prof. Damian Borth](https://de.wikipedia.org/wiki/Damian_Borth).
+I am currently doing research on **Multi-LLM agent systems** together with the **ETH Zurich** [**DISCO Lab**](https://disco.ethz.ch/) — studying how multiple large language models can collaborate, coordinate, and reason together.
 
-Previously: **Research Assistant** at the **ETH AI Center** with [Prof. Shih-Chii Liu](https://en.wikipedia.org/wiki/Shih-Chii_Liu) (neuromorphic/edge ML), and **Quantitative Researcher** at the **Financial Econometrics Chair** with [Prof. M.R. Fengler](https://sites.google.com/site/mrfengler02/).
+Previously: **Weight Space Learning** at the **AI/ML Lab at HSG** with [Prof. Damian Borth](https://de.wikipedia.org/wiki/Damian_Borth) (hyper-representations across neural network collections), **Research Assistant** at the **ETH AI Center** with [Prof. Shih-Chii Liu](https://en.wikipedia.org/wiki/Shih-Chii_Liu) (neuromorphic/edge ML), and **Quantitative Researcher** at the **Financial Econometrics Chair** with [Prof. M.R. Fengler](https://sites.google.com/site/mrfengler02/).
 
 ---
 
 <div class="research-section">
   <p class="research-section-label">Current Research</p>
-  <h3>Weight Space Learning & Hyper-Representations</h3>
-  <p>Designing Mixture-of-Experts extensions for Transformer-based weight space autoencoders (SANE-MoE) that learn transferable representations across diverse neural network collections — enabling model editing, zero-shot property prediction, and generalisation without retraining.</p>
+  <h3>Multi-LLM Agent Systems</h3>
+  <p>Researching how multiple large language models can collaborate, coordinate, and reason together as part of structured multi-agent systems — together with the <a href="https://disco.ethz.ch/">ETH Zurich DISCO Lab</a>.</p>
   <div class="research-tags">
-    <span class="research-tag">Weight Space Learning</span>
-    <span class="research-tag">Mixture-of-Experts</span>
-    <span class="research-tag">Hyper-Representations</span>
-    <span class="research-tag">Meta-Learning</span>
-    <span class="research-tag">Transformers</span>
-    <span class="research-tag">Model Editing</span>
+    <span class="research-tag">Multi-Agent Systems</span>
+    <span class="research-tag">LLM Agents</span>
+    <span class="research-tag">Coordination</span>
+    <span class="research-tag">Reasoning</span>
+    <span class="research-tag">Large Language Models</span>
   </div>
 </div>
 
