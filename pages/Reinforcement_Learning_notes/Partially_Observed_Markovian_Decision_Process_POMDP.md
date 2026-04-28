@@ -1,67 +1,89 @@
 ---
 layout: default
 permalink: /rl_pomdp
+title: Partially Observed Markov Decision Processes
 ---
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
+<div class="post-header">
+  <div class="post-track">RL Notes · Chapter 2 · Foundations</div>
+  <h1>Partially Observed Markov Decision Processes</h1>
+  <div class="post-meta">When the agent only sees noisy observations of the underlying state.</div>
+</div>
+
+<div class="post-toc" markdown="1">
+**Contents**
 * TOC
 {:toc}
-### Partially Observed Markovian Decision Process (POMDP)
-So in the previous chapter we focused on MDP in a known environment, i.e. a full observable setting. We have seen that we can efficiently find the optimal policy (as long as the Markov decision process is finite).
+</div>
 
-In this chapter we are going to consider how Markovian decision process can be extended to a partially observable setting where the agent can only see noisy observations $Y_t$ of its state $X_t$. 
+In the previous chapter we focused on MDPs in a known environment, i.e. a fully observable setting. We saw that we can efficiently find an optimal policy (as long as the MDP is finite).
 
-> #Definition : (POMDP) Partially observed Markov decision process is specified by: 
-> 1. A set of states $X$;
-> 2. A set of actions $A$;
-> 3. Transition probabilities $p(x'| x, a)$;
-> 4. a reward function $r(x, a)$;
-> 5. a set of observations $Y$;
-> 6. observation probabilities: $o(y, x) = P(Y_t = y | X_t = x)$. 
+In this chapter we extend the Markov decision process to a partially observable setting, in which the agent only sees noisy observations $Y_t$ of its state $X_t$.
 
-It is important to notice that MDP where controlled Markov chains, whether POMDP are controlled *[Hidden Markov Models](/rl_hmm)*.  
+<div class="callout" markdown="1">
+<div class="callout-label">Definition · POMDP</div>
+A *Partially Observed Markov Decision Process* is specified by:
+1. a set of states $X$;
+2. a set of actions $A$;
+3. transition probabilities $p(x' \mid x, a)$;
+4. a reward function $r(x, a)$;
+5. a set of observations $Y$;
+6. observation probabilities $o(y, x) = P(Y_t = y \mid X_t = x)$.
+</div>
 
-POMDPs can be considered as MDP with an enlarged state space ( $X +Y$). The idea is to consider an MDP whose states are *beliefs* : 
+Note that MDPs are controlled Markov chains, whereas POMDPs are controlled *[Hidden Markov Models](/rl_hmm)*.
+
+POMDPs can be viewed as MDPs with an enlarged state space ($X + Y$). The idea is to consider an MDP whose states are *beliefs*:
+
 $$
-b_t(x) = P(X_t = x| y_{1:t}, a_{1:t-1})
+b_t(x) = P(X_t = x \mid y_{1:t}, a_{1:t-1}),
 $$
-about the current state of the POMDP. I.o.w. the states of the MDP are probability distributions over the states of the POMDP. 
 
-At $t=0$ we have $b_0(x) = P(X_0 = x)$, this is the initial determinist state. 
-At $t = t+1$ the update is given by:
-Given an action $a_t$, the prior belief $b_t$ and the new observations: 
-$$ 
-x_{t+1}~P(\cdot| x_t, a_t) \quad \text{observe: } y_{t+1}~P(\cdot|x_{t+1})
+i.e. probability distributions over the states of the POMDP. At $t = 0$ we have $b_0(x) = P(X_0 = x)$, the (deterministic) initial belief.
+
+Given an action $a_t$, prior belief $b_t$ and a new observation, the dynamics are
+
 $$
-we can describe the update as: 
+x_{t+1} \sim P(\cdot \mid x_t, a_t), \qquad y_{t+1} \sim P(\cdot \mid x_{t+1}),
+$$
+
+and the belief update is
+
 $$
 \begin{aligned}
 b_{t+1}(x)
 &= \mathbb{P}(X_{t+1} = x \mid y_{1:t+1}, a_{1:t}) \\[4pt]
-&= \frac{1}{Z} \mathbb{P}(y_{t+1} \mid X_{t+1} = x)\, \mathbb{P}(X_{t+1} = x \mid y_{1:t}, a_{1:t}) 
-&& \text{by the definition of beliefs (10.42)} \\[4pt]
-&= \frac{1}{Z} \, o(y_{t+1}\mid x)\, \mathbb{P}(X_{t+1} = x \mid y_{1:t}, a_{1:t})
-&& \text{using Bayes' rule (1.45)} \\[4pt]
-&= \frac{1}{Z} \, o(y_{t+1}\mid x) \sum_{x' \in X} p(x \mid x', a_t)\, 
-\mathbb{P}(X_t = x' \mid y_{1:t}, a_{1:t-1})
-&& \text{using the definition of observation probabilities (10.39)} \\[-2pt]
-&&& \text{and conditioning on the previous state } x' \\[4pt]
-&= \frac{1}{Z} \, o(y_{t+1}\mid x) \sum_{x' \in X} p(x \mid x', a_t)\, b_t(x')
-&& \text{using the definition of beliefs (10.42)}.
+&= \tfrac{1}{Z}\, \mathbb{P}(y_{t+1} \mid X_{t+1} = x)\, \mathbb{P}(X_{t+1} = x \mid y_{1:t}, a_{1:t})
+&& \text{(Bayes' rule)} \\[4pt]
+&= \tfrac{1}{Z}\, o(y_{t+1} \mid x)\, \mathbb{P}(X_{t+1} = x \mid y_{1:t}, a_{1:t})
+&& \text{(definition of } o\text{)} \\[4pt]
+&= \tfrac{1}{Z}\, o(y_{t+1} \mid x) \sum_{x' \in X} p(x \mid x', a_t)\, \mathbb{P}(X_t = x' \mid y_{1:t}, a_{1:t-1})
+&& \text{(condition on } x'\text{)} \\[4pt]
+&= \tfrac{1}{Z}\, o(y_{t+1} \mid x) \sum_{x' \in X} p(x \mid x', a_t)\, b_t(x')
+&& \text{(definition of } b_t\text{)},
 \end{aligned}
-\]
-
 $$
 
-where: 
+where
 
 $$
-Z \doteq \sum_{x \in X} o(y_{t+1} \mid x) 
-\sum_{x' \in X} p(x \mid x', a_t)\, b_t(x').
-
-
+Z \;\doteq\; \sum_{x \in X} o(y_{t+1} \mid x) \sum_{x' \in X} p(x \mid x', a_t)\, b_t(x').
 $$
 
-Therefore, the update belief state is a deterministic mapping from the previous belief state depending only on the random observation $y_{t+1}$. 
+Therefore the updated belief state is a deterministic mapping from the previous belief, depending only on the random observation $y_{t+1}$.
 
-->>> [Reinforcement Learning - Tabular](/rl_tabular)
+<div class="post-nav">
+  <a class="post-nav-prev" href="./rl_mdp">MDPs</a>
+  <a class="post-nav-next" href="./rl_hmm">Hidden Markov Models</a>
+</div>

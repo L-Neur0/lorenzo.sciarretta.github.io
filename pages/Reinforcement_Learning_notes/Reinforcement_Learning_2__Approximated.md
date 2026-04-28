@@ -1,705 +1,606 @@
 ---
 layout: default
 permalink: /rl_approx
+title: RL with Function Approximation
 ---
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
+<div class="post-header">
+  <div class="post-track">RL Notes · Chapter 5 · Approximate</div>
+  <h1>Reinforcement Learning with Function Approximation</h1>
+  <div class="post-meta">From tabular RL to large state–action spaces: value approximation, policy gradients, actor-critic, and entropy-regularised RL.</div>
+</div>
+
+<div class="post-toc" markdown="1">
+**Contents**
 * TOC
 {:toc}
-[Reinforcement Learning - Tabular](/rl_tabular)
+</div>
 
+We have seen on-policy and off-policy RL algorithms, but there is a problem: tabular MDP / RL methods are polynomial in the number of actions $\lvert A \rvert$ and states $\lvert X \rvert$. The goal now is to scale from simple tabular RL to large $\lvert A \rvert$ and $\lvert X \rvert$. To do so, we need to extend *model-free methods* such as TD-learning and Q-learning to large state and action spaces.
 
-We have seen on policy and off policy RL algorithms, but there is a problem, MDP and RL are polynomial in the number of actions |A| and in the number of states |X|. The goal is now to pass from simple tabular RL to large setting of |A| and |X|. To do so, we need to extend *model-free methods* such as TD learning and Q learning to large state and action spaces. 
+The only way to do this is to learn **approximations** of value functions (through regression).
 
-The only way for doing so, is to learn **approximations** of value functions (through regression).
+The first step is to recast tabular RL as an *optimisation* problem.
 
-The first thing to do is to look the tabular RL setting we have seen as an *optimization* problem:
+# 1. Tabular RL as an optimisation problem
 
-# 1. Tabular RL as optimization setting
-We re-interpret the model-free methods from previous sections, TD and Q learning, as optimization problem, where each iteration is a single gradient update.
-We look at an example for TD-learning:
-$$
-V^{\pi}(x) \leftarrow (1-\alpha_t)V^{\pi}(x)+(r + \gamma V^{\pi}(x'))
-$$
-This is basically an update rule of an optimization algo. The only thing we have to do is to parametrize the estimates of $V^{\pi}$ with some params $\theta$ and update  according to the gradient of some loss function. In particular, in a finite domain (e.g. tabular setting), we can parametrize the value function by learning a separate parameter for each state: 
-$$
-V^{\pi}(x; \theta) = \theta(x)
-$$
-Ok, now to re derive the update rule of $V^{\pi}$ as a gradient update, we need a loss function to derive, and we consider the following one:
-$$
-\bar{l}(\mathbf{\theta};x, r) = \frac{1}{2}(v^{\pi}(x) - \mathbf{\theta}(x))^2
-$$
-and using the Bellman equation:
-$$
-\bar{l}(\mathbf{\theta};x, r)=\frac{1}{2}\big(r + \gamma \mathbb{E}_{x'|x, \pi(x)} [v^{\pi}(x')]-\mathbf(\theta)(x)\big)^2
-$$
-which is the classical squared loss of the difference between the parameter and the target label we want to learn ($v^{\pi}$). Now we can view TD learning as SGD, the first issue is that we cannot compute the estimation, so as for TD learning we learn the bootstrapped estimate of $V^{\pi}$. This bootstrapping estimate $V^\pi$ is treated as if it were independent of the current estimate of the value function $\theta$.  To emphasize this, we write
+We re-interpret the model-free methods from the previous chapter — TD- and Q-learning — as optimisation problems where each iteration is a single gradient update.
+
+Consider TD-learning:
 
 $$
-V^\pi(x; \theta_{\text{old}}) \approx v^\pi(x),
+V^{\pi}(x) \leftarrow (1 - \alpha_t)\, V^{\pi}(x) + \alpha_t\!\left(r + \gamma\, V^{\pi}(x')\right).
 $$
 
-where $\theta_{\text{old}} = \theta$ but $\theta_{\text{old}}$ is treated as a constant with respect to $\theta$. Basically Bootstrapping means to use “old” value estimates as labels. 
+This is the update rule of an optimisation algorithm. We just have to parametrise the estimate of $V^{\pi}$ with parameters $\theta$ and update them according to the gradient of some loss. In a finite domain (e.g. tabular), we can parametrise the value function with a separate parameter for each state:
 
-Secondly, the expectation is over the transition model which we are trying to avoid in model-free methods, so we use MC estimate using a single sample. Recall that this is only possible because the transitions are conditionally independent given the state-action pair.
+$$
+V^{\pi}(x; \theta) = \theta(x).
+$$
 
-Using these shortcuts, we can rewrite the loss function as:
+To re-derive the $V^{\pi}$ update as a gradient update we need a loss function. Consider
+
 $$
-l(\mathbf{\theta};x, r, x') = \frac{1}{2}\big(r + \gamma \mathbf{\theta^{old}(x')} - \mathbf{\theta}(x) \big)^2
+\bar{\ell}(\theta; x, r) = \tfrac{1}{2}\big(v^{\pi}(x) - \theta(x)\big)^2,
 $$
-We define the gradient of this loss w.r.t to $\theta (x)$ as: 
+
+and using the Bellman equation,
+
 $$
-\delta_{\text{TD}}
-\coloneqq \nabla_\theta(x)\, \ell(\theta; x, r, x')
-= \theta(x) - \bigl(r + \gamma \theta^{\text{old}}(x')\bigr).
+\bar{\ell}(\theta; x, r) = \tfrac{1}{2}\!\left(r + \gamma\, \mathbb{E}_{x' \mid x, \pi(x)}[v^{\pi}(x')] - \theta(x)\right)^2,
 $$
-This error term is also called **temporal-difference (TD) error**, it compares the previous estimate of the value function to the bootstrapping estimate of the value function
+
+which is the classical squared loss between the parameter and the target label $v^{\pi}$. Now we can view TD-learning as SGD. The first issue is that we cannot compute the expectation, so as in TD-learning we use a bootstrapped estimate of $V^{\pi}$. This bootstrapped estimate is treated as if it were independent of the current $\theta$:
+
+$$
+V^{\pi}(x; \theta_{\text{old}}) \approx v^{\pi}(x),
+$$
+
+where $\theta_{\text{old}} = \theta$ but is treated as a constant w.r.t. $\theta$. **Bootstrapping** thus means using "old" value estimates as labels.
+
+Secondly, the expectation is over the transition model — which we are trying to avoid in model-free methods — so we use a Monte Carlo estimate from a single sample. This is only possible because transitions are conditionally independent given the state–action pair.
+
+Using these shortcuts, the loss becomes
+
+$$
+\ell(\theta; x, r, x') = \tfrac{1}{2}\!\left(r + \gamma\, \theta^{\text{old}}(x') - \theta(x)\right)^2,
+$$
+
+with gradient w.r.t. $\theta(x)$:
+
+$$
+\delta_{\text{TD}} \coloneqq \nabla_{\theta(x)}\, \ell(\theta; x, r, x') = \theta(x) - \big(r + \gamma\, \theta^{\text{old}}(x')\big).
+$$
+
+This is the **temporal-difference (TD) error**: it compares the previous estimate of the value function to the bootstrapped one.
 
 ---
+
 # Model free
-## 2. Value Function Approximation
-So now that we have derived the value function update rule, it is natural to find an approximation of the parametrized $V(x; \theta)$ or $Q(x; \theta)$ functions, in order to scale to large settings. You may think of this as a regression problem where we map state(-action) pairs to a real number. Recall from the previous section that this is a strict generalization of the tabular setting, as we could use a separate parameter to learn the value function for each individual state-action pair. 
+## 2. Value function approximation
 
-Our goal for large state-action spaces is to exploit the smoothness properties(i.e. V takes similar values in 'similar' states) of the value function to condense the representation. An easy way of doing so is **linear function approximation**. For example for Q:
-$$
-\hat{Q}^*(x, a; \theta) = \theta^T \phi(x, a)
-$$
-where $\phi$ is the hand designed feature map. [Or, a common alternative is to use a NN to learn these features, doing so is also known as *deep reinforcement learning*. ]
+Now that we have the value-function update as a gradient step, it is natural to find an approximation of the parametrised $V(x; \theta)$ or $Q(x, a; \theta)$ to scale to large settings. Think of this as a regression problem mapping state(–action) pairs to a real number. This is a strict generalisation of the tabular setting, where we used a separate parameter per state–action pair.
 
-After observing a transition $(x, a, r, x')$, the update via gradient is (as done before for V): 
-$$
-\ell(\theta; x, a, r, x')
-\coloneqq
-\frac{1}{2}
-\left(
-r
-+ \gamma \max_{a' \in \mathcal{A}} Q^\star(x', a'; \theta^{\text{old}})
-- Q^\star(x, a; \theta)
-\right)^2.
-$$
-
-The difference between the current approximation and the optimization target,
+For large state–action spaces, we exploit smoothness (the value function takes similar values in similar states) to compress the representation. An easy way to do this is **linear function approximation**, e.g. for $Q$:
 
 $$
-\delta_{\mathrm{B}}
-\coloneqq
-r
-+ \gamma \max_{a' \in \mathcal{A}} Q^\star(x', a'; \theta^{\text{old}})
-- Q^\star(x, a; \theta),
+\hat{Q}^{*}(x, a; \theta) = \theta^{\top} \phi(x, a),
 $$
 
-is called the *Bellman error*. Analogously to TD-learning, we obtain the gradient update,
-$$
-\theta \leftarrow \theta - \alpha_t \nabla_\theta \ell(\theta; x, a, r, x'),
-\tag{12.13}
-$$
+where $\phi$ is a hand-designed feature map. (A common alternative is to use a NN to learn these features — *deep reinforcement learning*.)
+
+After observing a transition $(x, a, r, x')$, the gradient update (analogous to the one for $V$) uses
 
 $$
-= \theta
-- \alpha_t \nabla_\theta
-\frac{1}{2}
-\left(
-r
-+ \gamma \max_{a' \in \mathcal{A}} Q^\star(x', a'; \theta^{\text{old}})
-- Q^\star(x, a; \theta)
-\right)^2
+\ell(\theta; x, a, r, x') \coloneqq \tfrac{1}{2}\!\left(r + \gamma \max_{a' \in \mathcal{A}} Q^{*}(x', a'; \theta^{\text{old}}) - Q^{*}(x, a; \theta)\right)^2.
 $$
 
+The difference between the current approximation and the optimisation target,
+
 $$
-= \theta + \alpha_t \delta_{\mathrm{B}} \nabla_\theta Q^\star(x, a; \theta).
-\tag{12.14}
-$$
-and in *linear case*: 
-$$
-=  \delta_{\mathrm{B}}(x', \theta) \cdot \phi(x, a)
+\delta_{\mathrm{B}} \coloneqq r + \gamma \max_{a' \in \mathcal{A}} Q^{*}(x', a'; \theta^{\text{old}}) - Q^{*}(x, a; \theta),
 $$
 
- 
+is called the *Bellman error*. Analogously to TD-learning, we obtain the gradient update
+
+$$
+\theta \leftarrow \theta - \alpha_t\, \nabla_{\theta} \ell(\theta; x, a, r, x') = \theta + \alpha_t\, \delta_{\mathrm{B}}\, \nabla_{\theta} Q^{*}(x, a; \theta),
+$$
+
+and in the *linear case*
+
+$$
+\nabla_{\theta} \ell = -\delta_{\mathrm{B}} \cdot \phi(x, a).
+$$
+
 ![Screenshot 2026-01-03 at 12.36.07.png](./images/Screenshot 2026-01-03 at 12.36.07.png)
+
 But this algorithm is rather slow!
 
 ---
+
 ## 3. Neural Fitted Q-iteration / DQN
-To accelerate Q-learning with (neural net) function approximation: 
-- use "experience replay", i.e. maintain a dataset D of observed transitions.
-- clone network to maintain constant "target" values across episodes (cloned network is target network $Q(x', a'; \theta^{old})$ ) . 
-Then the loss is:
+
+To accelerate Q-learning with (neural) function approximation:
+- use "experience replay" — maintain a dataset $D$ of observed transitions;
+- clone the network to keep "target" values constant across episodes (the cloned network is the target network $Q(x', a'; \theta^{\text{old}})$).
+
+The loss is then
 
 $$
-L(\theta) = \sum_{(x, a, r, x')}\left (r + \gamma \operatorname{max}_{a'} Q(x', a'; \theta^{old}) - Q(x,a;\theta)\right)^2
+L(\theta) = \sum_{(x, a, r, x')}\!\left(r + \gamma\, \max_{a'} Q(x', a'; \theta^{\text{old}}) - Q(x, a; \theta)\right)^2.
 $$
-How this is implemented exactly varies:
 
-#### Increasing stability: **Double DQN**:
- Standard DQN Suffers from „maximization bias“, since we max over Q, which is still an estimate, we can get 'too high 'estimates, the idea is to split the max operation, so Double DQN uses current network for evaluating the argmax, i.e. selecting the best action, and then evaluate using the cloned target network. 
- $$
-\mathcal{L}_{\text{DDQN}}(\theta)
-=
-\sum_{(x,a,r,x') \in \mathcal{D}}
-\left(
-r
-+ \gamma
-Q\!\left(x', a^\star(\theta); \theta^{\text{old}}\right)
-- Q(x, a; \theta)
-\right)^2,
+How exactly this is implemented varies.
+
+#### Increasing stability — Double DQN
+
+Standard DQN suffers from **maximisation bias**: since we max over $Q$, which is itself an estimate, we can get over-estimates. The idea is to split the max: Double DQN uses the *current* network to evaluate the argmax (action selection), then evaluates that action with the *cloned target* network:
+
+$$
+\mathcal{L}_{\text{DDQN}}(\theta) = \sum_{(x, a, r, x') \in \mathcal{D}}\!\left(r + \gamma\, Q\!\left(x', a^{*}(\theta); \theta^{\text{old}}\right) - Q(x, a; \theta)\right)^2,
 $$
 
 where
 
 $$
-a^\star(\theta)
-=
-\arg\max_{a'} Q(x', a'; \theta).
+a^{*}(\theta) = \operatorname*{argmax}_{a'} Q(x', a'; \theta).
 $$
 
+The fundamental idea of Q-learning is that it chooses the next action by implicitly defining a policy via
 
-The fundamental idea of Q-learning is that it chooses the next action by implicitly defining a policy via: 
 $$
-a_t = \operatorname{argmax}_a Q(x_t, a; \theta)
+a_t = \operatorname*{argmax}_a Q(x_t, a; \theta),
 $$
-but this is **intractable** for large/continuous action spaces. 
+
+but this is **intractable** for large or continuous action spaces.
 
 ---
+
 ## 4. Policy search methods
-Learning a parametrized policy (actor): $\pi(x) = \pi_{\theta}(x) = \pi(x; \theta)$. 
-For episodic tasks (i.e. can reset agent) can compute expected rewards by "rollouts"(Monte Carlo forward sampling -> on policy)
-The idea is to find optimal parameters through global optimization: 
-$$
-\theta^* = argmax_{\theta} \hat{J}^T(\theta)
-$$
-### 4.1. Policy Gradients
-So the objective is to solve the above optimization problem. The objective is indeed to maximize:
-$$
-J(\theta) = \mathbb(E)_{x_{0:T}, a_{0:T}\sim \pi_{\theta}} \sum_{t = 0}^{T} \gamma^t r(x_t, a_t) = \mathbb{E}_{\tau \sim \pi_{}\theta} r(\tau)
-$$
-How can we obtain gradients wrt $\theta$? 
-#Theorem  It holds that
-$$
-\nabla J(\theta)
-= \nabla \mathbb{E}_{\tau \sim \pi_\theta}\!\left[r(\tau)\right]
-= \mathbb{E}_{\tau \sim \pi_\theta}\!\left[
-r(\tau)\,\nabla \log \pi_\theta(\tau)
-\right].
-$$
 
-**Proof.**
-
-Recall that
-$$
-\nabla_\theta \log \pi_\theta(\tau)
-=
-\frac{\nabla_\theta \pi_\theta(\tau)}{\pi_\theta(\tau)}.
-$$
-
-Then,
-$$
-\nabla \mathbb{E}_{\tau \sim \pi_\theta} r(\tau)
-=
-\nabla \int \pi_\theta(\tau)\, r(\tau)\, d\tau
-$$
+Learn a parametrised policy (actor): $\pi(x) = \pi_{\theta}(x) = \pi(x; \theta)$. For episodic tasks (when the agent can be reset), expected rewards can be computed by "rollouts" (Monte Carlo forward sampling — on-policy). The idea is to find optimal parameters via global optimisation:
 
 $$
-=
-\int \left( \nabla \pi_\theta(\tau) \right) r(\tau)\, d\tau
+\theta^{*} = \operatorname*{argmax}_{\theta}\, \hat{J}_T(\theta).
+$$
+
+### 4.1 Policy gradients
+
+The objective is to maximise
+
+$$
+J(\theta) = \mathbb{E}_{x_{0:T},\, a_{0:T} \sim \pi_{\theta}}\!\left[\sum_{t = 0}^{T} \gamma^t r(x_t, a_t)\right] = \mathbb{E}_{\tau \sim \pi_{\theta}}[r(\tau)].
+$$
+
+How do we obtain gradients w.r.t. $\theta$?
+
+<div class="callout theorem" markdown="1">
+<div class="callout-label">Theorem · Score-function gradient</div>
+
+$$
+\nabla J(\theta) = \nabla\, \mathbb{E}_{\tau \sim \pi_{\theta}}[r(\tau)] = \mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[r(\tau)\, \nabla \log \pi_{\theta}(\tau)\right].
+$$
+</div>
+
+**Proof.** Recall
+
+$$
+\nabla_{\theta} \log \pi_{\theta}(\tau) = \frac{\nabla_{\theta} \pi_{\theta}(\tau)}{\pi_{\theta}(\tau)}.
+$$
+
+Then
+
+$$
+\nabla\, \mathbb{E}_{\tau \sim \pi_{\theta}} r(\tau) = \nabla \int \pi_{\theta}(\tau)\, r(\tau)\, d\tau = \int \big(\nabla \pi_{\theta}(\tau)\big)\, r(\tau)\, d\tau
 $$
 
 $$
-=
-\int \left( \pi_\theta(\tau)\, \nabla \log \pi_\theta(\tau) \right)
-r(\tau)\, d\tau
+= \int \pi_{\theta}(\tau)\, \nabla \log \pi_{\theta}(\tau)\, r(\tau)\, d\tau = \mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[r(\tau)\, \nabla \log \pi_{\theta}(\tau)\right]. \;\square
 $$
 
+**Exploiting the MDP structure.** To obtain gradients of $J(\theta)$ we need to compute
+
 $$
-=
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-r(\tau)\, \nabla \log \pi_\theta(\tau)
-\right].
+\mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[r(\tau)\, \nabla \log \pi_{\theta}(\tau)\right].
 $$
 
- **Exploiting the MDP structure**
+From the MDP, $r(\tau) = \sum_{t=0}^{T} \gamma^t r(x_t, a_t)$, and the trajectory distribution factorises as
 
-To obtain gradients for $J(\theta)$, we need to compute
 $$
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-r(\tau)\, \nabla \log \pi_\theta(\tau)
-\right].
-$$
-
-From the MDP, we have
-$$
-r(\tau) = \sum_{t=0}^{T} \gamma^t \, r(x_t, a_t).
-$$
-
-Moreover, the trajectory distribution factorizes as
-$$
-\pi_\theta(\tau)
-=
-p(x_0)
-\prod_{t=0}^{T}
-\pi(a_t \mid x_t; \theta)\,
-p(x_{t+1} \mid x_t, a_t).
+\pi_{\theta}(\tau) = p(x_0) \prod_{t=0}^{T} \pi(a_t \mid x_t; \theta)\, p(x_{t+1} \mid x_t, a_t).
 $$
 
 Taking the gradient of the log-probability,
-$$
-\nabla_\theta \log \pi_\theta(\tau)
-=
-\nabla_\theta
-\left(
-\log p(x_0)
-+ \sum_{t=0}^{T} \log \pi(a_t \mid x_t; \theta)
-+ \sum_{t=0}^{T} \log p(x_{t+1} \mid x_t, a_t)
-\right).
-$$
-
-Since the environment dynamics and initial-state distribution do not depend on $\theta$,
-$$
-\nabla_\theta \log p(x_0) = 0,
-\qquad
-\nabla_\theta \log p(x_{t+1} \mid x_t, a_t) = 0.
-$$
-
-Therefore,
-$$
-\nabla_\theta \log \pi_\theta(\tau)
-=
-\sum_{t=0}^{T}
-\nabla_\theta \log \pi(a_t \mid x_t; \theta).
-$$
-Thus,
-$$
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-r(\tau)\, \nabla \log \pi_\theta(\tau)
-\right]
-=
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-r(\tau)
-\sum_{t=0}^{T}
-\nabla \log \pi(a_t \mid x_t; \theta)
-\right].
-$$
-However, even though the gradients obtained like this are unbiased, the experience has very **large variance**. They can reduce the variance using so-called baselines. 
->
- #Lemma it holds that
-$$
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-r(\tau)\, \nabla \log \pi_\theta(\tau)
-\right]
-=
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-\bigl(r(\tau) - b\bigr)\, \nabla \log \pi_\theta(\tau)
-\right].
-$$
->
-
-**Proof**. 
-$$
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-r(\tau)\, \nabla \log \pi_\theta(\tau)
-\right]
-=
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-\bigl(r(\tau) - b\bigr)\, \nabla \log \pi_\theta(\tau)
-\right].
-$$
-Then:
-$$
-
-
-\left[
-\bigl(r(\tau) - b\bigr)\, \nabla \log \pi_\theta(\tau)
-\right] = \mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-r(\tau)\, \nabla \log \pi_\theta(\tau)
-\right]
--
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[ b \nabla \log \pi_\theta(\tau)
-\right].
-$$
-And, given $\nabla_{\theta} \log \pi_\theta(\tau) = \frac{\nabla_{\theta} \pi_\theta(\tau)}{\pi_{\theta}(\tau)}$ 
-$$
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[ b \nabla \log \pi_\theta(\tau)
-\right] =b \int \pi_\theta(\tau)\,
-\frac{\nabla_\theta \pi_\theta(\tau)}{\pi_\theta(\tau)}\, d\tau =
-$$
 
 $$
-=
-b \int \nabla_\theta \pi_\theta(\tau)\, d\tau
+\nabla_{\theta} \log \pi_{\theta}(\tau) = \nabla_{\theta}\!\left(\log p(x_0) + \sum_{t=0}^{T} \log \pi(a_t \mid x_t; \theta) + \sum_{t=0}^{T} \log p(x_{t+1} \mid x_t, a_t)\right).
 $$
 
-$$
-=
-b \, \nabla_\theta \int \pi_\theta(\tau)\, d\tau
-$$
+Since the dynamics and initial-state distribution do not depend on $\theta$, $\nabla_{\theta} \log p(x_0) = 0$ and $\nabla_{\theta} \log p(x_{t+1} \mid x_t, a_t) = 0$. Therefore
 
 $$
-=
-b \, \nabla_\theta 1
-=
-0.
+\nabla_{\theta} \log \pi_{\theta}(\tau) = \sum_{t=0}^{T} \nabla_{\theta} \log \pi(a_t \mid x_t; \theta).
 $$
-Example: baseline = **Downstream return**
-We can choose a state-dependent baseline:
+
+Thus
+
 $$
-b(\tau_{0:t-1}) = \sum_{m=0}^{t-1} \gamma^mr_m
+\mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[r(\tau)\, \nabla \log \pi_{\theta}(\tau)\right] = \mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[r(\tau) \sum_{t=0}^{T} \nabla \log \pi(a_t \mid x_t; \theta)\right].
 $$
-==This baseline subtract the returns of all actions before time t==. Intuitively, using the baseline, the score gradient only consider downstream returns. 
-Thus, we obtain the gradient estimator:
+
+Although these gradients are unbiased, they have **very large variance**. We can reduce this variance using *baselines*.
+
+<div class="callout lemma" markdown="1">
+<div class="callout-label">Lemma · Baseline subtraction</div>
+
 $$
-\nabla J(\theta) = \mathbb{E}_{\tau \sim \pi} \big [\sum_{t=0}^T \gamma^tG_t \nabla log \pi(a_t|x_t;\theta) \big ]
+\mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[r(\tau)\, \nabla \log \pi_{\theta}(\tau)\right] = \mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[(r(\tau) - b)\, \nabla \log \pi_{\theta}(\tau)\right].
 $$
-where $G_t$ is the bounded discounted payoff from time T: ==the reward to go== following action $a_t$ (t. It is also commonly called the (bounded) downstream return (or reward to go):
+</div>
+
+**Proof.** It suffices to show $\mathbb{E}_{\tau \sim \pi_{\theta}}[b\, \nabla \log \pi_{\theta}(\tau)] = 0$. Using $\nabla_{\theta} \log \pi_{\theta}(\tau) = \nabla_{\theta} \pi_{\theta}(\tau) / \pi_{\theta}(\tau)$,
+
 $$
-G_t = \sum_{t'= t}^T \gamma^{t'- t}r_t
+\mathbb{E}_{\tau \sim \pi_{\theta}}[b\, \nabla \log \pi_{\theta}(\tau)] = b \int \pi_{\theta}(\tau)\, \frac{\nabla_{\theta} \pi_{\theta}(\tau)}{\pi_{\theta}(\tau)}\, d\tau = b\, \nabla_{\theta} \int \pi_{\theta}(\tau)\, d\tau = b\, \nabla_{\theta} 1 = 0. \;\square
 $$
-Performing SGD with the score gradient estimator and downstream returns is known as the **REINFORCE** algorithm (Williams, 1992):
+
+**Example: baseline = downstream return.** A state-dependent baseline:
+
+$$
+b(\tau_{0:t-1}) = \sum_{m=0}^{t-1} \gamma^m r_m.
+$$
+
+<mark>This baseline subtracts the returns of all actions before time $t$.</mark> Intuitively, the score gradient then only considers downstream returns. We obtain the estimator
+
+$$
+\nabla J(\theta) = \mathbb{E}_{\tau \sim \pi}\!\left[\sum_{t=0}^{T} \gamma^t G_t\, \nabla \log \pi(a_t \mid x_t; \theta)\right],
+$$
+
+where $G_t$ is the (bounded) discounted payoff from time $t$: <mark>the reward-to-go</mark> following action $a_t$. Also called the (bounded) downstream return:
+
+$$
+G_t = \sum_{t' = t}^{T} \gamma^{t' - t} r_{t'}.
+$$
+
+Performing SGD with the score gradient and downstream returns is the **REINFORCE** algorithm (Williams, 1992):
+
 ![Screenshot 2026-01-04 at 10.06.35.png](./images/Screenshot 2026-01-04 at 10.06.35.png)
-(So we initialize the policy $\pi$ weights $\phi$... , set $G_t$ to the return at step $t$ and then update the weights)
-The variance of REINFORCE can be reduced further:
-Basic REINFORCE gradient estimate:
-$$
-\nabla_{\phi} J(\phi) = 
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-\sum_{t=0}^{T}
-\gamma^t \, G_t \, \nabla \log \pi(a_t \mid x_t; \theta)
-\right]
-$$
-A common way for reducing the variance is via a stronger baseline, by subtracting a term $b_t$ to the downstream returns:
-$$
-\nabla_{\phi}J(\phi) = 
-\mathbb{E}_{\tau \sim \pi_\theta}
-\left[
-\sum_{t=0}^{T}
-\gamma^t \, \big(G_t - b_t(x_t)\big) \, \nabla \log \pi(a_t \mid x_t; \theta)
-\right]
-$$
-One such example is the **mean over returns**:
-$$
-b_t(x_t) \doteq b = \frac{1}{T} \sum_{t'= 0}^T G_t'
-$$
-**Remark**: The big advantage of policy gradient methods is that they can be used in continuous action spaces, however, e.g. REINFORCE is not guaranteed to find a optimal policy, even when operating in very small domains it get stuck in local optima.
 
-Next, we will combine value approximation techniques like Q-learning and policy gradient methods, leading to the more practical family of methods called **actor-critic methods**.
+(Initialise the policy parameters, set $G_t$ to the return from step $t$, and update.)
+
+The variance of REINFORCE can be reduced further. The basic estimate is
+
+$$
+\nabla_{\theta} J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[\sum_{t=0}^{T} \gamma^t\, G_t\, \nabla \log \pi(a_t \mid x_t; \theta)\right].
+$$
+
+A common variance-reduction trick is a stronger baseline $b_t$:
+
+$$
+\nabla_{\theta} J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[\sum_{t=0}^{T} \gamma^t\, (G_t - b_t(x_t))\, \nabla \log \pi(a_t \mid x_t; \theta)\right].
+$$
+
+One example is the **mean over returns**:
+
+$$
+b_t(x_t) \doteq b = \frac{1}{T} \sum_{t' = 0}^{T} G_{t'}.
+$$
+
+**Remark.** The big advantage of policy-gradient methods is that they work in continuous action spaces. However, REINFORCE is not guaranteed to find an optimal policy — even in very small domains it can get stuck in local optima.
+
+Next, we combine value approximation (Q-learning) and policy gradient methods, leading to the more practical family of **actor–critic** methods.
 
 ---
-## 5. On-policy: Actor-Critic methods
-They reduce the variance of policy gradient estimates by using ideas from value function approximation. 
-IDEA: Use function approximation both to approximate value functions and to approximate policies. 
 
-We need to introduce a new definition:
-> 
-#Definition (**Advantage Function**). Given a policy $\pi$, the *advantage functions* is: 
-$$
-A^{\pi}(x, a) \doteq q^{\pi}(x, a) - \underbrace{v^{\pi}(x)}_{=\mathbb{E_{a \sim \pi(x)}}Q^{\pi}(x, a)}
-$$
-> it measures the advantage of picking action $a \in \mathcal{A}$ when in state $x \in \mathcal{X}$  over simply following policy $\pi$. 
+## 5. On-policy: actor–critic methods
 
-It has an important property, for the greedy action:
-$$
-\forall \pi, x: \quad max_a A^{\pi}(x, a) \geq 0
-$$
-The Bellman optimality principle is basically saying: the max is always bigger than the average, *the policy is optimal iff there is no advantages in any state*!!
-$$
-\pi \quad \text{optimal} \iff \forall x, a\quad A^{\pi}(x, a)\leq 0
-$$
-The Greedy Policy can be re stated as: $\pi_G (x) = argmax_ a Q^{\pi}(x, a) = argmax_ a A^{\pi}(x, a)$. 
+Actor–critic methods reduce the variance of policy-gradient estimates by using ideas from value-function approximation.
 
-We already saw how to estimate the value function, we will see that we can also do estimation *off-policy*. 
+**Idea:** use function approximation both for value functions and for policies.
+
+<div class="callout" markdown="1">
+<div class="callout-label">Definition · Advantage function</div>
+Given a policy $\pi$, the *advantage function* is
+
+$$
+A^{\pi}(x, a) \doteq q^{\pi}(x, a) - \underbrace{v^{\pi}(x)}_{= \mathbb{E}_{a \sim \pi(\cdot \mid x)}[Q^{\pi}(x, a)]}.
+$$
+
+It measures the advantage of picking action $a \in \mathcal{A}$ in state $x \in \mathcal{X}$ over simply following $\pi$.
+</div>
+
+It has an important property — for the greedy action,
+
+$$
+\forall \pi, x: \quad \max_a A^{\pi}(x, a) \geq 0.
+$$
+
+The Bellman optimality principle is essentially: the max is always at least the average — *a policy is optimal iff there is no advantage in any state*:
+
+$$
+\pi \text{ optimal} \iff \forall x, a:\; A^{\pi}(x, a) \leq 0.
+$$
+
+The greedy policy can be re-stated as $\pi_G(x) = \operatorname*{argmax}_a Q^{\pi}(x, a) = \operatorname*{argmax}_a A^{\pi}(x, a)$.
+
+We have already seen how to estimate the value function; below we will see we can also estimate it *off-policy*.
 
 ### 5.1 Policy Gradient Theorem
-Remember from 4.1 how to compute gradients, with canonical MC based on policy  gradients technique called REINFORCE (we used the score trick and the score estimator, what the gradient look like is to compute the gradient of our cost function wit respect to our policy). 
-So we derived the gradient estimator:
+
+Recall from §4.1 how to compute policy gradients with the canonical MC-based score-function trick (REINFORCE). We derived
+
 $$
-\nabla J(\theta) = \mathbb{E}_{\tau \sim \pi} \big [\sum_{t=0}^T \gamma^t G_t \nabla log \pi(a_t|x_t;\theta) \big ]
+\nabla J(\theta) = \mathbb{E}_{\tau \sim \pi}\!\left[\sum_{t=0}^{T} \gamma^t G_t\, \nabla \log \pi(a_t \mid x_t; \theta)\right].
 $$
-As we already mentioned, is quite slow, so we try to predict reward to go, by using ideas from value function estimation. This lead us to the the RL family of algos called *actor-critic* methods. We will state the *Policy Gradient Theorem*, base of this methods. 
+
+As mentioned, this is slow, so we try to predict the reward-to-go using ideas from value-function estimation. This leads to the *actor–critic* family. We state the *Policy Gradient Theorem*, the basis of these methods.
 
 #### 5.1.1 Reinterpreting score gradients
-We want to rewrite this gradient to get value function back onboards, so we can approximate the value and the policy. We want to trade off bias and variance. 
+
+We want to rewrite the gradient to bring the value function back into play, so we can approximate both the value and the policy and trade off bias against variance:
 
 $$
-\nabla J(\theta) = \mathbb{E}_{\tau \sim \pi} \big [\sum_{t=0}^T \gamma^tG_t \nabla log \pi(a_t|x_t;\theta) \big ]
+\nabla J(\theta) = \mathbb{E}_{\tau \sim \pi}\!\left[\sum_{t=0}^{T} \gamma^t G_t\, \nabla \log \pi(a_t \mid x_t; \theta)\right]
 $$
+
 $$
-\nabla J(\theta) = \text{lim}_{T \rightarrow \infty} \nabla_T J(\theta) =  \mathbb{E}_{\tau \sim \pi} \big [\sum_{t=0}^{\infty} \gamma^tG_t \nabla log \pi(a_t|x_t;\theta) \big ] 
+= \lim_{T \to \infty} \nabla_T J(\theta) = \mathbb{E}_{\tau \sim \pi}\!\left[\sum_{t=0}^{\infty} \gamma^t G_t\, \nabla \log \pi(a_t \mid x_t; \theta)\right]
 $$
+
 $$
-= \sum_{t = 0}^{\infty} \mathbb{E}_{\tau \sim \pi_{\theta}} \big [ \gamma^t G_t \nabla log \pi(a_t|x_t; \theta)\big] = 
+= \sum_{t = 0}^{\infty} \mathbb{E}_{\tau \sim \pi_{\theta}}\!\left[\gamma^t G_t\, \nabla \log \pi(a_t \mid x_t; \theta)\right].
 $$
+
 Using nested expectations:
-$$
-= \sum_{t = 0}^{\infty} \mathbb{E}_{x_t, a_t} \big [\gamma^t \nabla log \pi(a_t|x_t; \theta) \underbrace{\mathbb{E}[G_t|x_t, a_t]}_{Q^{\pi_{\theta}} (x_t, a_t)}\big ] =
-$$
-The second expectation is over $(r_t, x_{t+1}, a_{t+1}, r_{t+1},...)$. 
-$$
-= \mathbb{E}_{x_t, a_t} \left [ \sum_{t = 0}^{\infty} \gamma^t Q^{\pi_{\theta}}(x_t, a_t) \nabla log \pi(a_t|x_t; \theta)\right ] = 
-$$
-We can rewrite it if we think what this expectation really is, we are going to write all this thing as a single integral, (occupancy measure):
-$$
-= \int \rho_{\theta}(x) \mathbb{E}_{a \sim \pi_{\theta}} \left [ Q^{\pi_{\theta}}(x, a)\nabla log \pi(a_t|x_t; \theta) \right] dx
-$$
-where $\rho$ is the *discounted state occupancy measure* (unnormalized state occupancy measure, not a prob distr.):
-$$
-\rho_{\theta}(x) \doteq \sum_{t = 0}^{\infty} \gamma \, p_{\theta}(X_t = x)
-$$
-(many variants of PGT, we derived the variant for infinite-horizon discounted payoffs). Now we abuse of notation, and we think:
-$$
-\doteq \mathbb{E}_{(x, a) \sim \pi_{\theta}} \left [ Q^{\pi_{\theta}}(x, a) \nabla log \pi(a_t|x_t; \theta) \right]
-$$
-And this is basically the #Theorem **Policy Gradient Theorem**. The idea is to plug in the estimate approximation of the state-value function $Q(x, a;\theta_Q)$. 
-
-**Summary**: Actor-critic algos are combining:
-- Actor (parametrized policy)
-- Critic (value function approx.)
-In Deep RL the approximations are done via NNs.
-
-
-### 5.2 Online Actor-Critics
-A list of algorithms one can derive from the main theorem above. The main ones use value function approximations (critics) with policy gradient method: basically approximating the gradient:
-$$
-\nabla J (\theta_{\pi}) = \mathbb{E}_{(x, a) \sim \pi_{\theta}} \left [ Q(x, a; \theta_Q) \nabla log \pi(a_t|x_t; \theta_{\pi}) \right]
-$$
-We need to update the critique, how? TD-learning! (online setting). If you subtract from this the expectation does not change, one example of a baseline you can subtract is the value function:
-Variance reduction via baseline:
-$$
-\theta_\pi \leftarrow \theta_\pi
-+ \eta_t
-\Big[
-Q(x, a; \theta_Q) - V(x; \theta_V)
-\Big]
-\nabla \log \pi(a \mid x; \theta_\pi)
-$$
-Advantage function estimate:
-$$
-A(x, a; \theta_A)
-\triangleq
-Q(x, a; \theta_Q) - V(x; \theta_V)
-$$
 
 $$
-\theta_\pi \leftarrow \theta_\pi
-+ \eta_t \,
-A(x, a; \theta_A)\,
-\nabla \log \pi(a \mid x; \theta_\pi)
-$$
---> A2C algorithm.
-
---- 
-Everything we discussed till now is very much on policy! wrt to the current policy, we are going to talk now about still on-policy, but that allows for bigger updates, and then with algorithms with off-policy. 
-### 5.3 TRPO & PPO
-The idea is to do to faster optimization![Screenshot 2026-01-04 at 12.34.43.png](./images/Screenshot 2026-01-04 at 12.34.43.png)
-
-The basic idea is to build this trust region where it can reuse the data:
-$$
-\mathbb{E}_{\tau \sim p_{\theta}} [f(\tau)] = \int p_{\theta}(\tau)f(\tau)d\tau = \int p_{\theta}(\tau) \frac{p_{\theta}(\tau)}{p_{\theta_2}(\tau)} \, f(\tau)d\tau = 
-$$
-$$
-= \mathbb{E}_{\tau \sim p_{\theta_2}} \left [\frac{p_{\theta}(\tau)}{p_{\theta_2}(\tau)} \, f(\tau) \right]
-$$
-This is basically what implement TRPO![Screenshot 2026-01-04 at 12.42.26.png](./images/Screenshot 2026-01-04 at 12.42.26.png)
-[See tutorials]
-
-It's a little bit off-policy, but still on policy. We are going on transitioning to more with off-policy methods:
-
-### 5.4 Another approach to Policy Gradients
-Aa starting point is: not with REINFORCE, but with Q-learning that was used for off policies (DQN). 
-The initial motivation was intractability of $L(\theta)$ computation, where we had to compute $max_{a'} Q(x', a'; \theta^{old})$. One thing we could try to do is to use an actor, a parametrized policy, to try to learn predict that greedy action. SO we use a new NN: $\pi(x'; \theta_{\pi})$: we want to follow the greedy policy 
-$$
-\pi_G(x) = \operatorname{arg max}_a Q(x, a; \theta_Q)
-$$
-if we allow rich enough policies, this is equivalent to 
-$$
-\theta_{\pi}^* \in \operatorname{arg max}_{theta} \mathbb{E}_{x \sim \mu}\left [Q(x, \pi(x;\theta);\theta_Q) \right]
-$$
-where $\mu (x) > 0$ “explores all states”
-The idea is just to apply SGD to this objective: we just need differentiable approximation of Q and $\pi$ (aka NN). 
-
-**Computing the gradients**: given the objective
-
-$$
-\theta_\pi^* \in \arg\max_{\theta} \; \mathbb{E}_{x \sim \mu}
-\left[ Q\bigl(x, \pi(x;\theta); \theta_Q \bigr) \right]
-$$
-From the chain rule:
-$$
-\nabla_{\theta_{\pi}}Q(x, \pi(x;\theta_Q);\theta_Q) = \nabla_a Q(x, a)|_{a =\pi(x;\theta_{\pi})}\underbrace{\nabla_{\theta}\pi(x;\theta)}_{Jacobian}
+= \sum_{t = 0}^{\infty} \mathbb{E}_{x_t, a_t}\!\left[\gamma^t\, \nabla \log \pi(a_t \mid x_t; \theta)\, \underbrace{\mathbb{E}[G_t \mid x_t, a_t]}_{Q^{\pi_{\theta}}(x_t, a_t)}\right]
 $$
 
-But there is an **issue**: policy gradient methods rely on *randomized policies* for exploration. This method above uses *deterministic* policies. So how do we ensure sufficient **exploration**. 
+(the inner expectation is over $(r_t, x_{t+1}, a_{t+1}, r_{t+1}, \ldots)$)
 
-Since method is **off-policy**, can inject additional action noise (e.g., Gaussian) to encourage exploration (akin to epsilon—greedy exploration)![Screenshot 2026-01-09 at 18.22.29.png](./images/Screenshot 2026-01-09 at 18.22.29.png)
-One issue was the over confidence: overestimation bias. 
+$$
+= \mathbb{E}_{x_t, a_t}\!\left[\sum_{t = 0}^{\infty} \gamma^t Q^{\pi_{\theta}}(x_t, a_t)\, \nabla \log \pi(a_t \mid x_t; \theta)\right].
+$$
 
-### TD3 
-Twin delayed DDPG, using 2 actor critic networks, and evaluating the advantage with the smaller one. 
+We can rewrite this as a single integral using the *occupancy measure*:
 
-## 6. Randomized policies
-Can we, instead of injecting random noise, ensure exploration by directly allowing randomized policies?
+$$
+= \int \rho_{\theta}(x)\, \mathbb{E}_{a \sim \pi_{\theta}}\!\left[Q^{\pi_{\theta}}(x, a)\, \nabla \log \pi(a \mid x; \theta)\right] dx,
+$$
+
+where $\rho_{\theta}$ is the *discounted state occupancy measure* (an unnormalised distribution):
+
+$$
+\rho_{\theta}(x) \doteq \sum_{t = 0}^{\infty} \gamma^t\, p_{\theta}(X_t = x).
+$$
+
+(There are many variants of the PGT; we derived the one for infinite-horizon discounted payoffs.) Abusing notation,
+
+$$
+\nabla J(\theta) = \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[Q^{\pi_{\theta}}(x, a)\, \nabla \log \pi(a \mid x; \theta)\right].
+$$
+
+This is the **Policy Gradient Theorem**. The idea is to plug in an approximation of the state–action value function, $Q(x, a; \theta_Q)$.
+
+**Summary.** Actor–critic algorithms combine:
+- an *Actor* (parametrised policy);
+- a *Critic* (value-function approximation).
+
+In Deep RL, both approximations are NNs.
+
+### 5.2 Online actor–critics
+
+Many algorithms can be derived from the Policy Gradient Theorem above. The main ones combine value-function approximation (critic) with the policy-gradient method, approximating
+
+$$
+\nabla J(\theta_{\pi}) = \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[Q(x, a; \theta_Q)\, \nabla \log \pi(a \mid x; \theta_{\pi})\right].
+$$
+
+How do we update the critic? TD-learning (online setting). Subtracting a state-dependent baseline doesn't change the expectation; one common choice is the value function:
+
+$$
+\theta_{\pi} \leftarrow \theta_{\pi} + \eta_t\, \big[Q(x, a; \theta_Q) - V(x; \theta_V)\big]\, \nabla \log \pi(a \mid x; \theta_{\pi}).
+$$
+
+With the advantage estimate
+
+$$
+A(x, a; \theta_A) \triangleq Q(x, a; \theta_Q) - V(x; \theta_V),
+$$
+
+we get
+
+$$
+\theta_{\pi} \leftarrow \theta_{\pi} + \eta_t\, A(x, a; \theta_A)\, \nabla \log \pi(a \mid x; \theta_{\pi}),
+$$
+
+i.e. the **A2C** algorithm.
+
+---
+
+Everything we have discussed is very on-policy. Next we move to still on-policy methods that allow bigger updates, and then to off-policy algorithms.
+
+### 5.3 TRPO &amp; PPO
+
+The idea is faster optimisation:
+
+![Screenshot 2026-01-04 at 12.34.43.png](./images/Screenshot 2026-01-04 at 12.34.43.png)
+
+The basic idea is to build a trust region in which we can re-use data via importance sampling:
+
+$$
+\mathbb{E}_{\tau \sim p_{\theta}}[f(\tau)] = \int p_{\theta}(\tau)\, f(\tau)\, d\tau = \int p_{\theta_2}(\tau)\, \frac{p_{\theta}(\tau)}{p_{\theta_2}(\tau)}\, f(\tau)\, d\tau = \mathbb{E}_{\tau \sim p_{\theta_2}}\!\left[\frac{p_{\theta}(\tau)}{p_{\theta_2}(\tau)}\, f(\tau)\right].
+$$
+
+This is the basic idea of TRPO:
+
+![Screenshot 2026-01-04 at 12.42.26.png](./images/Screenshot 2026-01-04 at 12.42.26.png)
+
+(See tutorials.) It's a little bit off-policy, but still on-policy. Now we transition to genuinely off-policy methods.
+
+### 5.4 Another approach to policy gradients
+
+Starting point: not REINFORCE, but Q-learning used for off-policy methods (DQN). The motivation was the intractability of $L(\theta)$, which required computing $\max_{a'} Q(x', a'; \theta^{\text{old}})$. One thing we can do is use an actor — a parametrised policy — to predict that greedy action. So we use a new NN $\pi(x'; \theta_{\pi})$: we want to follow the greedy policy
+
+$$
+\pi_G(x) = \operatorname*{argmax}_a Q(x, a; \theta_Q).
+$$
+
+If we allow rich enough policies, this is equivalent to
+
+$$
+\theta_{\pi}^{*} \in \operatorname*{argmax}_{\theta}\, \mathbb{E}_{x \sim \mu}\!\left[Q(x, \pi(x; \theta); \theta_Q)\right],
+$$
+
+where $\mu(x) > 0$ "explores all states". The idea is to apply SGD to this objective; we just need differentiable approximations of $Q$ and $\pi$ (i.e. NNs).
+
+**Computing the gradients.** Given the objective above, the chain rule gives
+
+$$
+\nabla_{\theta_{\pi}}\, Q(x, \pi(x; \theta_{\pi}); \theta_Q) = \nabla_a Q(x, a; \theta_Q)\,\big|_{a = \pi(x; \theta_{\pi})}\, \underbrace{\nabla_{\theta_{\pi}} \pi(x; \theta_{\pi})}_{\text{Jacobian}}.
+$$
+
+But there is an **issue**: policy-gradient methods rely on *randomised policies* for exploration; this method uses *deterministic* policies. How do we ensure sufficient **exploration**?
+
+Since the method is **off-policy**, we can inject additional action noise (e.g. Gaussian) to encourage exploration (akin to $\varepsilon$-greedy).
+
+![Screenshot 2026-01-09 at 18.22.29.png](./images/Screenshot 2026-01-09 at 18.22.29.png)
+
+One issue is over-confidence — overestimation bias.
+
+### TD3
+
+Twin Delayed DDPG: uses *two* critic networks and evaluates the target with the smaller of the two.
+
+## 6. Randomised policies
+
+Can we, instead of injecting random noise, ensure exploration by directly allowing randomised policies?
 
 For the critic update:
+
 $$
-\theta_Q \leftarrow \theta_Q
--
-\eta \nabla
-\frac{1}{|B|}
-\sum_{(x,a,r,x',y)\in B}
-\left( Q(x,a;\theta_Q) - y \right)^2
+\theta_Q \leftarrow \theta_Q - \eta\, \nabla\, \frac{1}{\lvert B \rvert} \sum_{(x, a, r, x') \in B} \big(Q(x, a; \theta_Q) - y\big)^2,
 $$
 
 where
 
 $$
-y
-=
-r
-+
-\gamma
-Q\!\left(
-x',
-\pi(x';\theta_\pi^{\text{old}}),
-\theta_Q^{\text{old}}
-\right).
-$$
-we can obtain unbiased gradient estimates by sampling from $a' \sim \pi(x', \theta^{old}_{\pi})$ . And how about the policy update step?
-Recall, for det policies:  $$
-\nabla_\theta Q\bigl(x, \pi(x;\theta); \theta_Q \bigr)
-=
-\left.
-\nabla_a Q(x, a; \theta_Q)
-\right|_{a = \pi(x;\theta)}
-\;
-\nabla_\theta \pi(x;\theta). \quad (0)
-$$
-If you were to compute:
-$$ 
-\nabla_{\theta_{\pi}} \mathbb{E}_{a \sim \pi(x;\theta_{\pi})} [Q(x, a; \theta_a)]
-\quad \quad (1)
-$$
-So, if we suppose we use Gaussian policies = $a \sim \mathcal{N}(\mu_{\theta_{\pi}}, \Sigma_{\theta_{\pi}})$. we can reparametrize as:
-$$
-a = C(x;\theta_{\pi})\cdot \varepsilon + \mu (x; \theta_{\pi})
-$$
-for $\varepsilon \sim \mathcal{N}(0, I)$.
-We plug this into (1):
-$$
-(1) = \nabla_{\theta_{\pi}} \mathbb{E}_{\varepsilon \sim \mathcal{N}(0;I)} \left [Q(x, C(x;\theta_{\pi})\cdot \varepsilon + \mu (x; \theta_{\pi}); \theta_a)\right]
+y = r + \gamma\, Q\!\left(x',\, \pi(x'; \theta_{\pi}^{\text{old}}),\, \theta_Q^{\text{old}}\right).
 $$
 
-This resolving algorithm is called **SVG** (stochastic value gradients)!!!! (see Var. Inf. lecture). 
-
-## 7. RL as Inference: Entropy-regularized RL
-
-one way of doing this is to introduce a set of binary variables $\mathcal{O}_t \in {0, 1}$ with $\mathcal{O}_t=1$ denoting the optimal $a_t$. We define a likelihood on state $x_t$, the action, and the optimality of that corresponding random VA, and how it relates with exponentiated reward:
-$$
-p(o_t = 1, a_t \mid x_t) \propto \exp\!\left(\frac{1}{\lambda} r(x_t, a_t)\right),
-\quad \lambda > 0
-$$
-the lambda is temperature param very large is very peeked. Very strongly favouor action with large rewards. 
-With this setup, we can think about the conditional probability over trajectories in the underlying MDP. 
-So, we condition the probability of observing a trajectory $\tau$ on  $o_t = 1$ (for all $t \in {1, \dots, T}$), i.e. $o_{1:T}$: 
-$$
-\underbrace{
-p(x_1)\prod_{t=1}^T p(x_{t+1} \mid x_t, a_t)
-}_{\text{Probability of } \tau \text{ under the dynamics}}
-\;
-\underbrace{
-\exp\!\left( \frac{1}{\lambda} \sum_{t=1}^T r(x_t, a_t) \right)
-}_{\text{Total reward along } \tau}
-$$
-this is a quite complicate distribution, but we can try to approximate it (using Var. inf.) with the policy we can actually implement:
-Use parametrized policy as a variational posterior:
-$$
-\pi_\theta(a_t \mid x_t)
-\;\approx\;
-p(a_t \mid x_t, o_t = 1)
-$$
-This also induces a distribution over trajectories under $\pi_\theta(a_t \mid x_t)$:$$
-\hat{p}_\theta(\tau)
-=
-\Bigg[
-p(x_1)\prod_{t=1}^T p(x_{t+1} \mid x_t, a_t)
-\Bigg]
-\prod_{t=1}^T \pi_\theta(a_t \mid x_t)
-$$
-we can sample from this one. 
-how should we pick our policy, to have those distr. close as possible? KL divergence: we can view the inference process as minimizing:
-$$
-\arg\min_\theta
-\mathrm{KL}\!\left(
-\hat{p}_\theta(\tau)
-\;\middle\|\;
-p(\tau \mid o_{1:T})
-\right)
-$$
-This is equivalent to maximizing the entropy-regularized RL objective:
-$$
-\arg\max_\theta
-\sum_{t=1}^T
-\mathbb{E}_{(x_t,a_t)\sim \hat{p}_\theta(\tau)}
-\Big[
-r(x_t, a_t)
-+
-\lambda \, H\!\left[\pi_\theta(a_t \mid x_t)\right]
-\Big]
-$$
-**Interpretation**
-- The policy $\pi_\theta$ is trained to **approximate the posterior over optimal trajectories**.
-- The entropy term $H[\pi_\theta(a_t \mid x_t)]$ **arises naturally from KL minimization**, rather than being added manually.
-- The temperature parameter $\lambda$ controls the **reward–entropy trade-off**.
-
-This entropy regularized approach is a natural wat to encourage exploration in MDPs:
-$$
-J_\lambda(\theta)
-= J(\theta) + \lambda H(\pi_\theta)
-$$
+We can obtain unbiased gradient estimates by sampling $a' \sim \pi(\cdot \mid x'; \theta_{\pi}^{\text{old}})$. What about the policy update? Recall, for *deterministic* policies:
 
 $$
-= \mathbb{E}_{(x,a)\sim \pi_\theta}
-\Big[
-r(x,a) + \underbrace{\lambda H\big(\pi_\theta(\cdot \mid x)}_{\text{Use entropy of action distribution to encourage exploration}}\big)
-\Big]
+\nabla_{\theta} Q\!\left(x, \pi(x; \theta); \theta_Q\right) = \nabla_a Q(x, a; \theta_Q)\,\big|_{a = \pi(x; \theta)}\; \nabla_{\theta} \pi(x; \theta). \quad (0)
 $$
-This can suitably define regularized (action)-value functions, called *soft* value functions. 
-One can derive the same previous algo (SVG), now you also have now the action entropy, so the resulting algo is **SAC: Soft Actor-Critic**, it is the same as SVG but you encourage some amount of entropy in the action distribution. This is one of the most common actor critic off policy method used. 
 
-You can also derive a very similar approach instead of regularizing the entropy having a constraint on the KL divergence (**MPO**): updates policy by fitting it to a target soft distribution 
-$$
-q(a \mid x)
-\propto
-\pi_{\theta_{\text{old}}}(a \mid x)\exp\!\left(Q(x,a)\right)
-$$
-One main point, recall Var. Inf.:
-From Entropy to KL Regularization, so far we have discussed
+If we instead want
 
 $$
-\arg\max_{\theta}
-\;\mathbb{E}_{(x,a)\sim \pi_\theta}
-\Big[
-r(x,a) + \lambda H\big(\pi_\theta(\cdot \mid x)\big)
-\Big]
+\nabla_{\theta_{\pi}}\, \mathbb{E}_{a \sim \pi(\cdot \mid x; \theta_{\pi})}[Q(x, a; \theta_Q)] \quad (1),
 $$
-A closely related problem
+
+assume Gaussian policies $a \sim \mathcal{N}(\mu_{\theta_{\pi}}, \Sigma_{\theta_{\pi}})$. We can reparametrise as
+
 $$
-\arg\max_{\theta}
-\;\mathbb{E}_{(x,a)\sim \pi_\theta}
-\Big[
-r(x,a)
--
-\lambda \,\mathrm{KL}\big(
-\pi_\theta(\cdot \mid x)\,\|\,\pi_{\text{ref}}(\cdot \mid x)
-\big)
-\Big]
+a = C(x; \theta_{\pi})\, \varepsilon + \mu(x; \theta_{\pi}), \quad \varepsilon \sim \mathcal{N}(0, I).
 $$
-Instead of maximizing entropy directly, we **regularize the policy using a KL divergence** to a reference (pretrained) policy $\pi_{\text{ref}}$. Maintains proximity to a **reference policy** $\pi_{\text{ref}}$
+
+Plugging into (1):
+
+$$
+(1) = \nabla_{\theta_{\pi}}\, \mathbb{E}_{\varepsilon \sim \mathcal{N}(0, I)}\!\left[Q\!\left(x, C(x; \theta_{\pi})\, \varepsilon + \mu(x; \theta_{\pi}); \theta_Q\right)\right].
+$$
+
+The resulting algorithm is called **SVG** (Stochastic Value Gradients). (See variational inference notes.)
+
+## 7. RL as inference: entropy-regularised RL
+
+One way to do this is to introduce binary variables $\mathcal{O}_t \in \{0, 1\}$, with $\mathcal{O}_t = 1$ denoting that $a_t$ was optimal. We define a likelihood relating the state, action and optimality variable to the exponentiated reward:
+
+$$
+p(\mathcal{O}_t = 1, a_t \mid x_t) \propto \exp\!\left(\tfrac{1}{\lambda}\, r(x_t, a_t)\right), \quad \lambda > 0.
+$$
+
+The temperature $\lambda$ controls the peakedness — a small $\lambda$ strongly favours actions with large rewards.
+
+With this setup, we can think about the conditional probability over trajectories in the underlying MDP. Conditioning on $\mathcal{O}_t = 1$ for all $t \in \{1, \ldots, T\}$:
+
+$$
+\underbrace{p(x_1) \prod_{t=1}^{T} p(x_{t+1} \mid x_t, a_t)}_{\text{prob.\ of } \tau \text{ under the dynamics}} \;\; \underbrace{\exp\!\left(\tfrac{1}{\lambda} \sum_{t=1}^{T} r(x_t, a_t)\right)}_{\text{total reward along } \tau}.
+$$
+
+This is a complicated distribution, but we can approximate it (using variational inference) with a policy we can implement. Use a parametrised policy as a variational posterior:
+
+$$
+\pi_{\theta}(a_t \mid x_t) \approx p(a_t \mid x_t, \mathcal{O}_t = 1).
+$$
+
+This induces a distribution over trajectories under $\pi_{\theta}$:
+
+$$
+\hat{p}_{\theta}(\tau) = \left[p(x_1) \prod_{t=1}^{T} p(x_{t+1} \mid x_t, a_t)\right] \prod_{t=1}^{T} \pi_{\theta}(a_t \mid x_t),
+$$
+
+from which we can sample. How do we pick $\pi_\theta$ to bring these distributions close? With the KL divergence — view inference as
+
+$$
+\operatorname*{argmin}_{\theta}\, \mathrm{KL}\!\left(\hat{p}_{\theta}(\tau)\, \|\, p(\tau \mid \mathcal{O}_{1:T})\right).
+$$
+
+This is equivalent to maximising the entropy-regularised RL objective:
+
+$$
+\operatorname*{argmax}_{\theta}\, \sum_{t=1}^{T} \mathbb{E}_{(x_t, a_t) \sim \hat{p}_{\theta}(\tau)}\!\left[r(x_t, a_t) + \lambda\, H[\pi_{\theta}(\cdot \mid x_t)]\right].
+$$
+
+**Interpretation.**
+- The policy $\pi_{\theta}$ is trained to approximate the posterior over optimal trajectories.
+- The entropy term $H[\pi_{\theta}(\cdot \mid x_t)]$ arises naturally from KL minimisation, rather than being added by hand.
+- The temperature $\lambda$ controls the reward–entropy trade-off.
+
+This entropy-regularised approach is a natural way to encourage exploration in MDPs:
+
+$$
+J_{\lambda}(\theta) = J(\theta) + \lambda\, H(\pi_{\theta}) = \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[r(x, a) + \underbrace{\lambda\, H(\pi_{\theta}(\cdot \mid x))}_{\text{entropy of action distribution encourages exploration}}\right].
+$$
+
+This suitably defines regularised (action-)value functions, called *soft* value functions. One can derive the same kind of algorithm as before (SVG), now with action entropy: the resulting algorithm is **SAC: Soft Actor-Critic** — the same as SVG, but encouraging some entropy in the action distribution. SAC is one of the most common off-policy actor–critic methods in use.
+
+A closely related approach replaces entropy regularisation with a KL constraint (**MPO**): updates the policy by fitting it to a target soft distribution
+
+$$
+q(a \mid x) \propto \pi_{\theta_{\text{old}}}(a \mid x)\, \exp\!\left(Q(x, a)\right).
+$$
+
+**From entropy to KL regularisation.** So far we have discussed
+
+$$
+\operatorname*{argmax}_{\theta}\, \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[r(x, a) + \lambda\, H(\pi_{\theta}(\cdot \mid x))\right].
+$$
+
+A closely related problem:
+
+$$
+\operatorname*{argmax}_{\theta}\, \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[r(x, a) - \lambda\, \mathrm{KL}\big(\pi_{\theta}(\cdot \mid x)\, \|\, \pi_{\text{ref}}(\cdot \mid x)\big)\right].
+$$
+
+Instead of maximising entropy directly, we **regularise the policy with a KL divergence** to a reference (pretrained) policy $\pi_{\text{ref}}$, maintaining proximity to it.
+
+<div class="post-nav">
+  <a class="post-nav-prev" href="./rl_tabular">RL — Tabular</a>
+  <a class="post-nav-next" href="./rl_3">Model-Based Approximate RL</a>
+</div>
