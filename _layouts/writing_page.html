@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writing &amp; Notes — Lorenzo Sciarretta</title>
+  <meta name="description" content="ML / DL / RL notes by Lorenzo Sciarretta — Reinforcement Learning, Statistical ML, LLMs.">
+
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <style>
+    /* Writing page specific overrides */
+    .writing-content { padding: 4rem 0 8rem; }
+    
+    .notes-hero { margin-bottom: 4rem; }
+    .notes-hero h1 { 
+      font-size: clamp(2.5rem, 6vw, 4rem); 
+      font-weight: 800; 
+      letter-spacing: -0.04em; 
+      margin-bottom: 1.5rem;
+    }
+    .notes-hero p { 
+      font-size: 1.25rem; 
+      color: var(--fg-muted); 
+      max-width: 32ch;
+      line-height: 1.4;
+    }
+
+    .section-header { 
+      display: flex; 
+      align-items: center; 
+      gap: 2rem; 
+      margin: 4rem 0 2rem; 
+    }
+    .section-header h2 { 
+      font-size: 0.9rem; 
+      text-transform: uppercase; 
+      letter-spacing: 0.1em; 
+      color: var(--fg-muted); 
+      margin: 0; 
+    }
+    .section-divider { flex: 1; height: 1px; background: var(--border); }
+
+    .chapter-track { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+      gap: 1.5rem; 
+      margin-bottom: 4rem; 
+    }
+
+    .chapter-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 12px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .chapter-card:hover { 
+      border-color: var(--fg-muted); 
+      transform: translateY(-4px); 
+    }
+
+    .chapter-num { 
+      font-size: 0.8rem; 
+      color: var(--fg-muted); 
+      margin-bottom: 1rem; 
+      display: block;
+    }
+    .chapter-card h3 { 
+      font-size: 1.5rem; 
+      font-weight: 600; 
+      margin: 0 0 1rem; 
+    }
+    .chapter-card ul { 
+      margin: 0 0 1.5rem; 
+      padding-left: 1.25rem; 
+      color: var(--fg-muted);
+      font-size: 0.95rem;
+    }
+    .chapter-card ul li { margin-bottom: 0.5rem; }
+    .chapter-link { 
+      font-weight: 600; 
+      font-size: 0.9rem;
+      color: var(--fg);
+    }
+    .chapter-cover {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH5XS5D6LQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EH5XS5D6LQ');
+  </script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">LS</a>
+    <div class="nav-links">
+      <a href="{{ '/#about' | relative_url }}">About</a>
+      <a href="{{ '/#work' | relative_url }}">Work</a>
+      <a href="{{ '/page2' | relative_url }}">Writing</a>
+      <a href="{{ '/#skills' | relative_url }}">Skills</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle Theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="mailto:lorenzo.sciarretta@gmail.com" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="writing-content reveal">
+    {{ content }}
+  </div>
+</main>
+
+<footer class="footer container">
+  <div class="footer-content reveal">
+    <p>© 2026 Lorenzo Sciarretta · Zürich, CH</p>
+    <div class="footer-links">
+      <a href="{{ '/' | relative_url }}">← Back to home</a>
+      <a href="https://github.com/L-Neur0" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/lorenzo-sciarretta-026623218" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

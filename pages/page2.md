@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: writing_page
 permalink: /page2
 ---
 

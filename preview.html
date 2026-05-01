@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lorenzo Sciarretta — AI / ML Researcher</title>
+  <meta name="description" content="AI/ML researcher and engineer at ETH Zürich. Multi-LLM agent systems, weight-space learning, deep learning.">
+
+  <link rel="icon" href="favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/terminal.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH5XS5D6LQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EH5XS5D6LQ');
+  </script>
+</head>
+<body>
+
+<!-- ====== TOP BAR ====== -->
+<nav class="b-topbar">
+  <div class="b-topbar-left">
+    <span class="b-topbar-logo">[L•S]</span>
+    <span class="b-topbar-meta">lorenzo.sciarretta</span>
+  </div>
+
+  <nav class="b-topbar-nav">
+    <a href="#about">about</a>
+    <a href="#education">education</a>
+    <a href="#work">work</a>
+    <a href="page2.html" class="writing-link">writing</a>
+    <a href="#skills">skills</a>
+  </nav>
+
+  <div class="b-topbar-right">
+    <div class="b-mode-toggle">
+      <button id="btn-terse"   type="button">terse</button>
+      <button id="btn-verbose" type="button">verbose</button>
+    </div>
+    <div class="b-topbar-contacts">
+      <!-- Email -->
+      <a href="mailto:lorenzo.sciarretta@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="1"/>
+          <path d="M3 7l9 6 9-6"/>
+        </svg>
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/L-Neur0" target="_blank" rel="noreferrer" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.8c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1A4.7 4.7 0 0 0 18.6 6c.2-.5.5-1.7-.2-3.5 0 0-1.3-.4-4.4 1.6a13 13 0 0 0-7 0C3.9 2.1 2.6 2.5 2.6 2.5c-.7 1.8-.4 3-.2 3.5A4.7 4.7 0 0 0 1 9.1c0 4.7 2.7 5.8 5.5 6.1-.6.6-.6 1.2-.5 2V21"/>
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/lorenzo-sciarretta-026623218" target="_blank" rel="noreferrer" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="5" height="5" rx="0.5"/>
+          <path d="M2 9h5v13H2z"/>
+          <path d="M9 9h5v2c1-1.5 2.5-2.5 4.5-2.5C21.5 8.5 22 11 22 14v8h-5v-6c0-1.5-.2-3-1.8-3-1.6 0-2.2 1.5-2.2 3v6H9z"/>
+        </svg>
+      </a>
+      <!-- Scholar -->
+      <a href="https://scholar.google.com/" target="_blank" rel="noreferrer" title="Google Scholar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 8l10 6 10-6-10-6z"/>
+          <path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== PAGE WRAPPER ====== -->
+<div class="page-b" data-mode="verbose">
+
+  <!-- ====== HERO ====== -->
+  <section class="b-hero">
+    <div class="b-hero-grid">
+
+      <div class="b-hero-main">
+        <div class="b-prompt">
+          <span class="b-prompt-user">lorenzo</span>
+          <span class="b-prompt-sep">~</span>
+          <span class="b-prompt-sep">$</span>
+          <span class="b-prompt-cmd" id="hero-cmd" data-text="whoami --verbose"><span class="cursor"></span></span>
+        </div>
+
+        <h1 class="b-display">
+          <span>Lorenzo</span>
+          <span>Sciarretta</span>
+        </h1>
+
+        <div class="b-tagline">
+          <span class="b-tag-key">role</span>
+          <span class="b-tag-val">AI / ML Researcher &amp; Engineer</span>
+        </div>
+        <div class="b-tagline">
+          <span class="b-tag-key">at</span>
+          <span class="b-tag-val">ETH Zürich &middot; University of St. Gallen</span>
+        </div>
+        <div class="b-tagline">
+          <span class="b-tag-key">lab</span>
+          <span class="b-tag-val">DISCO Lab — Multi-LLM Agent Systems</span>
+        </div>
+        <div class="b-tagline">
+          <span class="b-tag-key">based</span>
+          <span class="b-tag-val">Zürich, Switzerland</span>
+        </div>
+
+        <div class="b-pitch">
+          I research how <b>multiple large language models can work together</b> — coordinate, agree,
+          and reason as a team. Currently at the ETH Zürich DISCO Lab, finishing a joint Master's
+          in Computer Science.
+        </div>
+
+        <div class="b-cta-row">
+          <a href="#work" class="b-cta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square">
+              <path d="M4 12h16M14 6l6 6-6 6"/>
+            </svg>
+            See my work
+          </a>
+          <a href="mailto:lorenzo.sciarretta@gmail.com" class="b-cta b-cta-ghost">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="1"/>
+              <path d="M3 7l9 6 9-6"/>
+            </svg>
+            Get in touch
+          </a>
+        </div>
+      </div><!-- .b-hero-main -->
+
+      <aside class="b-hero-side">
+        <div class="ascii-frame">
+          <div class="ascii-frame-head">
+            <span>┌─ portrait</span>
+            <span style="margin-left:auto">720×720</span>
+          </div>
+          <div class="ascii-frame-body" style="padding:0">
+            <div class="b-portrait">
+              <img src="assets/image-720x720.jpg" alt="Lorenzo Sciarretta">
+            </div>
+          </div>
+        </div>
+
+        <div class="ascii-frame">
+          <div class="ascii-frame-head">
+            <span>┌─ quick facts</span>
+            <span style="margin-left:auto">v.2026</span>
+          </div>
+          <div class="ascii-frame-body">
+            <div class="b-meta-row"><span>name</span><span>L. Sciarretta</span></div>
+            <div class="b-meta-row"><span>field</span><span>AI / ML</span></div>
+            <div class="b-meta-row"><span>msc</span><span>ETH · HSG</span></div>
+            <div class="b-meta-row"><span>lab</span><span>DISCO @ ETH</span></div>
+            <div class="b-meta-row"><span>clock</span><span id="topbar-clock">—</span></div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section><!-- .b-hero -->
+
+  <!-- ====== ABOUT [01] ====== -->
+  <section class="b-section reveal-b" id="about">
+    <header class="b-sec-head">
+      <span class="b-sec-num">[01]</span>
+      <div class="b-sec-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="3.5"/>
+          <path d="M4.5 20c1.4-3.6 4.4-5.5 7.5-5.5s6.1 1.9 7.5 5.5"/>
+        </svg>
+      </div>
+      <span class="b-sec-title">ABOUT</span>
+      <span class="b-sec-sub">// who I am, what I do</span>
+    </header>
+
+    <div class="b-about-grid">
+      <div class="b-about-prose">
+        <p>
+          I'm an AI/ML researcher and engineer finishing a joint Master's in Computer Science at
+          <b>ETH Zürich</b> and the <b>University of St. Gallen</b>.
+        </p>
+        <p>
+          My work sits at the intersection of <b>multi-agent LLM systems</b>,
+          <b>weight-space learning</b>, and post-training. I like systems that learn how to learn,
+          models small enough to live on a chip, and clean abstractions that survive contact with reality.
+        </p>
+        <p>
+          Before this I worked on hyper-representations across collections of neural networks at the
+          <a href="https://ics.unisg.ch/chair-aiml-borth/" target="_blank" rel="noreferrer">HSG AI/ML Lab</a>,
+          neuromorphic edge ML at the
+          <a href="https://ai.ethz.ch/" target="_blank" rel="noreferrer">ETH AI Center</a>,
+          and quantitative time-series research at the HSG Financial Econometrics Chair.
+        </p>
+      </div>
+
+      <div class="b-about-now">
+        <div class="b-now-head">// CURRENTLY</div>
+
+        <div class="b-now-row">
+          <div class="b-now-bullet">▌</div>
+          <div class="b-now-body">
+            <div class="b-now-title">Multi-LLM agent systems &amp; post-training</div>
+            <div class="b-now-where">ETH Zürich · DISCO Lab</div>
+            <div class="b-now-detail">How LLMs collaborate, coordinate, and reason as a collective.</div>
+          </div>
+          <div class="b-now-kind">[Research]</div>
+        </div>
+
+        <div class="b-now-row">
+          <div class="b-now-bullet">▌</div>
+          <div class="b-now-body">
+            <div class="b-now-title">Joint Master in Computer Science</div>
+            <div class="b-now-where">ETH Zürich + HSG · graduating 2026</div>
+            <div class="b-now-detail">Focus on ML systems, learning theory, and AI applications.</div>
+          </div>
+          <div class="b-now-kind">[MSc]</div>
+        </div>
+      </div>
+    </div>
+  </section><!-- #about -->
+
+  <!-- ====== EDUCATION [02] ====== -->
+  <section class="b-section reveal-b" id="education">
+    <header class="b-sec-head">
+      <span class="b-sec-num">[02]</span>
+      <div class="b-sec-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10V6l-10-4L2 6v4"/>
+          <path d="M6 12v6c0 1.5 2.7 3 6 3s6-1.5 6-3v-6"/>
+          <path d="M22 10c0 2-4.5 4-10 4S2 12 2 10"/>
+        </svg>
+      </div>
+      <span class="b-sec-title">EDUCATION</span>
+      <span class="b-sec-sub">// academic background</span>
+    </header>
+
+    <div class="b-edu-grid">
+      <div class="b-edu-item">
+        <div class="b-edu-degree">MSc in Robotics</div>
+        <div class="b-edu-school">ETH Zürich</div>
+        <div class="b-edu-years">2023 — 2026</div>
+        <div class="b-edu-detail">Joint programme with the University of St. Gallen. Focus on multi-agent systems, machine learning theory, and AI applications. Research at the DISCO Lab.</div>
+      </div>
+      <div class="b-edu-item">
+        <div class="b-edu-degree">BSc in Software Engineering</div>
+        <div class="b-edu-school">Università di Bergamo</div>
+        <div class="b-edu-years">2020 — 2023</div>
+        <div class="b-edu-detail">Computer science fundamentals, software architecture, algorithms, and distributed systems. Final project in deep learning for medical imaging.</div>
+      </div>
+    </div>
+  </section><!-- #education -->
+
+  <!-- ====== EXPERIENCE [03] ====== -->
+  <section class="b-section reveal-b" id="experience">
+    <header class="b-sec-head">
+      <span class="b-sec-num">[03]</span>
+      <div class="b-sec-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="6.5" width="18" height="13" rx="1.5"/>
+          <path d="M8 6.5V4.5h8v2"/>
+          <path d="M3 12h18"/>
+        </svg>
+      </div>
+      <span class="b-sec-title">EXPERIENCE</span>
+      <span class="b-sec-sub">// research &amp; industry positions</span>
+    </header>
+
+    <table class="b-exp-table">
+      <thead>
+        <tr>
+          <th>year</th>
+          <th>organisation</th>
+          <th>role</th>
+          <th class="b-exp-col-pi">advisor</th>
+          <th class="b-exp-col-detail">focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="b-exp-col-year">2025–</td>
+          <td class="b-exp-col-org">DISCO Lab, ETH Zürich</td>
+          <td class="b-exp-col-role">Research — Multi-LLM Agents</td>
+          <td class="b-exp-col-pi b-exp-col-pi">—</td>
+          <td class="b-exp-col-detail">Multi-agent coordination, post-training, collective reasoning of LLM ensembles.</td>
+        </tr>
+        <tr>
+          <td class="b-exp-col-year">2024</td>
+          <td class="b-exp-col-org">AI/ML Lab, HSG</td>
+          <td class="b-exp-col-role">Weight Space Learning</td>
+          <td class="b-exp-col-pi">Prof. Damian Borth</td>
+          <td class="b-exp-col-detail">Hyper-representations across collections of neural networks (SANE-MoE).</td>
+        </tr>
+        <tr>
+          <td class="b-exp-col-year">2023</td>
+          <td class="b-exp-col-org">ETH AI Center / INI</td>
+          <td class="b-exp-col-role">Research Assistant</td>
+          <td class="b-exp-col-pi">Prof. Shih-Chii Liu</td>
+          <td class="b-exp-col-detail">Neuromorphic and edge ML — lightweight CNN for brain-machine interfaces.</td>
+        </tr>
+        <tr>
+          <td class="b-exp-col-year">2022</td>
+          <td class="b-exp-col-org">Financial Econometrics, HSG</td>
+          <td class="b-exp-col-role">Quantitative Researcher</td>
+          <td class="b-exp-col-pi">Prof. M. R. Fengler</td>
+          <td class="b-exp-col-detail">Time-series modelling, volatility forecasting, statistical inference.</td>
+        </tr>
+        <tr>
+          <td class="b-exp-col-year">2021</td>
+          <td class="b-exp-col-org">NECSTLab, Politecnico di Milano</td>
+          <td class="b-exp-col-role">Research Intern</td>
+          <td class="b-exp-col-pi">—</td>
+          <td class="b-exp-col-detail">Biomedical computer vision — kidney tumour segmentation on volumetric NIFTI images.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section><!-- #experience -->
+
+  <!-- ====== SELECTED WORK [04] ====== -->
+  <section class="b-section reveal-b" id="work">
+    <header class="b-sec-head">
+      <span class="b-sec-num">[04]</span>
+      <div class="b-sec-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 4h11l4 4v12H5z"/>
+          <path d="M16 4v4h4"/>
+          <path d="M8 13h8M8 17h5"/>
+        </svg>
+      </div>
+      <span class="b-sec-title">SELECTED WORK</span>
+      <span class="b-sec-sub">// 8 projects · 2021 — 2025</span>
+    </header>
+
+    <div class="b-work-list">
+
+      <a class="b-work-row" href="{{ '/assets/IMP_final_version.pdf' | relative_url }}" target="_blank">
+        <span class="b-work-n">01</span>
+        <span class="b-work-title">SANE-MoE</span>
+        <span class="b-work-blurb">Weight-space MoE via hyper-representations — routing in weight space rather than token space.</span>
+        <span class="b-work-tags">[Weight Space] [MoE] [Hyper-Networks]</span>
+        <span class="b-work-year">2025</span>
+        <span class="b-work-arrow">→</span>
+      </a>
+
+      <a class="b-work-row" href="#">
+        <span class="b-work-n">02</span>
+        <span class="b-work-title">NeuNetCNN — Lightweight CNN for BMI</span>
+        <span class="b-work-blurb">Edge-deployable CNN for semantic segmentation on neuromorphic hardware. Under NDA.</span>
+        <span class="b-work-tags">[Deep Learning] [CNN] [Edge ML]</span>
+        <span class="b-work-year">2024</span>
+        <span class="b-work-arrow">—</span>
+      </a>
+
+      <a class="b-work-row" href="https://github.com/L-Neur0/Simple-Local-RAG" target="_blank" rel="noreferrer">
+        <span class="b-work-n">03</span>
+        <span class="b-work-title">Simple Local RAG</span>
+        <span class="b-work-blurb">Fully local RAG system — vector search, prompt chaining, document QA with open-weight LLMs.</span>
+        <span class="b-work-tags">[LangChain] [LLM] [RAG]</span>
+        <span class="b-work-year">2024</span>
+        <span class="b-work-arrow">→</span>
+      </a>
+
+      <a class="b-work-row" href="https://github.com/L-Neur0/EUROSAT-satellite_image-classification" target="_blank" rel="noreferrer">
+        <span class="b-work-n">04</span>
+        <span class="b-work-title">EUROSAT Classification</span>
+        <span class="b-work-blurb">Land-use classification from multispectral satellite imagery with attention and ensembles.</span>
+        <span class="b-work-tags">[Computer Vision] [Attention] [Ensemble]</span>
+        <span class="b-work-year">2024</span>
+        <span class="b-work-arrow">→</span>
+      </a>
+
+      <a class="b-work-row" href="https://github.com/L-Neur0/Pitas---Job-Broker-Application" target="_blank" rel="noreferrer">
+        <span class="b-work-n">05</span>
+        <span class="b-work-title">Job Broker System</span>
+        <span class="b-work-blurb">Auction-based distributed job scheduler — hexagonal arch., worker credit, fault tolerance.</span>
+        <span class="b-work-tags">[Distributed] [Microservices] [Java]</span>
+        <span class="b-work-year">2024</span>
+        <span class="b-work-arrow">→</span>
+      </a>
+
+      <a class="b-work-row" href="https://github.com/L-Neur0/Kits19_BCV_Lorenzo_Sciarretta/tree/main" target="_blank" rel="noreferrer">
+        <span class="b-work-n">06</span>
+        <span class="b-work-title">Kidney Tumour Segmentation</span>
+        <span class="b-work-blurb">CNN pipeline for kidney and tumour segmentation on volumetric NIFTI images at NECSTLab.</span>
+        <span class="b-work-tags">[Biomedical CV] [Segmentation] [PyTorch]</span>
+        <span class="b-work-year">2023</span>
+        <span class="b-work-arrow">→</span>
+      </a>
+
+      <a class="b-work-row" href="https://github.com/L-Neur0/Implementation-of-an-Unsupervised-Deep-Learning-Registration-Framework-for-Histology-Samples/blob/main/Paper.pdf" target="_blank" rel="noreferrer">
+        <span class="b-work-n">07</span>
+        <span class="b-work-title">Histology Registration</span>
+        <span class="b-work-blurb">Unsupervised deep registration of histological slides across stains and resolutions.</span>
+        <span class="b-work-tags">[Medical Imaging] [Unsupervised] [Research Paper]</span>
+        <span class="b-work-year">2023</span>
+        <span class="b-work-arrow">→</span>
+      </a>
+
+      <a class="b-work-row" href="https://github.com/L-Neur0/Software-Engineering-Final-Project" target="_blank" rel="noreferrer">
+        <span class="b-work-n">08</span>
+        <span class="b-work-title">CODEX Naturalis App</span>
+        <span class="b-work-blurb">Full-stack Java board game — network layer (RMI &amp; Socket), game logic, TUI/GUI.</span>
+        <span class="b-work-tags">[Java] [Networking] [GUI/TUI]</span>
+        <span class="b-work-year">2023</span>
+        <span class="b-work-arrow">→</span>
+      </a>
+
+    </div>
+  </section><!-- #work -->
+
+  <!-- ====== HIGHLIGHT POST [05] ====== -->
+  <section class="b-section reveal-b" id="highlight">
+    <header class="b-sec-head">
+      <span class="b-sec-num">[05]</span>
+      <div class="b-sec-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 4h11l4 4v12H5z"/>
+          <path d="M16 4v4h4"/>
+          <path d="M8 13h8M8 17h6"/>
+        </svg>
+      </div>
+      <span class="b-sec-title">HIGHLIGHT POST</span>
+      <span class="b-sec-sub">// featured writing</span>
+    </header>
+
+    <div class="b-highlight-wrap">
+      <a class="b-highlight-post" href="pages/rl_fa.html">
+        <div class="b-feat-label">
+          <span class="b-feat-dot"></span>
+          Reinforcement Learning · Chapter 05
+        </div>
+        <div class="b-feat-title">RL with Function Approximation</div>
+        <div class="b-feat-track">[rl] Approximate Methods</div>
+        <div class="b-feat-summary">
+          TD / Q-learning reframed as stochastic gradient descent on the Bellman error.
+          Covers DQN, Double DQN, REINFORCE with baselines, Advantage Actor-Critic (A2C),
+          TRPO / PPO, DDPG, and SAC — a complete map from value-based to policy-gradient methods.
+        </div>
+        <div class="b-feat-meta">
+          <span>~22 min read</span>
+          <span class="b-feat-meta-sep">·</span>
+          <span>Approximate Methods</span>
+          <span class="b-feat-meta-sep">·</span>
+          <span>StatML / RL track</span>
+          <span class="b-feat-arrow">Read note →</span>
+        </div>
+      </a>
+
+      <div class="b-writing-footer">
+        <a href="page2.html">Browse all writing →</a>
+      </div>
+    </div>
+  </section><!-- #highlight -->
+
+  <!-- ====== SKILLS [06] ====== -->
+  <section class="b-section reveal-b" id="skills">
+    <header class="b-sec-head">
+      <span class="b-sec-num">[06]</span>
+      <div class="b-sec-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="7 8 3 12 7 16"/>
+          <polyline points="17 8 21 12 17 16"/>
+          <line x1="14" y1="5" x2="10" y2="19"/>
+        </svg>
+      </div>
+      <span class="b-sec-title">SKILLS &amp; STACK</span>
+      <span class="b-sec-sub">// 34 tools · 6 areas</span>
+    </header>
+
+    <div class="b-skills">
+      <div class="b-skill-block">
+        <div class="b-skill-head">
+          <span class="b-skill-num">01</span>
+          <span class="b-skill-name">Deep Learning</span>
+          <span class="b-skill-count">[6]</span>
+        </div>
+        <div class="b-skill-items">
+          <span class="b-skill-tag">PyTorch</span>
+          <span class="b-skill-tag">TensorFlow</span>
+          <span class="b-skill-tag">Transformers</span>
+          <span class="b-skill-tag">CNNs</span>
+          <span class="b-skill-tag">RNNs / LSTMs</span>
+          <span class="b-skill-tag">MoE</span>
+        </div>
+      </div>
+
+      <div class="b-skill-block">
+        <div class="b-skill-head">
+          <span class="b-skill-num">02</span>
+          <span class="b-skill-name">LLMs &amp; GenAI</span>
+          <span class="b-skill-count">[5]</span>
+        </div>
+        <div class="b-skill-items">
+          <span class="b-skill-tag">Fine-tuning</span>
+          <span class="b-skill-tag">RAG</span>
+          <span class="b-skill-tag">Prompt Engineering</span>
+          <span class="b-skill-tag">LangChain</span>
+          <span class="b-skill-tag">Efficient Attention</span>
+        </div>
+      </div>
+
+      <div class="b-skill-block">
+        <div class="b-skill-head">
+          <span class="b-skill-num">03</span>
+          <span class="b-skill-name">Machine Learning</span>
+          <span class="b-skill-count">[5]</span>
+        </div>
+        <div class="b-skill-items">
+          <span class="b-skill-tag">scikit-learn</span>
+          <span class="b-skill-tag">SVM</span>
+          <span class="b-skill-tag">Ensemble Methods</span>
+          <span class="b-skill-tag">Time-Series</span>
+          <span class="b-skill-tag">Bayesian Methods</span>
+        </div>
+      </div>
+
+      <div class="b-skill-block">
+        <div class="b-skill-head">
+          <span class="b-skill-num">04</span>
+          <span class="b-skill-name">Computer Vision</span>
+          <span class="b-skill-count">[4]</span>
+        </div>
+        <div class="b-skill-items">
+          <span class="b-skill-tag">Segmentation</span>
+          <span class="b-skill-tag">Classification</span>
+          <span class="b-skill-tag">Medical Imaging</span>
+          <span class="b-skill-tag">Nibabel</span>
+        </div>
+      </div>
+
+      <div class="b-skill-block">
+        <div class="b-skill-head">
+          <span class="b-skill-num">05</span>
+          <span class="b-skill-name">Languages</span>
+          <span class="b-skill-count">[6]</span>
+        </div>
+        <div class="b-skill-items">
+          <span class="b-skill-tag">Python</span>
+          <span class="b-skill-tag">Java</span>
+          <span class="b-skill-tag">R</span>
+          <span class="b-skill-tag">Julia</span>
+          <span class="b-skill-tag">C</span>
+          <span class="b-skill-tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="b-skill-block">
+        <div class="b-skill-head">
+          <span class="b-skill-num">06</span>
+          <span class="b-skill-name">Tools &amp; Infra</span>
+          <span class="b-skill-count">[6]</span>
+        </div>
+        <div class="b-skill-items">
+          <span class="b-skill-tag">Git</span>
+          <span class="b-skill-tag">Pandas / NumPy</span>
+          <span class="b-skill-tag">Plotly</span>
+          <span class="b-skill-tag">LaTeX</span>
+          <span class="b-skill-tag">Snowflake</span>
+          <span class="b-skill-tag">Tableau</span>
+        </div>
+      </div>
+    </div>
+  </section><!-- #skills -->
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="b-footer">
+    <span>© 2026 Lorenzo Sciarretta</span>
+    <span>build 2026-04-28</span>
+    <span>Zürich, CH</span>
+    <span class="b-footer-spacer"></span>
+    <span><a href="mailto:lorenzo.sciarretta@gmail.com">lorenzo.sciarretta@gmail.com</a></span>
+    <span>
+      <a href="https://github.com/L-Neur0" target="_blank" rel="noreferrer">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/lorenzo-sciarretta-026623218" target="_blank" rel="noreferrer">LinkedIn</a>
+    </span>
+  </footer>
+
+</div><!-- .page-b -->
+
+<script src="assets/js/terminal.js"></script>
+</body>
+</html>
