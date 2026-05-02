@@ -1,37 +1,43 @@
 ---
 layout: writing_page
 title: AlphaGOmoku
-description: A Reinforcement Learning based Gomoku agent trained from scratch.
+description: A Reinforcement Learning based Gomoku agent trained from scratch, inspired by AlphaGo.
 ---
 
 # AlphaGOmoku
 
-> **A weekend project built to explore the boundaries of AI-assisted development (vibe-coding) and Reinforcement Learning.**
+> **A project exploring the synergy between Reinforcement Learning and AI-assisted development.**
 
 [View on GitHub](https://github.com/L-Neur0/Alpha-GOmoku)
 
-## The Vision
-AlphaGOmoku is a self-playing agent for the game of Gomoku (Five in a Row), inspired by the AlphaZero architecture. The goal was twofold: to implement a functional Monte Carlo Tree Search (MCTS) combined with a deep neural network, and to see how far I could get in a single weekend by "vibe-coding" with the **Gemini CLI**.
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <img src="{{ '/assets/images/alphagomoku/menu.png' | relative_url }}" alt="AlphaGOmoku Menu" style="border-radius: 8px; border: 1px solid var(--border);">
+  <img src="{{ '/assets/images/alphagomoku/gameplay.png' | relative_url }}" alt="AlphaGOmoku Gameplay" style="border-radius: 8px; border: 1px solid var(--border);">
+</div>
+
+## The Idea
+AlphaGOmoku is a self-playing agent for Gomoku, **directly inspired by the AlphaGo/AlphaZero architecture**. The primary goal was to implement a rigorous reinforcement learning pipeline while leveraging modern AI coding assistants to handle the implementation overhead.
+
+By using the **Gemini CLI** and other assistants to manage the frontend, UI, and boilerplate code, I was able to maintain a laser focus on the core RL logic: the Monte Carlo Tree Search (MCTS) integration and the neural network training dynamics.
 
 ## Reinforcement Learning & Training
-The core of AlphaGOmoku is a self-improvement loop. Unlike traditional chess or Go engines that rely on handcrafted heuristics, this agent learns by playing against itself.
+The agent learns entirely through self-play, starting from zero knowledge of the game beyond the rules.
 
 ### The Architecture
-- **Dual-Head Neural Network:** A shared backbone (CNN) with two heads:
-  - **Policy Head:** Outputs a probability distribution over all possible moves.
-  - **Value Head:** Outputs a scalar evaluating the current board position (probability of winning).
-- **MCTS (Monte Carlo Tree Search):** During both training and play, MCTS uses the neural network's policy and value outputs to guide its search, effectively "looking ahead" and refining the raw network predictions.
+- **Dual-Head Neural Network:** A deep CNN backbone with two heads:
+  - **Policy Head:** Predicts the most promising moves.
+  - **Value Head:** Evaluates the winning probability of the current state.
+- **Search-Guided Learning:** MCTS acts as a policy improver. By searching ahead, it provides a "stronger" move distribution than the raw network, which then serves as the training target for the next iteration.
 
-### The Training Loop
-The training is purely **unsupervised**:
-1. **Self-Play:** The current best model plays thousands of games against itself.
-2. **Data Collection:** Each move, the MCTS search statistics (the "improved" policy) and the final game outcome are stored.
-3. **Optimization:** The neural network is trained to minimize the error between its raw policy/value and the MCTS-derived targets.
+### Training Dynamics
+The training loop follows the AlphaZero paradigm:
+1. **Self-Play:** The agent plays games against itself to generate experience.
+2. **Buffer:** States, MCTS search probabilities, and winners are stored.
+3. **Optimization:** The network is optimized to predict both the MCTS search results and the final game outcome simultaneously.
 
-## Vibe-Coding Process
-This project was an experiment in high-velocity development. By using the **Gemini CLI** as a primary coding partner, I was able to:
-- Rapidly prototype the MCTS logic.
-- Outsource the boilerplate of PyTorch model definitions and training loops.
-- Focus entirely on the "vibes"—the high-level RL strategy and hyperparameters—while the assistant handled the implementation details.
+## Developed with AI Assistants
+This project served as a benchmark for AI-assisted research. The division of labor was clear:
+- **AI Assistants:** Handled the React/Frontend implementation, UI styling, and data plumbing.
+- **Human Researcher:** Designed the RL architecture, tuned hyperparameters, and validated the MCTS convergence.
 
-It stands as a testament to how modern AI assistants allow researchers to transform a theoretical interest (RL training loops) into a functional, trained agent in just a few days.
+This workflow demonstrates how researchers can now prototype complex, end-to-end systems by focusing on high-level algorithmic design while delegating the implementation details to specialized LLMs.
