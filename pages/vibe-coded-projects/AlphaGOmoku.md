@@ -10,9 +10,9 @@ description: A Reinforcement Learning based Gomoku agent trained from scratch, i
 
 [View on GitHub](https://github.com/L-Neur0/Alpha-GOmoku)
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
-  <img src="{{ '/assets/images/alphagomoku/menu.png' | relative_url }}" alt="AlphaGOmoku Menu" style="border-radius: 8px; border: 1px solid var(--border);">
-  <img src="{{ '/assets/images/alphagomoku/gameplay.png' | relative_url }}" alt="AlphaGOmoku Gameplay" style="border-radius: 8px; border: 1px solid var(--border);">
+<div style="display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; align-items: center;">
+  <img src="{{ '/assets/images/alphagomoku/menu.png' | relative_url }}" alt="AlphaGOmoku Menu" style="max-width: 500px; width: 100%; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <img src="{{ '/assets/images/alphagomoku/gameplay.png' | relative_url }}" alt="AlphaGOmoku Gameplay" style="max-width: 500px; width: 100%; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
 </div>
 
 ## The Idea
