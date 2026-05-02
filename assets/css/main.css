@@ -215,7 +215,7 @@ a:hover {
 
 @media (max-width: 768px) {
   .hero-header {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
     gap: 2rem;
   }
