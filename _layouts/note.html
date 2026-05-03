@@ -207,6 +207,11 @@
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Re-initialize reveal animations for dynamically generated content or if script loaded late
+    if (typeof initRevealAnimations === 'function') {
+      initRevealAnimations();
+    }
+
     const toc = document.getElementById('toc');
     const content = document.querySelector('.note-content');
     const headings = content.querySelectorAll('h2, h3');
