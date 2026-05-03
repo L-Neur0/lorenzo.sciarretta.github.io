@@ -28,16 +28,6 @@
 /* === Reset & Base === */
 *, *::before, *::after { box-sizing: border-box; }
 
-::selection {
-  background-color: rgba(255, 240, 0, 0.9);
-  color: #000;
-}
-
-::-moz-selection {
-  background-color: rgba(255, 240, 0, 0.9);
-  color: #000;
-}
-
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -474,4 +464,15 @@ a:hover {
     gap: 1.5rem;
     text-align: center;
   }
+}
+
+/* Global Text Selection (Stabilo Highlighter) */
+::selection {
+  background-color: #fff000 !important;
+  color: #000 !important;
+}
+
+::-moz-selection {
+  background-color: #fff000 !important;
+  color: #000 !important;
 }
