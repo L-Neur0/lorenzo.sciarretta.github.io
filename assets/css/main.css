@@ -468,11 +468,11 @@ a:hover {
 
 /* Global Text Selection (Stabilo Highlighter) */
 ::selection {
-  background-color: #fff000 !important;
+  background-color: rgba(255, 240, 0, 0.7) !important;
   color: #000 !important;
 }
 
 ::-moz-selection {
-  background-color: #fff000 !important;
+  background-color: rgba(255, 240, 0, 0.7) !important;
   color: #000 !important;
 }

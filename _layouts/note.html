@@ -207,10 +207,17 @@
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Re-initialize reveal animations for dynamically generated content or if script loaded late
+    // Re-initialize reveal animations
     if (typeof initRevealAnimations === 'function') {
       initRevealAnimations();
     }
+    
+    // Safety fallback: reveal after a short delay if not already visible
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.add('in-view');
+      });
+    }, 500);
 
     const toc = document.getElementById('toc');
     const content = document.querySelector('.note-content');
