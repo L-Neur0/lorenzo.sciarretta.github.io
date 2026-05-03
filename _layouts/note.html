@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — Lorenzo Sciarretta</title>
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% endif %}
+
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <style>
+    /* Note Layout Specifics */
+    .note-wrapper {
+      display: grid;
+      grid-template-columns: 1fr min(750px, 100%) 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 6rem 2rem;
+      margin: 0 auto;
+    }
+
+    .note-content {
+      grid-column: 2;
+      width: 100%;
+    }
+
+    /* Typography & Content Styling */
+    .note-content h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 2rem; line-height: 1.1; }
+    .note-content h2 { font-size: 1.75rem; font-weight: 700; margin: 3.5rem 0 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .note-content h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    .note-content p { font-size: 1.1rem; line-height: 1.7; color: var(--fg-muted); margin-bottom: 1.5rem; }
+    
+    .note-content blockquote {
+      margin: 2.5rem 0;
+      padding: 1.5rem 2rem;
+      border-left: 2px solid var(--fg);
+      background: var(--card-bg);
+      font-style: italic;
+      color: var(--fg);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .note-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin: 2.5rem 0;
+      display: block;
+    }
+
+    /* TOC styling */
+    .toc-aside {
+      grid-column: 3;
+      position: sticky;
+      top: 120px;
+      padding-left: 2rem;
+      width: 300px;
+    }
+
+    .toc-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--fg-muted);
+      margin-bottom: 1.5rem;
+      display: block;
+      font-weight: 700;
+      opacity: 0.5;
+    }
+
+    #toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .toc-item {
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .toc-link {
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: block;
+      line-height: 1.4;
+      transform-origin: left;
+    }
+
+    .toc-link:hover {
+      color: var(--fg);
+    }
+
+    .toc-link.active {
+      color: var(--fg);
+      font-weight: 600;
+      transform: scale(1.1) translateX(4px);
+    }
+
+    /* Active Indicator Dot */
+    .toc-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5px;
+      top: 50%;
+      width: 2px;
+      height: 0;
+      background: var(--fg);
+      transition: all 0.4s ease;
+      transform: translateY(-50%);
+    }
+
+    .toc-item:has(.active)::before {
+      height: 100%;
+    }
+
+    @media (max-width: 1200px) {
+      .note-wrapper {
+        grid-template-columns: 1fr min(750px, 100%);
+      }
+      .toc-aside {
+        display: none;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .note-wrapper {
+        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem;
+      }
+      .note-content {
+        grid-column: 1;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH5XS5D6LQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EH5XS5D6LQ');
+  </script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">LS</a>
+    <div class="nav-links">
+      <a href="{{ '/#about' | relative_url }}">About</a>
+      <a href="{{ '/#work' | relative_url }}">Work</a>
+      <a href="{{ '/page2' | relative_url }}">Writing</a>
+      <a href="{{ '/#skills' | relative_url }}">Skills</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle Theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="mailto:lorenzo.sciarretta@gmail.com" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="note-wrapper">
+  <article class="note-content reveal">
+    {{ content }}
+  </article>
+
+  <aside class="toc-aside reveal">
+    <span class="toc-label">In this note</span>
+    <nav id="toc-nav">
+      <ul id="toc"></ul>
+    </nav>
+  </aside>
+</main>
+
+<footer class="footer container">
+  <div class="footer-content reveal">
+    <p>© 2026 Lorenzo Sciarretta · Zürich, CH</p>
+    <div class="footer-links">
+      <a href="{{ '/page2' | relative_url }}">← Back to writing</a>
+      <a href="https://github.com/L-Neur0" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/lorenzo-sciarretta-026623218" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toc = document.getElementById('toc');
+    const content = document.querySelector('.note-content');
+    const headings = content.querySelectorAll('h2, h3');
+    
+    if (headings.length === 0) {
+      const aside = document.querySelector('.toc-aside');
+      if (aside) aside.style.display = 'none';
+      return;
+    }
+
+    // Generate TOC
+    headings.forEach((heading) => {
+      const id = heading.id || heading.innerText.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+      heading.id = id;
+
+      const li = document.createElement('li');
+      li.classList.add('toc-item');
+      
+      const a = document.createElement('a');
+      a.href = `#${id}`;
+      a.innerText = heading.innerText;
+      a.classList.add('toc-link');
+      
+      if (heading.tagName === 'H3') {
+        a.style.paddingLeft = '1rem';
+        a.style.fontSize = '0.8rem';
+        a.style.opacity = '0.8';
+      }
+      
+      li.appendChild(a);
+      toc.appendChild(li);
+    });
+
+    // Intersection Observer for Active State
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const observerOptions = {
+      root: null,
+      rootMargin: '-10% 0px -80% 0px', // Narrow band near the top
+      threshold: 0
+    };
+
+    let activeId = '';
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeId = entry.target.id;
+        }
+      });
+
+      if (activeId) {
+        tocLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${activeId}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    }, observerOptions);
+
+    headings.forEach(heading => observer.observe(heading));
+    
+    // Smooth scroll for TOC links
+    tocLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

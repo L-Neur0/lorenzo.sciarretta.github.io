@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: note
 permalink: /rl_approx
 title: RL with Function Approximation
 ---

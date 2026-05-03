@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: writing_page
 permalink: /rl_index
 title: Reinforcement Learning — Index
 ---

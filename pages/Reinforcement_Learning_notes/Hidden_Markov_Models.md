@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: note
 permalink: /rl_hmm
 title: Hidden Markov Models
 ---

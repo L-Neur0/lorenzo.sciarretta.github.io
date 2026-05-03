@@ -1,6 +1,6 @@
 ---
 title: /contact
-layout: page
+layout: note
 permalink: /contact
 ---
 

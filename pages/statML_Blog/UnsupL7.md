@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: note
 permalink: /blog7
 ---
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

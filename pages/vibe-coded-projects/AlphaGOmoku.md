@@ -1,5 +1,5 @@
 ---
-layout: writing_page
+layout: note
 title: AlphaGOmoku
 description: A Reinforcement Learning based Gomoku agent trained from scratch, inspired by AlphaGo.
 ---
