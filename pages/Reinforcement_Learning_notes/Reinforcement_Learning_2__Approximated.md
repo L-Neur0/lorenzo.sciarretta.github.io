@@ -80,7 +80,7 @@ $$
 with gradient w.r.t. $\theta(x)$:
 
 $$
-\delta_{\text{TD}} \coloneqq \nabla_{\theta(x)}\, \ell(\theta; x, r, x') = \theta(x) - \big(r + \gamma\, \theta^{\text{old}}(x')\big).
+\delta_{\text{TD}} := \nabla_{\theta(x)}\, \ell(\theta; x, r, x') = \theta(x) - \big(r + \gamma\, \theta^{\text{old}}(x')\big).
 $$
 
 This is the **temporal-difference (TD) error**: it compares the previous estimate of the value function to the bootstrapped one.
@@ -103,13 +103,13 @@ where $\phi$ is a hand-designed feature map. (A common alternative is to use a N
 After observing a transition $(x, a, r, x')$, the gradient update (analogous to the one for $V$) uses
 
 $$
-\ell(\theta; x, a, r, x') \coloneqq \tfrac{1}{2}\!\left(r + \gamma \max_{a' \in \mathcal{A}} Q^{*}(x', a'; \theta^{\text{old}}) - Q^{*}(x, a; \theta)\right)^2.
+\ell(\theta; x, a, r, x') := \tfrac{1}{2}\!\left(r + \gamma \max_{a' \in \mathcal{A}} Q^{*}(x', a'; \theta^{\text{old}}) - Q^{*}(x, a; \theta)\right)^2.
 $$
 
 The difference between the current approximation and the optimisation target,
 
 $$
-\delta_{\mathrm{B}} \coloneqq r + \gamma \max_{a' \in \mathcal{A}} Q^{*}(x', a'; \theta^{\text{old}}) - Q^{*}(x, a; \theta),
+\delta_{\mathrm{B}} := r + \gamma \max_{a' \in \mathcal{A}} Q^{*}(x', a'; \theta^{\text{old}}) - Q^{*}(x, a; \theta),
 $$
 
 is called the *Bellman error*. Analogously to TD-learning, we obtain the gradient update
@@ -155,13 +155,13 @@ $$
 where
 
 $$
-a^{*}(\theta) = \operatorname*{argmax}_{a'} Q(x', a'; \theta).
+a^{*}(\theta) = \operatorname{argmax}_{a'} Q(x', a'; \theta).
 $$
 
 The fundamental idea of Q-learning is that it chooses the next action by implicitly defining a policy via
 
 $$
-a_t = \operatorname*{argmax}_a Q(x_t, a; \theta),
+a_t = \operatorname{argmax}_a Q(x_t, a; \theta),
 $$
 
 but this is **intractable** for large or continuous action spaces.
@@ -173,7 +173,7 @@ but this is **intractable** for large or continuous action spaces.
 Learn a parametrised policy (actor): $\pi(x) = \pi_{\theta}(x) = \pi(x; \theta)$. For episodic tasks (when the agent can be reset), expected rewards can be computed by "rollouts" (Monte Carlo forward sampling — on-policy). The idea is to find optimal parameters via global optimisation:
 
 $$
-\theta^{*} = \operatorname*{argmax}_{\theta}\, \hat{J}_T(\theta).
+\theta^{*} = \operatorname{argmax}_{\theta}\, \hat{J}_T(\theta).
 $$
 
 ### 4.1 Policy gradients
@@ -333,7 +333,7 @@ $$
 \pi \text{ optimal} \iff \forall x, a:\; A^{\pi}(x, a) \leq 0.
 $$
 
-The greedy policy can be re-stated as $\pi_G(x) = \operatorname*{argmax}_a Q^{\pi}(x, a) = \operatorname*{argmax}_a A^{\pi}(x, a)$.
+The greedy policy can be re-stated as $\pi_G(x) = \operatorname{argmax}_a Q^{\pi}(x, a) = \operatorname{argmax}_a A^{\pi}(x, a)$.
 
 We have already seen how to estimate the value function; below we will see we can also estimate it *off-policy*.
 
@@ -456,13 +456,13 @@ This is the basic idea of TRPO:
 Starting point: not REINFORCE, but Q-learning used for off-policy methods (DQN). The motivation was the intractability of $L(\theta)$, which required computing $\max_{a'} Q(x', a'; \theta^{\text{old}})$. One thing we can do is use an actor — a parametrised policy — to predict that greedy action. So we use a new NN $\pi(x'; \theta_{\pi})$: we want to follow the greedy policy
 
 $$
-\pi_G(x) = \operatorname*{argmax}_a Q(x, a; \theta_Q).
+\pi_G(x) = \operatorname{argmax}_a Q(x, a; \theta_Q).
 $$
 
 If we allow rich enough policies, this is equivalent to
 
 $$
-\theta_{\pi}^{*} \in \operatorname*{argmax}_{\theta}\, \mathbb{E}_{x \sim \mu}\!\left[Q(x, \pi(x; \theta); \theta_Q)\right],
+\theta_{\pi}^{*} \in \operatorname{argmax}_{\theta}\, \mathbb{E}_{x \sim \mu}\!\left[Q(x, \pi(x; \theta); \theta_Q)\right],
 $$
 
 where $\mu(x) > 0$ "explores all states". The idea is to apply SGD to this objective; we just need differentiable approximations of $Q$ and $\pi$ (i.e. NNs).
@@ -558,13 +558,13 @@ $$
 from which we can sample. How do we pick $\pi_\theta$ to bring these distributions close? With the KL divergence — view inference as
 
 $$
-\operatorname*{argmin}_{\theta}\, \mathrm{KL}\!\left(\hat{p}_{\theta}(\tau)\, \|\, p(\tau \mid \mathcal{O}_{1:T})\right).
+\operatorname{argmin}_{\theta}\, \mathrm{KL}\!\left(\hat{p}_{\theta}(\tau)\, \|\, p(\tau \mid \mathcal{O}_{1:T})\right).
 $$
 
 This is equivalent to maximising the entropy-regularised RL objective:
 
 $$
-\operatorname*{argmax}_{\theta}\, \sum_{t=1}^{T} \mathbb{E}_{(x_t, a_t) \sim \hat{p}_{\theta}(\tau)}\!\left[r(x_t, a_t) + \lambda\, H[\pi_{\theta}(\cdot \mid x_t)]\right].
+\operatorname{argmax}_{\theta}\, \sum_{t=1}^{T} \mathbb{E}_{(x_t, a_t) \sim \hat{p}_{\theta}(\tau)}\!\left[r(x_t, a_t) + \lambda\, H[\pi_{\theta}(\cdot \mid x_t)]\right].
 $$
 
 **Interpretation.**
@@ -589,13 +589,13 @@ $$
 **From entropy to KL regularisation.** So far we have discussed
 
 $$
-\operatorname*{argmax}_{\theta}\, \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[r(x, a) + \lambda\, H(\pi_{\theta}(\cdot \mid x))\right].
+\operatorname{argmax}_{\theta}\, \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[r(x, a) + \lambda\, H(\pi_{\theta}(\cdot \mid x))\right].
 $$
 
 A closely related problem:
 
 $$
-\operatorname*{argmax}_{\theta}\, \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[r(x, a) - \lambda\, \mathrm{KL}\big(\pi_{\theta}(\cdot \mid x)\, \|\, \pi_{\text{ref}}(\cdot \mid x)\big)\right].
+\operatorname{argmax}_{\theta}\, \mathbb{E}_{(x, a) \sim \pi_{\theta}}\!\left[r(x, a) - \lambda\, \mathrm{KL}\big(\pi_{\theta}(\cdot \mid x)\, \|\, \pi_{\text{ref}}(\cdot \mid x)\big)\right].
 $$
 
 Instead of maximising entropy directly, we **regularise the policy with a KL divergence** to a reference (pretrained) policy $\pi_{\text{ref}}$, maintaining proximity to it.

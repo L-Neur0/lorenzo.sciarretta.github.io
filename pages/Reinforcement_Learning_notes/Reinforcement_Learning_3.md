@@ -65,13 +65,13 @@ Since we are optimising over an infinite horizon, this problem cannot be solved 
 So at each iteration we solve an optimisation problem. For <mark>deterministic</mark> models $f$, $x_{\tau}$ is determined by $a_{t:\tau-1}$:
 
 $$
-x_{\tau} \coloneqq x_{\tau}(a_{t:\tau - 1}) = f(\,f(\,\ldots f(\,f(x_t, a_t),\, a_{t+1})\, \ldots,\, a_{\tau - 1}\,)\,).
+x_{\tau} := x_{\tau}(a_{t:\tau - 1}) = f(\,f(\,\ldots f(\,f(x_t, a_t),\, a_{t+1})\, \ldots,\, a_{\tau - 1}\,)\,).
 $$
 
 So at each step we maximise
 
 $$
-J_H(a_{t:t+H-1}) \coloneqq \sum_{\tau = t}^{t+H-1} \gamma^{\tau - t}\, r\!\left(x_{\tau}(a_{t:\tau - 1}),\, a_{\tau}\right).
+J_H(a_{t:t+H-1}) := \sum_{\tau = t}^{t+H-1} \gamma^{\tau - t}\, r\!\left(x_{\tau}(a_{t:\tau - 1}),\, a_{\tau}\right).
 $$
 
 **How do we optimise this?** For continuous actions we can analytically compute gradients (BPTT), but it's challenging — so we usually use **heuristic global optimisation**.
@@ -79,7 +79,7 @@ $$
 *Example —* <mark>**random shooting**</mark>**:** a sampling approach for global optimisation of $J_H$. Generate <mark>$m$ sets</mark> of random samples $a^{i}_{t:t+H-1}$ and pick the sequence that optimises:
 
 $$
-i^{*} = \operatorname*{argmax}_{i \in \{1, \ldots, m\}} J_H(a^{i}_{t:t+H-1}).
+i^{*} = \operatorname{argmax}_{i \in \{1, \ldots, m\}} J_H(a^{i}_{t:t+H-1}).
 $$
 
 **Limitation:** a common problem of finite-horizon methods is that, in <mark>sparse-reward</mark> settings, there is often no signal to follow.
@@ -87,7 +87,7 @@ $$
 **Remark.** If we use the value estimate $V$, then for $H = 1$ maximising $J_H$ coincides with the <mark>**greedy policy**</mark> w.r.t. $V$:
 
 $$
-a_t \coloneqq \operatorname*{argmax}_{a \in \mathcal{A}} \hat{J}_1 = \text{greedy policy}.
+a_t := \operatorname{argmax}_{a \in \mathcal{A}} \hat{J}_1 = \text{greedy policy}.
 $$
 
 ### MPC for stochastic transition models
@@ -108,7 +108,7 @@ A common approach: **Monte Carlo trajectory sampling**.
 
 Due to the Markovian structure of the MDP, observed transitions and rewards are (conditionally) independent. If we don't know the dynamics and reward, we can estimate them off-policy with standard supervised-learning techniques from a replay buffer.
 
-For continuous state spaces, **learning $f$ and $r$ is essentially a regression** (density-estimation) problem. Each experience $(x, a, r, x')$ provides a labelled data point $(z, y)$, where $z \coloneqq (x, a)$ is the input and $y \coloneqq x'$ (resp. $r$) is the label.
+For continuous state spaces, **learning $f$ and $r$ is essentially a regression** (density-estimation) problem. Each experience $(x, a, r, x')$ provides a labelled data point $(z, y)$, where $z := (x, a)$ is the input and $y := x'$ (resp. $r$) is the label.
 
 How can we learn?
 1. MAP estimation — but suffers from compounding errors.

@@ -116,7 +116,7 @@ Obtain an (approximate) solution to $V^{\pi}$.
 Recall that our goal was to find an optimal policy:
 
 $$
-\pi^{*} = \operatorname*{argmax}_{\pi}\, \mathbb{E}_{\pi}[G_0].
+\pi^{*} = \operatorname{argmax}_{\pi}\, \mathbb{E}_{\pi}[G_0].
 $$
 
 We can alternatively characterise an optimal policy via
@@ -134,7 +134,7 @@ $$
 We define the *<mark>greedy policy</mark>* with respect to a state–action value function as
 
 $$
-\pi_q(x) = \operatorname*{argmax}_{a \in A}\, q(x, a).
+\pi_q(x) = \operatorname{argmax}_{a \in A}\, q(x, a).
 $$
 
 ## Bellman optimality equation
@@ -147,7 +147,7 @@ It turns out that the optimal policy $\pi^{*}$ is a fixed point of this dependen
 
 <div class="callout theorem" markdown="1">
 <div class="callout-label">Theorem · Bellman</div>
-A policy $\pi^{*}$ is optimal iff it is greedy with respect to its own value function. Equivalently, $\pi^{*}$ is optimal iff $\pi^{*}(x)$ is a distribution over $\operatorname*{argmax}_{a \in A} q^{*}(x, a)$.
+A policy $\pi^{*}$ is optimal iff it is greedy with respect to its own value function. Equivalently, $\pi^{*}$ is optimal iff $\pi^{*}(x)$ is a distribution over $\operatorname{argmax}_{a \in A} q^{*}(x, a)$.
 </div>
 
 <div class="callout corollary" markdown="1">

@@ -88,10 +88,8 @@ projecting it onto the subspace spanned by the $M$ columns of B.\
 of generality, the assumption that:
 $$\mathbb V_z[z] = \mathbb V_x[B^T(x - \mu)] = \mathbb V_x[B^Tx - B^T\mu] = \mathbb V_x[B^Tx]$$
 With this assumption the mean of the low-dimensional code is also 0
-since $\mathbb E[z] = \mathbb E[B^Tx] = B^T\mathbb E[x] = 0$. 0◻\
+since $\mathbb E[z] = \mathbb E[B^Tx] = B^T\mathbb E[x] = 0$. \
 \
-
-![image](image/Screenshot 2024-12-03 at 10.23.48.png){width="40%"}
 
 #### Direction with Maximal Variance
 

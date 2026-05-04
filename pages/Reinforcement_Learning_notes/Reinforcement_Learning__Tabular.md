@@ -228,7 +228,7 @@ $$
 \hat{Q}^{*}(x, a) = \frac{R_{\max}}{1 - \gamma} \prod_{t = 1}^{T_{\text{init}}} (1 - \alpha_t)^{-1}
 $$
 
-and at time $t$ pick $a_t \in \operatorname*{argmax}_a \hat{Q}^{*}(x_t, a)$.
+and at time $t$ pick $a_t \in \operatorname{argmax}_a \hat{Q}^{*}(x_t, a)$.
 
 <div class="callout theorem" markdown="1">
 <div class="callout-label">Theorem</div>
@@ -237,7 +237,7 @@ With probability $1 - \delta$, optimistic Q-learning obtains an $\varepsilon$-op
 
 **Properties:**
 - Memory: store $\hat{Q}^{*}(x, a)$ for each $(x, a)$ — $O(n \cdot m)$.
-- Computation time: $O(m)$ per iteration to compute $\operatorname*{argmax}_a \hat{Q}(x_t, a)$.
+- Computation time: $O(m)$ per iteration to compute $\operatorname{argmax}_a \hat{Q}(x_t, a)$.
 
 ### Neural Fitted Q-iteration / DQN
 
@@ -252,7 +252,7 @@ $$
 The fundamental idea of Q-learning is that it chooses the next action by implicitly defining a policy via
 
 $$
-a_t = \operatorname*{argmax}_a Q(x_t, a; \theta),
+a_t = \operatorname{argmax}_a Q(x_t, a; \theta),
 $$
 
 but this is **intractable** for large or continuous action spaces.
@@ -262,7 +262,7 @@ but this is **intractable** for large or continuous action spaces.
 Learn a parametrised policy (actor): $\pi(x) = \pi_{\theta}(x) = \pi(x; \theta)$. For episodic tasks (i.e. when the agent can be reset), expected rewards can be computed by "rollouts" (Monte Carlo forward sampling — on-policy). The idea is to find optimal parameters via global optimisation:
 
 $$
-\theta^{*} = \operatorname*{argmax}_{\theta} J(\theta) \approx \operatorname*{argmax}_{\theta} \hat{J}_T(\theta).
+\theta^{*} = \operatorname{argmax}_{\theta} J(\theta) \approx \operatorname{argmax}_{\theta} \hat{J}_T(\theta).
 $$
 
 <div class="post-nav">
