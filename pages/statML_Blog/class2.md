@@ -1,6 +1,7 @@
 ---
 layout: note
 permalink: /blog2
+title: Classification
 ---
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
@@ -29,12 +30,12 @@ than a data-centric approach.\
 Given two classe, 0 and 1, we can model the probability that Y belongs
 to a class as: $$P(Y = 1 | X) = \beta_0 + \beta_1 X = p(x)$$ But, as it
 is clear to see, if we try to fit a binary model in this linear model we
-will have a problem. To avoid this problem, we model $p(x)$ using a
+will have a problem. To avoid this problem, we model $$p(x)$$ using a
 squashing function, that gives output between 0 and 1, such as the
 **logistic function**:
 $$p(x) = \frac{e^{\beta_0 + \beta_1 X}}{1 + e^{\beta_0 + \beta_1 X}}$$
 So, if we want to fit the model, we have to estimate the coefficients
-$\beta_0$ and $\beta_1$ that maximize the \"likelihood\" of the data. To
+$$\beta_0$$ and $$\beta_1$$ that maximize the \"likelihood\" of the data. To
 get rid off the exponential expression of the logistic function we
 consider the **odds** instead of the probabilities.
 
@@ -44,7 +45,7 @@ the probability of non-success(0). In terms of probabilities, the odds
 is defined as the ratio of the probability of the event happening to the
 probability of the event not happening.
 $$\text{Odds} = \frac{p(x)}{1 - p(x)}$$ **Remark:** The odds can take
-values between 0 and $\infty$.
+values between 0 and $$\infty$$.
 :::
 
 After a bit of manipulation, we can rewrite the logistic function as:
@@ -59,7 +60,7 @@ above logit, the more general method of maximum likelihood is preferred.
 Given that, the estimation of the coefficients for the logistic
 regression method is done by maximizing the likelihood of the data,
 which is the product of the probabilities of the observed data. We
-choose $\beta_0$ and $\beta_1$ to maximize the probabilityof the data of
+choose $$\beta_0$$ and $$\beta_1$$ to maximize the probabilityof the data of
 belonging to one class.
 
 #### Multiple Logistic Regression
@@ -76,15 +77,15 @@ And then apply the MLE for estimating the coefficients.\
 #### Multinomial Logistic Regression
 
 The multinomial logistic regression is used when the response variable
-has more than two classes, $K>2$. It is basically the extension of the
+has more than two classes, $$K>2$$. It is basically the extension of the
 logistic regression model to the case of more than two classes.\
-wee do that by setting a class $K$ as the baseline, compute
-$P(Y=K | X = x)$ and then compute $P(Y = k | X)$ for all the other
-classes $k \neq K$; we can show that the logit in this case is, for all
-the classes $k \neq K$:
+wee do that by setting a class $$K$$ as the baseline, compute
+$$P(Y=K | X = x)$$ and then compute $$P(Y = k | X)$$ for all the other
+classes $$k \neq K$$; we can show that the logit in this case is, for all
+the classes $$k \neq K$$:
 $$\log \left( \frac{P(Y = k | X=x)}{P(Y = K | X= x)} \right) = \beta_{k0} + \beta_{k1}x$$
 This equation indicates that the log-odds that an observation belongs to
-class $k$ is a linear function of the predictors.
+class $$k$$ is a linear function of the predictors.
 
 ### Generative models for Classification
 
@@ -109,10 +110,10 @@ a class given the data.\
 
 We remember that the Bayes' theorem is:
 $$P(Y = k | X = x) = \frac{P(X = x | Y = k)P(Y = k)}{P(X = x)}$$ We can
-rewrite this by considering the **prior** probability $\pi_k$ of the
+rewrite this by considering the **prior** probability $$\pi_k$$ of the
 class k, which is: $$\pi_k = P(Y = k)$$ and the density function of an
-observation $x$ given the class $k$, which is called **posterior**
-probability of an observation belonging to the class $k$,
+observation $$x$$ given the class $$k$$, which is called **posterior**
+probability of an observation belonging to the class $$k$$,
 $$f_k(x) = P(X = x | Y = k)$$\
 We can rewrite the Bayes' theorem as:
 $$P(Y = k | X = x) = \frac{\pi_k f_k(x)}{\sum_{l=1}^{K} \pi_l f_l(x)}$$
@@ -120,22 +121,22 @@ This is called the **Bayes approach** to classification.
 
 #### Linear Discriminant Analysis-LDA
 
-The LDA is a bayes approach model that uses one predictor , $p = 1$, and
+The LDA is a bayes approach model that uses one predictor , $$p = 1$$, and
 assumes that the densities of the predictors in each class are
 **normally (Gaussian) distributed**. It si linear because the the
-discriminant function is linear in $x$:
+discriminant function is linear in $$x$$:
 $$\delta_k(x) = x \frac{\mu_k}{\sigma^2} - \frac{\mu_k^2}{2\sigma^2} + \log(\pi_k)$$
-where $\mu_k$ is the mean of the predictor in the class $k$, $\sigma^2$
-is the variance of the predictor in the class $k$ and $\pi_k$ is the
-prior probability of the class $k$.\
+where $$\mu_k$$ is the mean of the predictor in the class $$k$$, $$\sigma^2$$
+is the variance of the predictor in the class $$k$$ and $$\pi_k$$ is the
+prior probability of the class $$k$$.\
 \
 If we have more than one parameter, we can generalize the LDA to the
-case of multiple predictors, $p > 1$. This is called the **GDA**
+case of multiple predictors, $$p > 1$$. This is called the **GDA**
 (Generalized Discriminant Analysis).\
 Here we make the assumption that all the predictors are normally
 distributed in each class, and that the **covariance matrix of the
 predictors is the same in each class**. But the mean is class-specific:
-$\mu_k$.\
+$$\mu_k$$.\
 \
 **Advantages:**
 
@@ -150,15 +151,15 @@ An interesting thing to notice is the so called **Decision Buonderies**.
 The decision bounderies is when: $$\delta_k(x) = \delta_l(x)$$ This is
 the line that separates the two classes, and it is linear in the case of
 LDA.\
-In the case of $K=2$ and if $\pi_k = \pi_l$ we have that the decision
+In the case of $$K=2$$ and if $$\pi_k = \pi_l$$ we have that the decision
 boundary is: $$x = \frac{\mu_1 + \mu_2}{2}$$
 
 The QDA (Quadratic Discriminant Analysis) is another bayes approach to
 classification and it assumes that the densities of the predictors are
 normally (Gaussian) distribuited, but it also assumes that each classes
-has a **different covariance matrix** $\Sigma_k$!\
+has a **different covariance matrix** $$\Sigma_k$$!\
 \
-Unlike the LDA the discriminant function is quadratic in $x$:
+Unlike the LDA the discriminant function is quadratic in $$x$$:
 $$\delta_k(x) = -\frac{1}{2} \log(|\Sigma_k|) - \frac{1}{2} (x - \mu_k)^T \Sigma_k^{-1} (x - \mu_k) + \log(\pi_k)$$\
 \
 **Advantages:**
@@ -177,11 +178,11 @@ the assumption that the predictors are **independent**. Whereas for LDA
 and QDA we have assumed that the predictors are normally distributed
 (multivariate normal distribution).\
 Given this strong assumption we know that we can compute the posterior
-probability of the class $k$, the density $f_k(x)$ given the data $x$
-as: $$f_k(x) = \prod_{j=1}^{p} f_{kj}(x_j)$$ where $f_{kj}(x_j)$ is the
-density of the predictor $x_j$ in the class $k$.\
+probability of the class $$k$$, the density $$f_k(x)$$ given the data $$x$$
+as: $$f_k(x) = \prod_{j=1}^{p} f_{kj}(x_j)$$ where $$f_{kj}(x_j)$$ is the
+density of the predictor $$x_j$$ in the class $$k$$.\
 \
-By assuming that the $p$ covariates are independent within each class,
+By assuming that the $$p$$ covariates are independent within each class,
 we completely eliminate the need to worry about the association between
 the p predictors, because we have simply assumed that there is no
 association between the predictors.\
@@ -190,7 +191,7 @@ the product of the marginal distributions of the predictors.\
 \
 **Remark:** We have a problem if we introduce a predictor for which the
 density is zero in a class,\
-$P(X=X|Y=k)=  0 = f_k(x)$, because the product of the densities will be
+$$P(X=X|Y=k)=  0 = f_k(x)$$, because the product of the densities will be
 zero, and so the posterior probability will be zero.\
 \
 **Advantages:**
@@ -255,7 +256,7 @@ use this terms:
 
 The ROC (Receiver operating characteristic) curve is the graphical
 representation of the true positive rate, the Sensitivity(recall),
-against the false positive rate, $1-\text{Specificity}$. This is because
+against the false positive rate, $$1-\text{Specificity}$$. This is because
 the false positive rate can be computed as :
 $$\text{False Positive Rate (FPR)} = 1 - \frac{TN}{TN+FP}$$ The area
 under the ROC curve is calles Area Under the curve (**AUC**), and it is

@@ -27,7 +27,7 @@ title: Hidden Markov Models
 {:toc}
 </div>
 
-A *Hidden Markov Model* (HMM) is a Markovian process with **unobservable** states $X_t$ and observations $Y_t$ that depend on $X_t$ in a known way.
+A *Hidden Markov Model* (HMM) is a Markovian process with **unobservable** states $$X_t$$ and observations $$Y_t$$ that depend on $$X_t$$ in a known way.
 
 ![Screenshot 2025-11-28 at 09.55.43.png](./images/Screenshot 2025-11-28 at 09.55.43.png)
 

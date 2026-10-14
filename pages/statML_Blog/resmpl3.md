@@ -1,6 +1,7 @@
 ---
 layout: note
 permalink: /blog3
+title: Resampling
 ---
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
@@ -45,9 +46,9 @@ estimate of the test error rate.\
 
 K-Fold Cross-Validation is a resampling method that addresses the 2
 problems of the validation set approach. The idea is that we divide the
-dataset into $K$ folds, group, and that we train the model on $K-1$
-folds and evaluate it on the remaining fold. This is done $K$ times, one
-time for each fold, computing for each time the corresponding $MSE_k$
+dataset into $$K$$ folds, group, and that we train the model on $$K-1$$
+folds and evaluate it on the remaining fold. This is done $$K$$ times, one
+time for each fold, computing for each time the corresponding $$MSE_k$$
 for that evaluation fold.\
 \
 This will result in a MSE for each fold, and we can compute the average
@@ -55,9 +56,9 @@ of the MSEs to get the **Cross-Validation Error Rate**.
 $$CV_{(K)} = \frac{1}{K} \sum_{k=1}^{K} MSE_k$$\
 \
 We then have a special case of the K-Fold Cross-Validation, the
-**Leave-One-Out Cross-Validation** (LOOCV), where we set $K = n$. this
+**Leave-One-Out Cross-Validation** (LOOCV), where we set $$K = n$$. this
 means that we leave one obsevation out, and we train the model on the
-remaining $n-1$ observations, and we evaluate it on the left-out
+remaining $$n-1$$ observations, and we evaluate it on the left-out
 observation. This is done for each observation (n), and we compute the
 average of the MSEs to get the **LOOCV Error Rate**.
 $$CV_{(n)} = \frac{1}{n} \sum_{k=1}^{n} MSE_k$$\
@@ -107,15 +108,15 @@ them from that population.\
 
 #### Bootstrap Estimate of the SE
 
-For example, we create $R$ bootstrap samples of size $n$ from the
-original sample of size $n$, and we compute the statistic of interest on
-each of the $R$ samples, and then we average the results to get the
+For example, we create $$R$$ bootstrap samples of size $$n$$ from the
+original sample of size $$n$$, and we compute the statistic of interest on
+each of the $$R$$ samples, and then we average the results to get the
 final estimation of the statistic. And if we do that for example with
-the sample mean $\bar{x}$, we can get the **Bootstrap estimate of the
+the sample mean $$\bar{x}$$, we can get the **Bootstrap estimate of the
 SE** of the sample mean, which is the standard deviation of the
 bootstrap samples.
 $$SE_{\bar{x}} = \sqrt{\frac{1}{R-1} \sum_{r=1}^{R} (\bar{x}^*_r - \bar{x}^*)^2}$$
-where $\bar{x}^* = \frac{1}{R} \sum_{i=1}^{R} \bar{x_i}^*$ is the mean
+where $$\bar{x}^* = \frac{1}{R} \sum_{i=1}^{R} \bar{x_i}^*$$ is the mean
 of the bootstrap samples means. This means that the SD of the bootstrap
 samples means is the Bootstrap estimate of the SE of the sample mean of
 the original sample.\
@@ -125,7 +126,7 @@ the original sample.\
 the sample mean, i.e. how much the sample mean changes if we take
 different samples from the same population. This is relative to the
 sample size: $$SE = \frac{\sigma}{\sqrt{n}}$$ where
-$\sigma = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}$ is the
+$$\sigma = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}$$ is the
 population standard deviation.
 :::
 

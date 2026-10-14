@@ -1,37 +1,27 @@
-remote_theme: vaibhavvikas/jekyll-theme-minimalistic
-
-
 title: Lorenzo Sciarretta
-logo: /assets/image-720x720.jpg
-
-email: lorenzo.sciarretta [at] gmail [dot] com
-description: AI/ML Researcher · Weight Space Learning · ETH Zurich & HSG · Deep Learning · LLMs
-favicon: true
-color-scheme: auto
+email: lorenzo.sciarretta [at] unisg [dot] ch
+description: AI/ML researcher at ETH Zürich and HSG. Multi-LLM agents, weight-space learning, deep learning.
 
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jemoji
-  - jekyll-remote-theme
 
-platforms:
-  - name: GitHub
-    icon: <i class="fa-brands fa-github"></i>
-    link: https://github.com/L-Neur0
-  - name: LinkedIn
-    icon: <i class="fa-brands fa-linkedin"></i>
-    link: https://www.linkedin.com/in/lorenzo-sciarretta-026623218
-  # - name: Projects
-  #   icon: <i class="fa-solid fa-file-code"></i>
-  #   link: https://github.com/L-Neur0
+exclude:
+  - preview.html
+  - README.md
+  - Gemfile
+  - Gemfile.lock
 
-
-    
-google_analytics: G-EH5XS5D6LQ
-
-navigation:
-  - name: AboutMe
-    link: ./index.html
-  - name: StatML posts
-    link: ./page2.html
+# Each note links back to the index of its track.
+defaults:
+  - scope:
+      path: pages/Reinforcement_Learning_notes
+    values:
+      back_url: /rl_index
+      back_label: reinforcement learning notes
+  - scope:
+      path: pages/statML_Blog
+    values:
+      back_url: /stat_ml
+      back_label: statistical ML notes

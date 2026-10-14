@@ -6,7 +6,7 @@ permalink: /contact
 
 # Get in touch
 
-**Email:** lorenzo.sciarretta [at] gmail [dot] com
+**Email:** lorenzo.sciarretta [at] unisg [dot] ch
 
 **LinkedIn:** [lorenzo-sciarretta](https://www.linkedin.com/in/lorenzo-sciarretta-026623218)
 

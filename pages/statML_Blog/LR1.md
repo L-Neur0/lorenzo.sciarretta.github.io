@@ -1,6 +1,7 @@
 ---
 layout: note
 permalink: /blog1
+title: Linear regression
 ---
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
@@ -8,14 +9,14 @@ permalink: /blog1
 
 ## Linear Regression {#sec:linear_regression}
 
-Given a predictor vector $X$ and a dipendent variable $Y$, the linear
+Given a predictor vector $$X$$ and a dipendent variable $$Y$$, the linear
 regression model is defined as: $$Y = \beta_0 + \beta_1 X + \epsilon$$
-where $\epsilon$ is the error term. The goal is to estimate the
-coefficients $\beta_0$ and $\beta_1$ that minimize the sum of squared
+where $$\epsilon$$ is the error term. The goal is to estimate the
+coefficients $$\beta_0$$ and $$\beta_1$$ that minimize the sum of squared
 residuals: $$RSS = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
 
-where we indicate with $e_i = y_i - \hat{y}_i$ the **residuals error**.
-The least squares estimates of $\beta_0$ and $\beta_1$ are, using the
+where we indicate with $$e_i = y_i - \hat{y}_i$$ the **residuals error**.
+The least squares estimates of $$\beta_0$$ and $$\beta_1$$ are, using the
 **Ordinary Least Square (OLS)** method
 $$\hat{\beta}_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$
 $$\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$$
@@ -23,10 +24,10 @@ $$\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$$
 ### Multiple Linear Regression
 
 We define **Multiple Linear Regression** as the case in which we have
-$p$ predictors $X_1, X_2, \dots, X_p$ and a dependent variable $Y$. The
+$$p$$ predictors $$X_1, X_2, \dots, X_p$$ and a dependent variable $$Y$$. The
 model is defined as:
 $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \epsilon$$
-where of course the $X_i$ are vectors of observations.
+where of course the $$X_i$$ are vectors of observations.
 
 ### Assesing the model
 
@@ -42,24 +43,24 @@ going to itemize the most important four:
 
 2.  ::: definition
     The **Residual Standard Error** is similar to the RMSE but it is
-    normalized by the degrees of freedom of the model, where $p$ is the
+    normalized by the degrees of freedom of the model, where $$p$$ is the
     number of predictors (mostly used with multiple linear regression):
     $$RSE = \sqrt{\frac{1}{n-p-1} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$
     :::
 
 3.  ::: definition
-    The **R-squared** statistic, $R^2 \in \{0,1\}$, or the *coefficient
+    The **R-squared** statistic, $$R^2 \in \{0,1\}$$, or the *coefficient
     of determination*, is defined as: $$R^2 = \frac{TSS - RSS}{TSS}$$
     $$R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y_i})^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}$$
-    where $TSS = \sum_{i=1}^{n} (y_i - \bar{y})^2$ is the **Total Sum of
-    Squares** and $RSS$ is the **Residual Sum of Squares**. The $R^{2}$
+    where $$TSS = \sum_{i=1}^{n} (y_i - \bar{y})^2$$ is the **Total Sum of
+    Squares** and $$RSS$$ is the **Residual Sum of Squares**. The $$R^{2}$$
     statistic measures the proportion of variation (variance) in the
     data used in the model.
     :::
 
 4.  ::: definition
-    The last statistic used by data scientists is the $t-statistic$ of a
-    $\beta$ coefficent, is the ratio of the estimate of the coefficient
+    The last statistic used by data scientists is the $$t-statistic$$ of a
+    $$\beta$$ coefficent, is the ratio of the estimate of the coefficient
     and its standard error:
     $$t_{\beta} = \frac{\hat{\beta}}{SE(\hat{\beta})}$$ **Remark:** The
     t-statistic is the inverse proportionally to the p-value, it is its

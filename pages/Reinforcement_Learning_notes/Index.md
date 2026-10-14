@@ -1,56 +1,17 @@
 ---
 layout: writing_page
 permalink: /rl_index
-title: Reinforcement Learning — Index
+title: Reinforcement learning notes
 ---
 
-<div class="notes-hero">
-  <h1>Reinforcement Learning — Notes</h1>
-  <p>A linear walk-through: from the formal foundations (MDP / POMDP / HMM) to tabular RL, function approximation and policy methods, and finally model-based RL.</p>
-</div>
+<h1>Reinforcement learning notes</h1>
+<p>Read these in order: foundations first (MDP, POMDP, HMM), then tabular RL, then function approximation and policy methods, and finally model-based RL. Mainly based on <a href="https://arxiv.org/abs/2502.05244">Probabilistic AI (A. Krause)</a> and <a href="http://incompleteideas.net/book/the-book-2nd.html">Sutton &amp; Barto</a>.</p>
 
-<div class="chapter-track">
-
-  <div class="chapter-card">
-    <div class="chapter-num">Chapter 1 · Foundations</div>
-    <h3>Markov Decision Processes</h3>
-    <span class="chapter-link">Read →</span>
-    <a class="chapter-cover" href="/rl_mdp"></a>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-num">Chapter 2 · Foundations</div>
-    <h3>POMDPs</h3>
-    <span class="chapter-link">Read →</span>
-    <a class="chapter-cover" href="/rl_pomdp"></a>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-num">Chapter 3 · Foundations</div>
-    <h3>Hidden Markov Models</h3>
-    <span class="chapter-link">Read →</span>
-    <a class="chapter-cover" href="/rl_hmm"></a>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-num">Chapter 4 · Tabular</div>
-    <h3>RL — Tabular</h3>
-    <span class="chapter-link">Read →</span>
-    <a class="chapter-cover" href="/rl_tabular"></a>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-num">Chapter 5 · Approximate</div>
-    <h3>RL with Function Approximation</h3>
-    <span class="chapter-link">Read →</span>
-    <a class="chapter-cover" href="/rl_approx"></a>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-num">Chapter 6 · Model-Based</div>
-    <h3>Model-Based Approximate RL</h3>
-    <span class="chapter-link">Read →</span>
-    <a class="chapter-cover" href="/rl_3"></a>
-  </div>
-
-</div>
+<ol class="entries">
+  <li><span class="when">Ch. 1</span><span><a class="what" href="{{ '/rl_mdp' | relative_url }}">Markov decision processes</a><span class="detail">Finite MDPs, policies, value functions; Bellman expectation and optimality; policy and value iteration.</span></span></li>
+  <li><span class="when">Ch. 2</span><span><a class="what" href="{{ '/rl_pomdp' | relative_url }}">POMDPs</a><span class="detail">Partial observability, belief states and the Bayes update, reduction to an enlarged MDP.</span></span></li>
+  <li><span class="when">Ch. 3</span><span><a class="what" href="{{ '/rl_hmm' | relative_url }}">Hidden Markov models</a><span class="detail">Hidden states and emissions, connection to POMDPs.</span></span></li>
+  <li><span class="when">Ch. 4</span><span><a class="what" href="{{ '/rl_tabular' | relative_url }}">Tabular RL</a><span class="detail">On/off-policy, model-based vs model-free, ε-greedy and optimism (R<sub>max</sub>), TD-learning, SARSA, Q-learning.</span></span></li>
+  <li><span class="when">Ch. 5</span><span><a class="what" href="{{ '/rl_approx' | relative_url }}">RL with function approximation</a><span class="detail">DQN and Double DQN, policy gradients, REINFORCE, actor-critic, TRPO/PPO, DDPG, SAC.</span></span></li>
+  <li><span class="when">Ch. 6</span><span><a class="what" href="{{ '/rl_3' | relative_url }}">Model-based approximate RL</a><span class="detail">Planning with MPC, learning dynamics and rewards, exploration with Thompson sampling and optimism.</span></span></li>
+</ol>
