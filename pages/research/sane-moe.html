@@ -1,7 +1,7 @@
 ---
 layout: default
 title: SANE-MoE · Rethinking neural network training
-description: Improving how we train neural networks through weight-space learning: learn from existing models, generate useful weights, then fine-tune.
+description: "Scalable weight-space learning for neural network generation. SANE-MoE improves reconstruction and generated-model accuracy in mixed model zoos."
 permalink: /research/sane-moe/
 ---
 <link rel="stylesheet" href="{{ '/assets/css/sane-moe.css' | relative_url }}">
@@ -12,9 +12,19 @@ permalink: /research/sane-moe/
     <p class="sane-deck">Learn from models that already work.<br class="desktop-break"> Generate useful weights. Then fine-tune.</p>
     <p>Training a neural network means finding weights that solve a task. SGD and Adam do this through repeated updates on data. <strong>Weight-space learning adds a learned route to those weights:</strong> use trained networks as data for another model that learns to represent and generate network parameters.</p>
     <p><strong>SANE</strong> makes this approach scalable through sequences of weight tokens. The practical goal is a better starting point for task-specific training. Our extension, <strong>SANE-MoE</strong>, brings expert specialization to learning from diverse collections of networks.</p>
+    <p class="sane-abstract"><strong>Toward scalable model generation.</strong> The longer-term goal is to map a dataset and a compatible architecture to useful neural network weights, then fine-tune them for the task. We improve one building block: a SANE autoencoder with expert routing that reconstructs and generates more accurate small CNNs from mixed model zoos. Dataset-conditioned generation is a future integration for our method.</p>
     <p class="sane-byline">Lorenzo Sciarretta &amp; Zakaria Omarar <span>·</span> AI/ML Lab, University of St. Gallen <span>·</span> IMP 2025 project</p>
     <div class="sane-links"><a class="sane-primary" href="{{ '/assets/IMP_final_version.pdf' | relative_url }}">Read our report <span aria-hidden="true">↗</span></a><a href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a></div>
   </header>
+
+  <section class="sane-reading" aria-labelledby="sane-reading-title">
+    <h2 id="sane-reading-title">Read further</h2>
+    <p class="sane-note">The report, its foundation, and two complementary directions.</p>
+    <a href="{{ '/assets/IMP_final_version.pdf' | relative_url }}"><span>Our method · 2025 <small>Sciarretta &amp; Omarar</small></span><span>Weight Space Learning with Mixture of Experts (MoE) <b aria-hidden="true">↗</b></span><em>Adds expert routing to SANE; improves reconstruction and generation in mixed CNN zoos.</em></a>
+    <a href="https://proceedings.mlr.press/v235/schurholt24a.html"><span>Foundation · ICML 2024 <small>Schürholt, Mahoney &amp; Borth</small></span><span>Towards Scalable and Versatile Weight Space Learning <b aria-hidden="true">↗</b></span><em>Introduces SANE: tokenizes network weights for scalable encoding, analysis, and model sampling. Our backbone.</em></a>
+    <a href="https://proceedings.mlr.press/v306/asefaw26a.html"><span>Dataset conditioning · ICML 2026 <small>Asefaw et al.</small></span><span>WeightCLIP: Aligning Datasets and Models for Weight Space Learning <b aria-hidden="true">↗</b></span><em>Aligns dataset and weight embeddings for retrieval, generation, and latent refinement. A route toward generating weights from a dataset.</em></a>
+    <a href="https://rikiyat.github.io/blog/weight-space-programming/"><span>Related perspective · 2026 <small>Takehi et al.</small></span><span>Sparks of Weight-Space Programming <b aria-hidden="true">↗</b></span><em>Explores general-purpose LLMs reading and editing weights directly. A complementary approach to AI-assisted model optimization.</em></a>
+  </section>
 
   <section class="sane-uses" aria-label="Goals and practical uses">
     <div><span class="sane-small">01 / Initialize</span><h2>A learned head start</h2><p>Sample candidate weights, evaluate them, then fine-tune with SGD or Adam on your target task.</p></div>
@@ -61,21 +71,44 @@ permalink: /research/sane-moe/
     <p class="sane-note"><strong>Where the optimizer fits.</strong> Training SANE itself still uses optimization. Once trained, it can generate starting weights for a compatible network; SGD or Adam can then adapt those weights to your data. Sampling, batch-normalization calibration, and candidate evaluation are part of the practical pipeline.</p>
   </section>
 
-  <section class="sane-contribution">
+  <section id="architecture" class="sane-contribution">
     <p class="sane-eyebrow">Our contribution / SANE-MoE</p>
     <h2>Diverse networks. Specialized experts.</h2>
     <p>Weights from different layers and datasets need not follow the same patterns. We replace feed-forward sublayers in selected SANE Transformer blocks with a router and multiple expert networks. The router can use token content, position, and layer information to choose which experts process each weight token.</p>
-    <div class="sane-router" aria-label="Illustration of sparse routing: a weight token activates two out of four experts">
-      <span class="sane-router-input">Weight token</span><span class="sane-router-arrow" aria-hidden="true">→</span><span class="sane-router-gate">Router</span><span class="sane-router-arrow" aria-hidden="true">→</span><div class="sane-experts"><span class="active">Expert 1</span><span>Expert 2</span><span class="active">Expert 3</span><span>Expert 4</span></div>
-    </div>
-    <p class="sane-note">Illustrative top-2 routing: two of four experts are active per token. Sparse routing adds capacity without activating every expert; actual cost also depends on routing and the number of active experts.</p>
+    <figure class="sane-moe-figure sane-wide">
+      <div class="sane-moe-pipeline" role="img" aria-label="SANE-MoE: weight tokens enter an encoder with attention and MoE blocks, become latent embeddings, and pass through a decoder with attention and MoE blocks to reconstructed weight tokens.">
+        <div class="sane-moe-end"><span class="sane-small">Input</span><strong>Weight tokens</strong><small>Window + positions</small><div class="sane-token-strip" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+        <div class="sane-moe-stack"><span class="sane-small">Encoder</span><strong>Transformer blocks</strong><span class="sane-attention">Self-attention</span><span class="sane-moe-chip">Mixture of Experts</span><small>In selected blocks</small></div>
+        <div class="sane-moe-latent"><span class="sane-small">Bottleneck</span><strong>Latent embeddings</strong><div class="sane-latent-dots" aria-hidden="true">● ●<br>● ● ●</div><small>One embedding per token</small></div>
+        <div class="sane-moe-stack"><span class="sane-small">Decoder</span><strong>Transformer blocks</strong><span class="sane-attention">Self-attention</span><span class="sane-moe-chip">Mixture of Experts</span><small>In selected blocks</small></div>
+        <div class="sane-moe-end"><span class="sane-small">Output</span><strong>Recovered weights</strong><small>Reassemble the network</small><div class="sane-token-strip" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+      </div>
+      <div class="sane-moe-zoom">
+        <div class="sane-moe-zoom-copy"><span class="sane-small">Inside an MoE sublayer</span><h3>Route. Specialize. Combine.</h3><p>The router selects experts for each token. Their outputs are combined using normalized routing weights.</p></div>
+        <div class="sane-router" role="img" aria-label="Top-2 routing example: a token goes through a router that activates experts one and three out of four. Their outputs form a weighted sum.">
+          <span class="sane-router-input">Token h</span><span class="sane-router-arrow" aria-hidden="true">→</span><span class="sane-router-gate">Router</span><span class="sane-router-arrow" aria-hidden="true">→</span><div class="sane-experts"><span class="active">Expert 1</span><span>Expert 2</span><span class="active">Expert 3</span><span>Expert 4</span></div><span class="sane-router-arrow" aria-hidden="true">→</span><span class="sane-router-input">Weighted<br>sum</span>
+        </div>
+      </div>
+      <figcaption>SANE-MoE architecture, adapted from our report, Section 3 and Fig. 1. MoE replaces feed-forward sublayers in selected encoder and decoder blocks; residual connections and normalization are omitted. The zoom illustrates top-2 routing among four experts; active choices vary by token.</figcaption>
+    </figure>
     <p>We study top-k, position-aware, and hierarchical routing. The aim: retain useful structure when the model zoo contains networks trained on different datasets.</p>
   </section>
 
-  <section class="sane-results">
+  <section id="results" class="sane-results">
     <p class="sane-eyebrow">What we measured</p>
     <h2>Better generated checkpoints in a mixed zoo.</h2>
     <p>Trained on a mixture of small CNN zoos from CIFAR-10 and STL-10, every evaluated MoE routing variant improves mean generated-model accuracy over dense SANE.</p>
+    <div class="sane-gains" aria-label="Best improvements over dense SANE">
+      <div><strong>+5.14 <small>pp</small></strong><span>CIFAR-10 generation</span><small>Top-k: 38.74% → 43.88%</small></div>
+      <div><strong>+3.98 <small>pp</small></strong><span>STL-10 generation</span><small>Hierarchical: 28.90% → 32.88%</small></div>
+      <div><strong>0.810 → 0.921</strong><span>Reconstruction R²</span><small>Hierarchical routing · validation</small></div>
+    </div>
+    <figure class="sane-result-figure sane-wide">
+      <div class="sane-chart-legend"><span><i class="baseline"></i> Dense SANE</span><span><i class="moe"></i> SANE-MoE variants</span><span><i class="reference"></i> Original CNN mean</span></div>
+      <div class="sane-charts"><div>{% include research/sane-cifar.svg %}</div><div>{% include research/sane-stl.svg %}</div></div>
+      <figcaption>Generated-model test accuracy, report Table 4. Bars show means; whiskers show ±1 standard deviation over the reported 150 sampled models. The dashed line marks original CNN accuracy. All MoE variants improve the mean over dense SANE; the best router differs by dataset. Percentage-point gains above are differences between means, not significance estimates.</figcaption>
+    </figure>
+    <details class="sane-values"><summary>Exact values from the report</summary>
     <div class="sane-table-wrap" tabindex="0" role="region" aria-label="Generated-model accuracy results, scroll horizontally on narrow screens">
       <table><caption>Generated-model test accuracy (%) · Report, Table 4</caption><thead><tr><th scope="col">Method</th><th scope="col">CIFAR-10</th><th scope="col">STL-10</th></tr></thead><tbody>
         <tr><th scope="row">SANE baseline</th><td>38.74 ± 4.16</td><td>28.90 ± 5.43</td></tr>
@@ -85,21 +118,17 @@ permalink: /research/sane-moe/
         <tr class="sane-reference-row"><th scope="row">Original CNNs <span>(reference)</span></th><td>45.81</td><td>34.93</td></tr>
       </tbody></table>
     </div>
+    </details>
     <p class="sane-note">Mean ± standard deviation, reported over 150 sampled models. These are generated-checkpoint results after batch-normalization conditioning, before task fine-tuning; they are not measurements of training-time savings.</p>
     <details><summary>What this demonstrates—and what comes next</summary><p>Our experiments support better reconstruction and generation in this small-CNN, mixed-zoo setting. They do not establish a universal pretrained initializer, generation for arbitrary architectures, or a smooth latent space organized by function. Testing larger networks, broader model zoos, and end-to-end fine-tuning efficiency remains future work.</p></details>
   </section>
 
-  <section class="sane-context">
-    <p class="sane-eyebrow">A broader direction</p>
-    <h2>AI can work on the model itself.</h2>
-    <p><a href="https://rikiyat.github.io/blog/weight-space-programming/">Weight-Space Programming</a> explores general-purpose LLMs reading and editing network weights through reasoning. SANE takes a different route: a purpose-trained autoencoder learns representations from collections of checkpoints. Both point toward AI systems that help create or improve other models, alongside conventional training.</p>
-  </section>
-
-  <section class="sane-reading" aria-labelledby="sane-reading-title">
-    <h2 id="sane-reading-title">Read further</h2>
-    <a href="{{ '/assets/IMP_final_version.pdf' | relative_url }}"><span>Our report <small>Sciarretta &amp; Omarar · IMP 2025</small></span><span>Weight Space Learning with Mixture of Experts (MoE) <b aria-hidden="true">↗</b></span></a>
-    <a href="https://proceedings.mlr.press/v235/schurholt24a.html"><span>Original SANE <small>Schürholt, Mahoney &amp; Borth · ICML 2024</small></span><span>Towards Scalable and Versatile Weight Space Learning <b aria-hidden="true">↗</b></span></a>
-    <a href="https://rikiyat.github.io/blog/weight-space-programming/"><span>Related perspective <small>Takehi et al. · November 2026</small></span><span>Sparks of Weight-Space Programming <b aria-hidden="true">↗</b></span></a>
+  <section class="sane-conclusion">
+    <p class="sane-eyebrow">Conclusion / Toward scalable weight-space learning</p>
+    <h2>Better weight representations.<br>Better generated networks.</h2>
+    <p>Our method improves the SANE backbone: expert routing yields more faithful weight reconstruction and higher generated-model accuracy across both datasets in the mixed-zoo evaluation. This is a step toward learning from broader collections of neural networks and generating useful model weights at larger scale.</p>
+    <div class="sane-future"><span class="sane-small">Future direction · conceptual pipeline</span><p><strong>Dataset + compatible architecture</strong><span aria-hidden="true"> → </span>dataset-aligned weight space<span aria-hidden="true"> → </span><strong>generated NN weights</strong><span aria-hidden="true"> → </span>task-specific fine-tuning</p></div>
+    <p><a href="https://proceedings.mlr.press/v306/asefaw26a.html">WeightCLIP (2026)</a> supplies a complementary idea: align dataset information with weight embeddings. Combining dataset conditioning with an expert-based backbone is a research direction, rather than a result established in our report. Scaling to larger architectures and measuring the complete training benefit are the next tests.</p>
   </section>
   <p class="back"><a href="{{ '/' | relative_url }}">← Back to selected work</a></p>
 </article>
