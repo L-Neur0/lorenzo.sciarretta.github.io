@@ -1,0 +1,232 @@
+<svg role="img" aria-labelledby="chart-cifar-title chart-cifar-desc" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" viewBox="0 0 396 280.8" xmlns="http://www.w3.org/2000/svg" version="1.1"><title id="chart-cifar-title">CIFAR-10: generated-model accuracy</title><desc id="chart-cifar-desc">SANE baseline 38.74 percent; top-k 43.88; position-aware 43.07; hierarchical 42.41. Whiskers show one standard deviation. Original CNN reference 45.81 percent.</desc>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">.sane-charts svg *{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="cifar-figure_1">
+  <g id="cifar-patch_1">
+   <path d="M 0 280.8 
+L 396 280.8 
+L 396 0 
+L 0 0 
+L 0 280.8 
+z
+" style="fill: none"/>
+  </g>
+  <g id="cifar-axes_1">
+   <g id="cifar-patch_2">
+    <path d="M 122.76 224.64 
+L 384.12 224.64 
+L 384.12 61.776 
+L 122.76 61.776 
+L 122.76 224.64 
+z
+" style="fill: none"/>
+   </g>
+   <g id="cifar-matplotlib.axis_1">
+    <g id="cifar-xtick_1">
+     <g id="cifar-line2d_1">
+      <path d="M 122.76 224.64 
+L 122.76 61.776 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--rule); stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="cifar-line2d_2"/>
+     <g id="cifar-text_1">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="122.76" y="240.998281" transform="rotate(-0 122.76 240.998281)">0</text>
+     </g>
+    </g>
+    <g id="cifar-xtick_2">
+     <g id="cifar-line2d_3">
+      <path d="M 170.28 224.64 
+L 170.28 61.776 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--rule); stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="cifar-line2d_4"/>
+     <g id="cifar-text_2">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="170.28" y="240.998281" transform="rotate(-0 170.28 240.998281)">10</text>
+     </g>
+    </g>
+    <g id="cifar-xtick_3">
+     <g id="cifar-line2d_5">
+      <path d="M 217.8 224.64 
+L 217.8 61.776 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--rule); stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="cifar-line2d_6"/>
+     <g id="cifar-text_3">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="217.8" y="240.998281" transform="rotate(-0 217.8 240.998281)">20</text>
+     </g>
+    </g>
+    <g id="cifar-xtick_4">
+     <g id="cifar-line2d_7">
+      <path d="M 265.32 224.64 
+L 265.32 61.776 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--rule); stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="cifar-line2d_8"/>
+     <g id="cifar-text_4">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="265.32" y="240.998281" transform="rotate(-0 265.32 240.998281)">30</text>
+     </g>
+    </g>
+    <g id="cifar-xtick_5">
+     <g id="cifar-line2d_9">
+      <path d="M 312.84 224.64 
+L 312.84 61.776 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--rule); stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="cifar-line2d_10"/>
+     <g id="cifar-text_5">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="312.84" y="240.998281" transform="rotate(-0 312.84 240.998281)">40</text>
+     </g>
+    </g>
+    <g id="cifar-xtick_6">
+     <g id="cifar-line2d_11">
+      <path d="M 360.36 224.64 
+L 360.36 61.776 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--rule); stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="cifar-line2d_12"/>
+     <g id="cifar-text_6">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="360.36" y="240.998281" transform="rotate(-0 360.36 240.998281)">50</text>
+     </g>
+    </g>
+    <g id="cifar-text_7">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle" x="253.44" y="263.644219" transform="rotate(-0 253.44 263.644219)">Generated-model test accuracy (%)</text>
+    </g>
+   </g>
+   <g id="cifar-matplotlib.axis_2">
+    <g id="cifar-ytick_1">
+     <g id="cifar-line2d_13"/>
+     <g id="cifar-text_8">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end" x="114.76" y="83.568959" transform="rotate(-0 114.76 83.568959)">SANE baseline</text>
+     </g>
+    </g>
+    <g id="cifar-ytick_2">
+     <g id="cifar-line2d_14"/>
+     <g id="cifar-text_9">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end" x="114.76" y="126.114413" transform="rotate(-0 114.76 126.114413)">MoE · top-k</text>
+     </g>
+    </g>
+    <g id="cifar-ytick_3">
+     <g id="cifar-line2d_15"/>
+     <g id="cifar-text_10">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end" x="114.76" y="168.659868" transform="rotate(-0 114.76 168.659868)">MoE · position</text>
+     </g>
+    </g>
+    <g id="cifar-ytick_4">
+     <g id="cifar-line2d_16"/>
+     <g id="cifar-text_11">
+      <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end" x="114.76" y="211.205322" transform="rotate(-0 114.76 211.205322)">MoE · hierarchical</text>
+     </g>
+    </g>
+   </g>
+   <g id="cifar-line2d_17">
+    <path d="M 340.44912 224.64 
+L 340.44912 61.776 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke-dasharray: 4.8,3.6; stroke-dashoffset: 0; stroke: var(--sane-gold); stroke-width: 1.2"/>
+   </g>
+   <g id="cifar-patch_3">
+    <path d="M 122.76 69.178909 
+L 306.85248 69.178909 
+L 306.85248 89.600727 
+L 122.76 89.600727 
+z
+" clip-path="url(#cifar-p885409d4bf)" style="fill: var(--sane-bar-muted)"/>
+   </g>
+   <g id="cifar-patch_4">
+    <path d="M 122.76 111.724364 
+L 331.27776 111.724364 
+L 331.27776 132.146182 
+L 122.76 132.146182 
+z
+" clip-path="url(#cifar-p885409d4bf)" style="fill: var(--sane-green)"/>
+   </g>
+   <g id="cifar-patch_5">
+    <path d="M 122.76 154.269818 
+L 327.42864 154.269818 
+L 327.42864 174.691636 
+L 122.76 174.691636 
+z
+" clip-path="url(#cifar-p885409d4bf)" style="fill: var(--sane-green)"/>
+   </g>
+   <g id="cifar-patch_6">
+    <path d="M 122.76 196.815273 
+L 324.29232 196.815273 
+L 324.29232 217.237091 
+L 122.76 217.237091 
+z
+" clip-path="url(#cifar-p885409d4bf)" style="fill: var(--sane-green)"/>
+   </g>
+   <g id="cifar-LineCollection_1">
+    <path d="M 287.08416 79.389818 
+L 326.6208 79.389818 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--fg)"/>
+    <path d="M 316.97424 121.935273 
+L 345.58128 121.935273 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--fg)"/>
+    <path d="M 312.22224 164.480727 
+L 342.63504 164.480727 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--fg)"/>
+    <path d="M 313.88544 207.026182 
+L 334.6992 207.026182 
+" clip-path="url(#cifar-p885409d4bf)" style="fill: none; stroke: var(--fg)"/>
+   </g>
+   <g id="cifar-line2d_18">
+    <defs>
+     <path id="cifar-me6ca2366c4" d="M 0 3 
+L 0 -3 
+" style="stroke: var(--fg)"/>
+    </defs>
+    <g clip-path="url(#cifar-p885409d4bf)">
+     <use xlink:href="#cifar-me6ca2366c4" x="287.08416" y="79.389818" style="fill: var(--fg); stroke: var(--fg)"/>
+     <use xlink:href="#cifar-me6ca2366c4" x="316.97424" y="121.935273" style="fill: var(--fg); stroke: var(--fg)"/>
+     <use xlink:href="#cifar-me6ca2366c4" x="312.22224" y="164.480727" style="fill: var(--fg); stroke: var(--fg)"/>
+     <use xlink:href="#cifar-me6ca2366c4" x="313.88544" y="207.026182" style="fill: var(--fg); stroke: var(--fg)"/>
+    </g>
+   </g>
+   <g id="cifar-line2d_19">
+    <g clip-path="url(#cifar-p885409d4bf)">
+     <use xlink:href="#cifar-me6ca2366c4" x="326.6208" y="79.389818" style="fill: var(--fg); stroke: var(--fg)"/>
+     <use xlink:href="#cifar-me6ca2366c4" x="345.58128" y="121.935273" style="fill: var(--fg); stroke: var(--fg)"/>
+     <use xlink:href="#cifar-me6ca2366c4" x="342.63504" y="164.480727" style="fill: var(--fg); stroke: var(--fg)"/>
+     <use xlink:href="#cifar-me6ca2366c4" x="334.6992" y="207.026182" style="fill: var(--fg); stroke: var(--fg)"/>
+    </g>
+   </g>
+   <g id="cifar-text_12">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: var(--bg)" x="127.0368" y="82.563099" transform="rotate(-0 127.0368 82.563099)">38.74%</text>
+   </g>
+   <g id="cifar-text_13">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: var(--bg)" x="127.0368" y="125.108554" transform="rotate(-0 127.0368 125.108554)">43.88%</text>
+   </g>
+   <g id="cifar-text_14">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: var(--bg)" x="127.0368" y="167.654009" transform="rotate(-0 127.0368 167.654009)">43.07%</text>
+   </g>
+   <g id="cifar-text_15">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: var(--bg)" x="127.0368" y="210.199463" transform="rotate(-0 127.0368 210.199463)">42.41%</text>
+   </g>
+  </g>
+  <g id="cifar-text_16">
+   <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: var(--fg)" x="19.8" y="22.464" transform="rotate(-0 19.8 22.464)">CIFAR-10</text>
+  </g>
+  <g id="cifar-text_17">
+   <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: var(--muted)" x="19.8" y="44.928" transform="rotate(-0 19.8 44.928)">Original CNN mean: 45.81%</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="cifar-p885409d4bf">
+   <rect x="122.76" y="61.776" width="261.36" height="162.864"/>
+  </clipPath>
+ </defs>
+</svg>

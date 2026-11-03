@@ -1,0 +1,134 @@
+---
+layout: default
+title: SANE-MoE · Rethinking neural network training
+description: "Scalable weight-space learning for neural network generation. SANE-MoE improves reconstruction and generated-model accuracy in mixed model zoos."
+permalink: /research/sane-moe/
+---
+<link rel="stylesheet" href="{{ '/assets/css/sane-moe.css' | relative_url }}">
+<article class="sane-page">
+  <header class="sane-hero">
+    <p class="sane-eyebrow">Neural network optimization <span>/</span> Weight-space learning</p>
+    <h1>Can AI help us train<br class="desktop-break"> better neural networks?</h1>
+    <p class="sane-deck">From a new dataset to useful model weights.<br class="desktop-break"> Generate a starting model. Then fine-tune.</p>
+    <p>Suppose you have labeled images for a new defect-detection task and have chosen a CNN architecture. You could adapt a pretrained checkpoint or train from scratch with SGD or Adam. <strong>The goal is to generate useful starting weights from your dataset, then fine-tune them.</strong> That would let a new task benefit from patterns learned across existing networks.</p>
+    <p>Two approaches work directly in <strong>weight space</strong>, the space of network parameters. <a href="https://proceedings.mlr.press/v235/schurholt24a.html"><strong>SANE (2024)</strong></a> learns representations of trained networks and decodes sampled embeddings into new weights. <a href="https://rikiyat.github.io/blog/weight-space-programming/"><strong>Weight-Space Programming (2026)</strong></a> explores general-purpose LLMs reading, editing, and writing network weights through reasoning.</p>
+    <p class="sane-abstract"><strong>Our method.</strong> SANE-MoE adds expert routing to the <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a> autoencoder. Evaluated on mixed collections of small CNNs trained on CIFAR-10 and STL-10, it improves both weight reconstruction and generated-model accuracy over the dense baseline.</p>
+    <p class="sane-byline">Lorenzo Sciarretta &amp; Zakaria Omarar <span>·</span> AI/ML Lab, University of St. Gallen <span>·</span> IMP 2025 project</p>
+    <div class="sane-links"><a class="sane-primary" href="{{ '/assets/IMP_final_version.pdf' | relative_url }}">Read our report <span aria-hidden="true">↗</span></a><a href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a></div>
+  </header>
+
+  <section class="sane-reading" aria-labelledby="sane-reading-title">
+    <h2 id="sane-reading-title">Read further</h2>
+    <p class="sane-note">The report, its foundations, and two complementary directions.</p>
+    <a href="{{ '/assets/IMP_final_version.pdf' | relative_url }}"><span>Our method · 2025 <small>Sciarretta &amp; Omarar</small></span><span>Weight Space Learning with Mixture of Experts (MoE) <b aria-hidden="true">↗</b></span><em>Adds expert routing to SANE; improves reconstruction and generation in mixed CNN zoos.</em></a>
+    <a href="https://proceedings.mlr.press/v235/schurholt24a.html"><span>Foundation · ICML 2024 <small>Schürholt, Mahoney &amp; Borth</small></span><span>Towards Scalable and Versatile Weight Space Learning <b aria-hidden="true">↗</b></span><em>Introduces SANE: tokenizes network weights for scalable encoding, analysis, and model sampling. Our backbone.</em></a>
+    <a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/f94d5edb5c01715d879693ddbfdc1b98-Abstract-Datasets_and_Benchmarks.html"><span>Model-zoo data · NeurIPS 2022 <small>Schürholt et al.</small></span><span>Model Zoos: A Dataset of Diverse Populations of Neural Network Models <b aria-hidden="true">↗</b></span><em>Provides standardized checkpoint collections and benchmarks for learning from populations of networks.</em></a>
+    <a href="https://proceedings.mlr.press/v306/asefaw26a.html"><span>Dataset conditioning · ICML 2026 <small>Asefaw et al.</small></span><span>WeightCLIP: Aligning Datasets and Models for Weight Space Learning <b aria-hidden="true">↗</b></span><em>Aligns dataset and weight embeddings for dataset-guided model retrieval, generation, and refinement.</em></a>
+    <a href="https://rikiyat.github.io/blog/weight-space-programming/"><span>Related perspective · 2026 <small>Takehi et al.</small></span><span>Sparks of Weight-Space Programming <b aria-hidden="true">↗</b></span><em>Explores general-purpose LLMs reading and editing weights directly. A complementary approach to AI-assisted model optimization.</em></a>
+  </section>
+
+  <section class="sane-uses" aria-label="Goals and practical uses">
+    <div><span class="sane-small">01 / Initialize</span><h2>A learned head start</h2><p>Sample candidate weights, evaluate them, then fine-tune with SGD or Adam on your target task.</p></div>
+    <div><span class="sane-small">02 / Generate</span><h2>New model checkpoints</h2><p>Decode samples from the learned embedding distribution into complete network weights.</p></div>
+    <div><span class="sane-small">03 / Understand</span><h2>Read a network’s weights</h2><p>Use embeddings as features to predict model properties, such as accuracy or generalization gap.</p></div>
+  </section>
+
+  <section id="how-it-works" class="sane-method">
+    <p class="sane-eyebrow">The idea in one picture</p>
+    <h2>Trained models become the training data.</h2>
+    <p>A <a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/f94d5edb5c01715d879693ddbfdc1b98-Abstract-Datasets_and_Benchmarks.html">model zoo</a> is a collection of trained checkpoints. <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a> learns to encode and reconstruct their weights, processing windows of weight tokens instead of a whole network at once.</p>
+    <figure class="sane-figure sane-wide">
+      <div class="sane-diagram">
+        <div class="sane-panel sane-zoo">
+          <p class="sane-step">01 <span>Collect experience</span></p>
+          <svg viewBox="0 0 260 150" role="img" aria-label="A trained network represents a model zoo; its weights become a sequence of tokens">
+            <g class="network-lines"><path d="M27 32L65 20L103 41M27 32L65 55L103 41M27 70L65 20M27 70L65 55M27 70L65 90L103 79M65 20L103 79M65 55L103 79M65 90L103 41"/><path d="M143 31h86M143 55h86M143 79h86" stroke-dasharray="3 4"/></g>
+            <g class="network-nodes"><circle cx="27" cy="32" r="7"/><circle cx="27" cy="70" r="7"/><circle cx="65" cy="20" r="7"/><circle cx="65" cy="55" r="7"/><circle cx="65" cy="90" r="7"/><circle cx="103" cy="41" r="7"/><circle cx="103" cy="79" r="7"/></g>
+            <g class="weight-tokens"><rect x="144" y="21" width="18" height="18" rx="3"/><rect x="168" y="21" width="18" height="18" rx="3"/><rect x="192" y="21" width="18" height="18" rx="3"/><rect x="216" y="21" width="18" height="18" rx="3"/><rect x="144" y="45" width="18" height="18" rx="3"/><rect x="168" y="45" width="18" height="18" rx="3"/><rect x="192" y="45" width="18" height="18" rx="3"/><rect x="216" y="45" width="18" height="18" rx="3"/><rect x="144" y="69" width="18" height="18" rx="3"/><rect x="168" y="69" width="18" height="18" rx="3"/><rect x="192" y="69" width="18" height="18" rx="3"/><rect x="216" y="69" width="18" height="18" rx="3"/></g>
+            <a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/f94d5edb5c01715d879693ddbfdc1b98-Abstract-Datasets_and_Benchmarks.html"><text x="65" y="126" text-anchor="middle">Model zoo</text></a><text x="189" y="126" text-anchor="middle">Weight tokens</text>
+          </svg>
+          <h3>Networks → sequences</h3><p>Standardize and align weights; split them into tokens with layer and position information.</p>
+        </div>
+        <div class="sane-panel sane-autoencoder">
+          <p class="sane-step">02 <span>Learn a representation</span></p>
+          <svg viewBox="0 0 300 150" role="img" aria-label="An encoder compresses weight tokens into embeddings; a decoder reconstructs the tokens">
+            <path class="diagram-line" d="M12 60H288"/>
+            <path class="transformer-shape" d="M24 23L91 44V77L24 99Z"/><path class="transformer-shape" d="M209 44L276 23V99L209 77Z"/>
+            <g class="latent-links"><path d="M120 48L150 30L180 47L172 78L137 88Z M120 48L172 78M150 30L137 88M150 30L172 78M137 88L180 47"/></g>
+            <g class="latent-nodes"><circle cx="120" cy="48" r="5"/><circle cx="150" cy="30" r="5"/><circle cx="180" cy="47" r="5"/><circle cx="172" cy="78" r="5"/><circle cx="137" cy="88" r="5"/></g>
+            <text x="53" y="65" text-anchor="middle">E</text><text x="246" y="65" text-anchor="middle">D</text><text x="53" y="126" text-anchor="middle">Encoder</text><text x="150" y="126" text-anchor="middle">Embeddings</text><text x="246" y="126" text-anchor="middle">Decoder</text>
+          </svg>
+          <h3>Encode → reconstruct</h3><p>Train an autoencoder on token windows. Each token gets an embedding; a model has a sequence of them.</p>
+        </div>
+        <div class="sane-panel sane-reuse">
+          <p class="sane-step">03 <span>Put it to work</span></p>
+          <div class="sane-output"><span class="sane-output-icon" aria-hidden="true">↗</span><div><strong>Generate weights</strong><span>Sample embeddings → decode<br>→ calibrate → evaluate → fine-tune</span></div></div>
+          <div class="sane-output"><span class="sane-output-icon" aria-hidden="true">⌕</span><div><strong>Predict properties</strong><span>Encode a checkpoint → fit a probe<br>→ estimate model characteristics</span></div></div>
+          <h3>Generate or analyze</h3><p>Reuse the decoder to produce networks, or the encoder to study existing ones.</p>
+        </div>
+      </div>
+      <figcaption>Conceptual redesign of the <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a> pipeline, after Schürholt et al. (2024), Fig. 2. The latent drawing is schematic; each network is represented by a sequence of token embeddings.</figcaption>
+    </figure>
+    <p class="sane-note"><strong>Where the optimizer fits.</strong> Training <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a> still uses gradient optimization. To generate a network, fit a sampling distribution to checkpoint embeddings, decode new weights, calibrate batch-normalization statistics, and evaluate the candidates. Selected weights can then be fine-tuned with SGD or Adam.</p>
+  </section>
+
+  <section id="architecture" class="sane-contribution">
+    <p class="sane-eyebrow">Our contribution / SANE-MoE</p>
+    <h2>Routing weight tokens to experts.</h2>
+    <p>Weights from different layers and datasets need not follow the same patterns. We replace feed-forward sublayers in selected <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a> Transformer blocks with a router and multiple expert networks. The router can use token content, position, and layer information to choose which experts process each weight token.</p>
+    <figure class="sane-moe-figure sane-wide">
+      <div class="sane-moe-pipeline" role="img" aria-label="SANE-MoE: weight tokens enter an encoder with attention and MoE blocks, become latent embeddings, and pass through a decoder with attention and MoE blocks to reconstructed weight tokens.">
+        <div class="sane-moe-end"><span class="sane-small">Input</span><strong>Weight tokens</strong><small>Window + positions</small><div class="sane-token-strip" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+        <div class="sane-moe-stack"><span class="sane-small">Encoder</span><strong>Transformer blocks</strong><span class="sane-attention">Self-attention</span><span class="sane-moe-chip">Mixture of Experts</span><small>In selected blocks</small></div>
+        <div class="sane-moe-latent"><span class="sane-small">Bottleneck</span><strong>Latent embeddings</strong><div class="sane-latent-dots" aria-hidden="true">● ●<br>● ● ●</div><small>One embedding per token</small></div>
+        <div class="sane-moe-stack"><span class="sane-small">Decoder</span><strong>Transformer blocks</strong><span class="sane-attention">Self-attention</span><span class="sane-moe-chip">Mixture of Experts</span><small>In selected blocks</small></div>
+        <div class="sane-moe-end"><span class="sane-small">Output</span><strong>Recovered weights</strong><small>Reassemble the network</small><div class="sane-token-strip" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+      </div>
+      <div class="sane-moe-zoom">
+        <div class="sane-moe-zoom-copy"><span class="sane-small">Inside an MoE sublayer</span><h3>Sparse expert routing</h3><p>The router selects experts for each token. Their outputs are combined using normalized routing weights.</p></div>
+        <div class="sane-router" role="img" aria-label="Top-2 routing example: a token goes through a router that activates experts one and three out of four. Their outputs form a weighted sum.">
+          <span class="sane-router-input">Token h</span><span class="sane-router-arrow" aria-hidden="true">→</span><span class="sane-router-gate">Router</span><span class="sane-router-arrow" aria-hidden="true">→</span><div class="sane-experts"><span class="active">Expert 1</span><span>Expert 2</span><span class="active">Expert 3</span><span>Expert 4</span></div><span class="sane-router-arrow" aria-hidden="true">→</span><span class="sane-router-input">Weighted<br>sum</span>
+        </div>
+      </div>
+      <figcaption>SANE-MoE architecture, adapted from our report, Section 3 and Fig. 1. MoE replaces feed-forward sublayers in selected encoder and decoder blocks; residual connections and normalization are omitted. The zoom illustrates top-2 routing among four experts; active choices vary by token.</figcaption>
+    </figure>
+    <p>We compare top-k, position-aware, and hierarchical routing. Sparse top-k routing increases total capacity while activating only a subset of experts for each token; computation depends on the active expert count and routing overhead.</p>
+  </section>
+
+  <section id="results" class="sane-results">
+    <p class="sane-eyebrow">What we measured</p>
+    <h2>Better generated checkpoints in a mixed zoo.</h2>
+    <p>Trained on a mixture of small CNN zoos from CIFAR-10 and STL-10, every evaluated MoE routing variant improves mean generated-model accuracy over dense <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a>.</p>
+    <div class="sane-gains" aria-label="Best improvements over dense SANE">
+      <div><strong>+5.14 <small>pp</small></strong><span>CIFAR-10 generation</span><small>Top-k: 38.74% → 43.88%</small></div>
+      <div><strong>+3.98 <small>pp</small></strong><span>STL-10 generation</span><small>Hierarchical: 28.90% → 32.88%</small></div>
+      <div><strong>0.810 → 0.921</strong><span>Reconstruction R²</span><small>Hierarchical routing · validation</small></div>
+    </div>
+    <figure class="sane-result-figure sane-wide">
+      <div class="sane-chart-legend"><span><i class="baseline"></i> Dense <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a></span><span><i class="moe"></i> SANE-MoE variants</span><span><i class="reference"></i> Original CNN mean</span></div>
+      <div class="sane-charts"><div>{% include research/sane-cifar.svg %}</div><div>{% include research/sane-stl.svg %}</div></div>
+      <figcaption>Generated-model test accuracy after batch-normalization conditioning and before fine-tuning (report, Table 4). Bars show means; whiskers show ±1 standard deviation over the reported 150 sampled models. The dashed line marks original CNN accuracy. The gain summaries compare means; the best router differs by dataset.</figcaption>
+    </figure>
+    <details class="sane-values"><summary>Exact values from the report</summary>
+    <div class="sane-table-wrap" tabindex="0" role="region" aria-label="Generated-model accuracy results, scroll horizontally on narrow screens">
+      <table><caption>Generated-model test accuracy (%) · Report, Table 4</caption><thead><tr><th scope="col">Method</th><th scope="col">CIFAR-10</th><th scope="col">STL-10</th></tr></thead><tbody>
+        <tr><th scope="row"><a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a> baseline</th><td>38.74 ± 4.16</td><td>28.90 ± 5.43</td></tr>
+        <tr><th scope="row">MoE · top-k</th><td><strong>43.88 ± 3.01</strong></td><td>32.13 ± 4.38</td></tr>
+        <tr><th scope="row">MoE · position-aware</th><td>43.07 ± 3.20</td><td>30.44 ± 5.31</td></tr>
+        <tr><th scope="row">MoE · hierarchical</th><td>42.41 ± 2.19</td><td><strong>32.88 ± 4.01</strong></td></tr>
+        <tr class="sane-reference-row"><th scope="row">Original CNNs <span>(reference)</span></th><td>45.81</td><td>34.93</td></tr>
+      </tbody></table>
+    </div>
+    </details>
+
+  </section>
+
+  <section class="sane-conclusion">
+    <p class="sane-eyebrow">Conclusion / Toward scalable weight-space learning</p>
+    <h2>What improves, and what comes next.</h2>
+    <p>Expert routing improves the <a href="https://proceedings.mlr.press/v235/schurholt24a.html">SANE</a> backbone in this mixed-CNN setting: reconstructed weights are more faithful to the originals, and generated models are more accurate. The next question is whether these gains hold for larger networks and broader <a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/f94d5edb5c01715d879693ddbfdc1b98-Abstract-Datasets_and_Benchmarks.html">model zoos</a>.</p>
+    <div class="sane-future"><span class="sane-small">Future direction · conceptual pipeline</span><p><strong>Dataset + compatible architecture</strong><span aria-hidden="true"> → </span>dataset-aligned weight space<span aria-hidden="true"> → </span><strong>generated NN weights</strong><span aria-hidden="true"> → </span>task-specific fine-tuning</p></div>
+    <p><a href="https://proceedings.mlr.press/v306/asefaw26a.html">WeightCLIP (2026)</a> aligns dataset information with weight embeddings. Combining that conditioning with an expert-based backbone could support scalable generation of weights for a new dataset and compatible architecture. Our report does not test this combination or measure fine-tuning speed; both require further experiments.</p>
+  </section>
+  <p class="back"><a href="{{ '/' | relative_url }}">← Back to selected work</a></p>
+</article>
