@@ -1,0 +1,107 @@
+/* Research page: scoped to preserve the rest of the personal site. */
+.sane-page { --sane-green: #217568; --sane-soft-green: #eef5f2; --sane-gold: #9a722b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sane-page { --sane-green: #85c8b6; --sane-soft-green: #202e2b; --sane-gold: #d4b276; } }
+:root[data-theme="dark"] .sane-page { --sane-green: #85c8b6; --sane-soft-green: #202e2b; --sane-gold: #d4b276; }
+.sane-eyebrow, .sane-small, .sane-step { font-family: system-ui, sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
+.sane-eyebrow { color: var(--muted); margin: 0 0 1.3rem; }
+.sane-eyebrow span { color: var(--rule); padding: 0 .6rem; }
+.sane-hero { padding-top: 1.4rem; }
+.sane-hero h1 { font-size: clamp(2.5rem, 5vw, 3.55rem); letter-spacing: -.045em; line-height: 1.08; margin-bottom: 1.5rem; }
+.sane-deck { font-size: 1.42rem; line-height: 1.45; color: var(--muted); margin-bottom: 1.7rem; }
+.sane-byline { color: var(--muted); font-size: .85rem; line-height: 1.7; margin-top: 1.8rem; }
+.sane-byline span { padding: 0 .25rem; }
+.sane-links { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.4rem; font-size: .95rem; }
+.sane-links a { text-decoration: none; }
+.sane-links a:hover { text-decoration: underline; }
+.sane-links .sane-primary { background: var(--fg); color: var(--bg); padding: .6rem 1rem; border-radius: 3px; }
+.sane-primary span { margin-left: .8rem; }
+.sane-uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 3rem 0 4rem; padding: 1.5rem 0; }
+.sane-small { color: var(--sane-green); letter-spacing: .06em; font-size: .64rem; }
+.sane-uses h2 { font-size: 1.07rem; margin: .6rem 0; }
+.sane-uses p { font-size: .95rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.sane-page section > h2 { margin: 0 0 1.2rem; font-size: 1.8rem; letter-spacing: -.025em; }
+.sane-page section > .sane-eyebrow { margin-bottom: .8rem; }
+.sane-page section + section:not(.sane-uses) { margin-top: 4rem; }
+.sane-wide { width: min(68rem, calc(100vw - 3rem)); margin-left: 50%; transform: translateX(-50%); }
+.sane-figure { margin-top: 2rem; margin-bottom: 1.5rem; }
+.sane-diagram { display: grid; grid-template-columns: 1fr 1.15fr 1fr; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); }
+.sane-panel { padding: 1.5rem; position: relative; min-width: 0; }
+.sane-panel + .sane-panel { border-left: 1px solid var(--rule); }
+.sane-panel + .sane-panel::before { content: '→'; position: absolute; top: 49%; left: -.7rem; background: var(--bg); color: var(--muted); padding: .15rem; line-height: 1; }
+.sane-step { color: var(--sane-green); margin: 0 0 1.5rem; font-size: .65rem; letter-spacing: .05em; }
+.sane-step span { color: var(--muted); padding-left: .7rem; }
+.sane-panel svg { display: block; width: 100%; height: 150px; overflow: visible; }
+.sane-panel svg text { fill: var(--muted); font-family: system-ui, sans-serif; font-size: 10px; }
+.network-lines, .diagram-line { fill: none; stroke: var(--rule); stroke-width: 1.5; }
+.network-nodes { fill: var(--bg); stroke: var(--sane-green); stroke-width: 1.5; }
+.weight-tokens { fill: var(--sane-soft-green); stroke: var(--sane-green); stroke-width: .8; }
+.weight-tokens rect:nth-child(3n) { fill: var(--sane-green); opacity: .8; }
+.transformer-shape { fill: var(--tint); stroke: var(--link); stroke-width: 1.2; }
+.latent-links { fill: none; stroke: var(--sane-green); stroke-width: 1; opacity: .5; }
+.latent-nodes { fill: var(--sane-green); }
+.sane-panel h3 { font-size: 1.1rem; margin: 1rem 0 .5rem; }
+.sane-panel > p:last-child { color: var(--muted); font-size: .93rem; line-height: 1.5; margin: 0; }
+.sane-output { display: flex; gap: .65rem; padding: .65rem 0; font-size: .9rem; line-height: 1.45; }
+.sane-output + .sane-output { border-top: 1px solid var(--rule); }
+.sane-output strong { display: block; font-weight: 600; }
+.sane-output div > span { color: var(--muted); font-size: .78rem; font-family: system-ui, sans-serif; }
+.sane-output-icon { color: var(--sane-green); font-size: 1.4rem; }
+.sane-reuse h3 { margin-top: 1rem; }
+.sane-figure figcaption { font-size: .82rem; color: var(--muted); line-height: 1.5; margin-top: .9rem; max-width: 51rem; }
+.sane-note { color: var(--muted); font-size: .95rem; line-height: 1.6; }
+.sane-note strong { color: var(--fg); font-weight: 600; }
+.sane-router { display: flex; align-items: center; justify-content: center; gap: 1rem; background: var(--tint); padding: 1.5rem; margin: 1.7rem 0 .8rem; border-radius: 4px; font: .82rem/1.4 system-ui, sans-serif; }
+.sane-router-input, .sane-router-gate { padding: .6rem .7rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--bg); }
+.sane-router-gate { border-color: var(--sane-green); color: var(--sane-green); }
+.sane-router-arrow { color: var(--muted); }
+.sane-experts { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.sane-experts span { padding: .45rem .7rem; border: 1px dashed var(--rule); color: var(--muted); border-radius: 3px; }
+.sane-experts .active { border: 1px solid var(--sane-green); background: var(--sane-soft-green); color: var(--sane-green); }
+.sane-table-wrap { overflow-x: auto; margin-top: 1.8rem; }
+.sane-results table { width: 100%; border-collapse: collapse; font-size: .97rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sane-results caption { text-align: left; font: .7rem/1.5 system-ui, sans-serif; color: var(--muted); padding-bottom: .7rem; }
+.sane-results td, .sane-results th { text-align: right; border-bottom: 1px solid var(--rule); padding: .75rem .6rem; }
+.sane-results th:first-child { text-align: left; padding-left: 0; }
+.sane-results thead { color: var(--muted); font-family: system-ui, sans-serif; font-size: .72rem; }
+.sane-results tbody th { font-weight: 400; }
+.sane-results td strong { color: var(--sane-green); font-weight: 600; }
+.sane-reference-row { color: var(--muted); }
+.sane-reference-row span { font-size: .8rem; }
+.sane-results details { margin-top: 1.7rem; border-left: 2px solid var(--sane-green); padding: .3rem 0 .3rem 1rem; }
+.sane-results summary { cursor: pointer; font-size: 1rem; }
+.sane-results details p { font-size: .97rem; color: var(--muted); }
+.sane-reading { border-top: 1px solid var(--rule); padding-top: 2rem; }
+.sane-reading > a { display: block; text-decoration: none; border-bottom: 1px solid var(--rule); padding: 1.1rem 0; }
+.sane-reading > a > span:first-child { display: block; color: var(--muted); font: .7rem/1.5 system-ui, sans-serif; margin-bottom: .4rem; }
+.sane-reading small { font: inherit; margin-left: .6rem; }
+.sane-reading a > span:last-child { font-size: 1rem; }
+.sane-reading b { font-weight: 400; margin-left: .3rem; }
+.sane-reading a:hover > span:last-child { text-decoration: underline; }
+@media (max-width: 780px) {
+  .sane-wide { width: 100%; }
+  .sane-diagram { grid-template-columns: 1fr; }
+  .sane-panel { padding: 1.3rem 1.5rem; }
+  .sane-panel + .sane-panel { border-left: 0; border-top: 1px solid var(--rule); }
+  .sane-panel + .sane-panel::before { content: '↓'; left: 50%; top: -.8rem; transform: translateX(-50%); }
+  .sane-panel svg { height: 140px; max-width: 330px; margin: auto; }
+  .sane-reuse .sane-output { padding: .7rem 0; }
+}
+@media (max-width: 520px) {
+  body:has(.sane-page) .site-header { gap: .6rem; font-size: .95rem; }
+  body:has(.sane-page) .site-name { white-space: nowrap; }
+  body:has(.sane-page) .site-header nav { display: flex; align-items: center; }
+  body:has(.sane-page) .site-header nav a, body:has(.sane-page) #theme-toggle { margin-left: .7rem; }
+  .sane-hero { padding-top: .25rem; }
+  .desktop-break { display: none; }
+  .sane-deck { font-size: 1.23rem; }
+  .sane-byline { font-size: .8rem; }
+  .sane-uses { grid-template-columns: 1fr; gap: 1.3rem; margin: 2.5rem 0 3rem; }
+  .sane-uses h2 { margin: .25rem 0; }
+  .sane-page section > h2 { font-size: 1.5rem; }
+  .sane-router { gap: .5rem; padding: 1rem .6rem; font-size: .65rem; }
+  .sane-router-input, .sane-router-gate { padding: .4rem; }
+  .sane-experts { gap: .3rem; }
+  .sane-experts span { padding: .4rem; }
+  .sane-results table { font-size: .85rem; }
+  .sane-reading small { display: block; margin-left: 0; }
+}

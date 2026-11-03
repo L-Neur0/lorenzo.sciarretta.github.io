@@ -1,0 +1,105 @@
+---
+layout: default
+title: SANE-MoE · Rethinking neural network training
+description: Improving how we train neural networks through weight-space learning: learn from existing models, generate useful weights, then fine-tune.
+permalink: /research/sane-moe/
+---
+<link rel="stylesheet" href="{{ '/assets/css/sane-moe.css' | relative_url }}">
+<article class="sane-page">
+  <header class="sane-hero">
+    <p class="sane-eyebrow">Neural network optimization <span>/</span> Weight-space learning</p>
+    <h1>Can AI help us train<br class="desktop-break"> better neural networks?</h1>
+    <p class="sane-deck">Learn from models that already work.<br class="desktop-break"> Generate useful weights. Then fine-tune.</p>
+    <p>Training a neural network means finding weights that solve a task. SGD and Adam do this through repeated updates on data. <strong>Weight-space learning adds a learned route to those weights:</strong> use trained networks as data for another model that learns to represent and generate network parameters.</p>
+    <p><strong>SANE</strong> makes this approach scalable through sequences of weight tokens. The practical goal is a better starting point for task-specific training. Our extension, <strong>SANE-MoE</strong>, brings expert specialization to learning from diverse collections of networks.</p>
+    <p class="sane-byline">Lorenzo Sciarretta &amp; Zakaria Omarar <span>·</span> AI/ML Lab, University of St. Gallen <span>·</span> IMP 2025 project</p>
+    <div class="sane-links"><a class="sane-primary" href="{{ '/assets/IMP_final_version.pdf' | relative_url }}">Read our report <span aria-hidden="true">↗</span></a><a href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a></div>
+  </header>
+
+  <section class="sane-uses" aria-label="Goals and practical uses">
+    <div><span class="sane-small">01 / Initialize</span><h2>A learned head start</h2><p>Sample candidate weights, evaluate them, then fine-tune with SGD or Adam on your target task.</p></div>
+    <div><span class="sane-small">02 / Generate</span><h2>New model checkpoints</h2><p>Decode samples from the learned embedding distribution into complete network weights.</p></div>
+    <div><span class="sane-small">03 / Understand</span><h2>Read a network’s weights</h2><p>Use embeddings as features to predict model properties, such as accuracy or generalization gap.</p></div>
+  </section>
+
+  <section id="how-it-works" class="sane-method">
+    <p class="sane-eyebrow">The idea in one picture</p>
+    <h2>Trained models become the training data.</h2>
+    <p>A model zoo is a collection of trained checkpoints. SANE learns to encode and reconstruct their weights, processing windows of weight tokens instead of a whole network at once.</p>
+    <figure class="sane-figure sane-wide">
+      <div class="sane-diagram">
+        <div class="sane-panel sane-zoo">
+          <p class="sane-step">01 <span>Collect experience</span></p>
+          <svg viewBox="0 0 260 150" role="img" aria-label="Three trained neural networks become sequences of weight tokens">
+            <g class="network-lines"><path d="M27 32L65 20L103 41M27 32L65 55L103 41M27 70L65 20M27 70L65 55M27 70L65 90L103 79M65 20L103 79M65 55L103 79M65 90L103 41"/><path d="M143 31h86M143 55h86M143 79h86" stroke-dasharray="3 4"/></g>
+            <g class="network-nodes"><circle cx="27" cy="32" r="7"/><circle cx="27" cy="70" r="7"/><circle cx="65" cy="20" r="7"/><circle cx="65" cy="55" r="7"/><circle cx="65" cy="90" r="7"/><circle cx="103" cy="41" r="7"/><circle cx="103" cy="79" r="7"/></g>
+            <g class="weight-tokens"><rect x="144" y="21" width="18" height="18" rx="3"/><rect x="168" y="21" width="18" height="18" rx="3"/><rect x="192" y="21" width="18" height="18" rx="3"/><rect x="216" y="21" width="18" height="18" rx="3"/><rect x="144" y="45" width="18" height="18" rx="3"/><rect x="168" y="45" width="18" height="18" rx="3"/><rect x="192" y="45" width="18" height="18" rx="3"/><rect x="216" y="45" width="18" height="18" rx="3"/><rect x="144" y="69" width="18" height="18" rx="3"/><rect x="168" y="69" width="18" height="18" rx="3"/><rect x="192" y="69" width="18" height="18" rx="3"/><rect x="216" y="69" width="18" height="18" rx="3"/></g>
+            <text x="65" y="126" text-anchor="middle">Model zoo</text><text x="189" y="126" text-anchor="middle">Weight tokens</text>
+          </svg>
+          <h3>Networks → sequences</h3><p>Standardize and align weights; split them into tokens with layer and position information.</p>
+        </div>
+        <div class="sane-panel sane-autoencoder">
+          <p class="sane-step">02 <span>Learn a representation</span></p>
+          <svg viewBox="0 0 300 150" role="img" aria-label="An encoder compresses weight tokens into embeddings; a decoder reconstructs the tokens">
+            <path class="diagram-line" d="M12 60H288"/>
+            <path class="transformer-shape" d="M24 23L91 44V77L24 99Z"/><path class="transformer-shape" d="M209 44L276 23V99L209 77Z"/>
+            <g class="latent-links"><path d="M120 48L150 30L180 47L172 78L137 88Z M120 48L172 78M150 30L137 88M150 30L172 78M137 88L180 47"/></g>
+            <g class="latent-nodes"><circle cx="120" cy="48" r="5"/><circle cx="150" cy="30" r="5"/><circle cx="180" cy="47" r="5"/><circle cx="172" cy="78" r="5"/><circle cx="137" cy="88" r="5"/></g>
+            <text x="53" y="65" text-anchor="middle">E</text><text x="246" y="65" text-anchor="middle">D</text><text x="53" y="126" text-anchor="middle">Encoder</text><text x="150" y="126" text-anchor="middle">Embeddings</text><text x="246" y="126" text-anchor="middle">Decoder</text>
+          </svg>
+          <h3>Encode → reconstruct</h3><p>Train an autoencoder on token windows. Each token gets an embedding; a model has a sequence of them.</p>
+        </div>
+        <div class="sane-panel sane-reuse">
+          <p class="sane-step">03 <span>Put it to work</span></p>
+          <div class="sane-output"><span class="sane-output-icon" aria-hidden="true">↗</span><div><strong>Generate weights</strong><span>Sample embeddings → decode<br>→ calibrate → evaluate → fine-tune</span></div></div>
+          <div class="sane-output"><span class="sane-output-icon" aria-hidden="true">⌕</span><div><strong>Predict properties</strong><span>Encode a checkpoint → fit a probe<br>→ estimate model characteristics</span></div></div>
+          <h3>Generate or analyze</h3><p>Reuse the decoder to produce networks, or the encoder to study existing ones.</p>
+        </div>
+      </div>
+      <figcaption>Conceptual redesign of the SANE pipeline, after Schürholt et al. (2024), Fig. 2. The latent drawing is schematic. Generation samples a distribution fitted to model embeddings; it does not take a natural-language prompt.</figcaption>
+    </figure>
+    <p class="sane-note"><strong>Where the optimizer fits.</strong> Training SANE itself still uses optimization. Once trained, it can generate starting weights for a compatible network; SGD or Adam can then adapt those weights to your data. Sampling, batch-normalization calibration, and candidate evaluation are part of the practical pipeline.</p>
+  </section>
+
+  <section class="sane-contribution">
+    <p class="sane-eyebrow">Our contribution / SANE-MoE</p>
+    <h2>Diverse networks. Specialized experts.</h2>
+    <p>Weights from different layers and datasets need not follow the same patterns. We replace feed-forward sublayers in selected SANE Transformer blocks with a router and multiple expert networks. The router can use token content, position, and layer information to choose which experts process each weight token.</p>
+    <div class="sane-router" aria-label="Illustration of sparse routing: a weight token activates two out of four experts">
+      <span class="sane-router-input">Weight token</span><span class="sane-router-arrow" aria-hidden="true">→</span><span class="sane-router-gate">Router</span><span class="sane-router-arrow" aria-hidden="true">→</span><div class="sane-experts"><span class="active">Expert 1</span><span>Expert 2</span><span class="active">Expert 3</span><span>Expert 4</span></div>
+    </div>
+    <p class="sane-note">Illustrative top-2 routing: two of four experts are active per token. Sparse routing adds capacity without activating every expert; actual cost also depends on routing and the number of active experts.</p>
+    <p>We study top-k, position-aware, and hierarchical routing. The aim: retain useful structure when the model zoo contains networks trained on different datasets.</p>
+  </section>
+
+  <section class="sane-results">
+    <p class="sane-eyebrow">What we measured</p>
+    <h2>Better generated checkpoints in a mixed zoo.</h2>
+    <p>Trained on a mixture of small CNN zoos from CIFAR-10 and STL-10, every evaluated MoE routing variant improves mean generated-model accuracy over dense SANE.</p>
+    <div class="sane-table-wrap" tabindex="0" role="region" aria-label="Generated-model accuracy results, scroll horizontally on narrow screens">
+      <table><caption>Generated-model test accuracy (%) · Report, Table 4</caption><thead><tr><th scope="col">Method</th><th scope="col">CIFAR-10</th><th scope="col">STL-10</th></tr></thead><tbody>
+        <tr><th scope="row">SANE baseline</th><td>38.74 ± 4.16</td><td>28.90 ± 5.43</td></tr>
+        <tr><th scope="row">MoE · top-k</th><td><strong>43.88 ± 3.01</strong></td><td>32.13 ± 4.38</td></tr>
+        <tr><th scope="row">MoE · position-aware</th><td>43.07 ± 3.20</td><td>30.44 ± 5.31</td></tr>
+        <tr><th scope="row">MoE · hierarchical</th><td>42.41 ± 2.19</td><td><strong>32.88 ± 4.01</strong></td></tr>
+        <tr class="sane-reference-row"><th scope="row">Original CNNs <span>(reference)</span></th><td>45.81</td><td>34.93</td></tr>
+      </tbody></table>
+    </div>
+    <p class="sane-note">Mean ± standard deviation, reported over 150 sampled models. These are generated-checkpoint results after batch-normalization conditioning, before task fine-tuning; they are not measurements of training-time savings.</p>
+    <details><summary>What this demonstrates—and what comes next</summary><p>Our experiments support better reconstruction and generation in this small-CNN, mixed-zoo setting. They do not establish a universal pretrained initializer, generation for arbitrary architectures, or a smooth latent space organized by function. Testing larger networks, broader model zoos, and end-to-end fine-tuning efficiency remains future work.</p></details>
+  </section>
+
+  <section class="sane-context">
+    <p class="sane-eyebrow">A broader direction</p>
+    <h2>AI can work on the model itself.</h2>
+    <p><a href="https://rikiyat.github.io/blog/weight-space-programming/">Weight-Space Programming</a> explores general-purpose LLMs reading and editing network weights through reasoning. SANE takes a different route: a purpose-trained autoencoder learns representations from collections of checkpoints. Both point toward AI systems that help create or improve other models, alongside conventional training.</p>
+  </section>
+
+  <section class="sane-reading" aria-labelledby="sane-reading-title">
+    <h2 id="sane-reading-title">Read further</h2>
+    <a href="{{ '/assets/IMP_final_version.pdf' | relative_url }}"><span>Our report <small>Sciarretta &amp; Omarar · IMP 2025</small></span><span>Weight Space Learning with Mixture of Experts (MoE) <b aria-hidden="true">↗</b></span></a>
+    <a href="https://proceedings.mlr.press/v235/schurholt24a.html"><span>Original SANE <small>Schürholt, Mahoney &amp; Borth · ICML 2024</small></span><span>Towards Scalable and Versatile Weight Space Learning <b aria-hidden="true">↗</b></span></a>
+    <a href="https://rikiyat.github.io/blog/weight-space-programming/"><span>Related perspective <small>Takehi et al. · November 2026</small></span><span>Sparks of Weight-Space Programming <b aria-hidden="true">↗</b></span></a>
+  </section>
+  <p class="back"><a href="{{ '/' | relative_url }}">← Back to selected work</a></p>
+</article>

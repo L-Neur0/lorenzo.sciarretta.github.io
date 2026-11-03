@@ -56,7 +56,7 @@ description: AI/ML researcher at ETH Zürich working on multi-LLM agent systems 
   </li>
   <li>
     <span class="when">2025</span>
-    <span><a class="what" href="{{ '/assets/IMP_final_version.pdf' | relative_url }}">SANE-MoE</a><span class="detail">Mixture of experts via hyper-representations: routing in weight space rather than token space.</span></span>
+    <span><a class="what" href="{{ '/research/sane-moe/' | relative_url }}">SANE-MoE</a><span class="detail">Learning useful neural network weights from trained models, with expert specialization for diverse model zoos.</span></span>
   </li>
   <li>
     <span class="when">2024</span>
